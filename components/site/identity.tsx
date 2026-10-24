@@ -6,9 +6,9 @@ import { Reveal } from "./reveal"
 import { Signature } from "./signature"
 
 const palette = [
-  { name: "Paper", hex: "#F4F2EE", note: "Where every idea starts", dark: false },
-  { name: "Ink", hex: "#121212", note: "What gets said", dark: true },
-  { name: "Ember", hex: "#E2462B", note: "What you remember", dark: true },
+  { name: "Frost", hex: "#F6F8FB", note: "Where every idea starts", dark: false },
+  { name: "Ink", hex: "#0B0F1A", note: "What gets said", dark: true },
+  { name: "Nihang Blue", hex: "#2245D6", note: "What you remember", dark: true },
 ]
 
 const wiring = [
@@ -34,7 +34,7 @@ function Swatch({ s }: { s: (typeof palette)[number] }) {
       onClick={copy}
       aria-label={`Copy ${s.name} ${s.hex}`}
       className="group flex min-w-0 flex-1 flex-col justify-between rounded-2xl border border-border p-2.5 text-left transition hover:-translate-y-1"
-      style={{ background: s.hex, color: s.dark ? "#F4F2EE" : "#121212" }}
+      style={{ background: s.hex, color: s.dark ? "#F6F8FB" : "#0B0F1A" }}
     >
       <span className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.15em] opacity-80">
         {s.name}

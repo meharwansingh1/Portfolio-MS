@@ -3,25 +3,25 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f4f2ee;
-  --foreground: #121212;
-  --muted: #e8e5df;
-  --muted-foreground: #6b6862;
-  --card: #fbfaf7;
-  --border: rgba(18, 18, 18, 0.1);
-  --accent: #e2462b;
-  --grid: rgba(18, 18, 18, 0.07);
+  --background: #f6f8fb;
+  --foreground: #0b0f1a;
+  --muted: #e8edf5;
+  --muted-foreground: #5a6475;
+  --card: #ffffff;
+  --border: rgba(11, 15, 26, 0.1);
+  --accent: #2245d6;
+  --grid: rgba(11, 15, 26, 0.07);
 }
 
 .dark {
-  --background: #0b0b0c;
-  --foreground: #f2f0eb;
-  --muted: #18181a;
-  --muted-foreground: #8f8c86;
-  --card: #121214;
-  --border: rgba(242, 240, 235, 0.09);
-  --accent: #ff5a3a;
-  --grid: rgba(242, 240, 235, 0.05);
+  --background: #070a12;
+  --foreground: #eef2fa;
+  --muted: #111827;
+  --muted-foreground: #8a94a7;
+  --card: #0d1220;
+  --border: rgba(238, 242, 250, 0.09);
+  --accent: #5b7cff;
+  --grid: rgba(238, 242, 250, 0.05);
 }
 
 @theme inline {

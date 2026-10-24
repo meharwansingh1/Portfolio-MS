@@ -43,8 +43,8 @@ function Cover({ piece }: { piece: Piece }) {
         className={cn(
           "absolute inset-0 flex flex-col justify-between p-5 pt-12 text-white",
           web
-            ? "bg-[radial-gradient(120%_100%_at_0%_0%,#6f97c2_0%,#22395e_45%,#0b0b0c_100%)]"
-            : "bg-[radial-gradient(120%_100%_at_0%_0%,#ef4a2b_0%,#3e2850_50%,#0b0b0c_100%)]",
+            ? "bg-[radial-gradient(120%_100%_at_0%_0%,#7d9ae6_0%,#1d2f6b_45%,#070a12_100%)]"
+            : "bg-[radial-gradient(120%_100%_at_0%_0%,#3f63ff_0%,#1a2366_50%,#070a12_100%)]",
         )}
       >
         {web ? <Globe className="size-6 opacity-70" /> : piece.kind === "link" ? <ArrowUpRight className="size-6 opacity-70" /> : <Play className="size-6 opacity-70" />}
