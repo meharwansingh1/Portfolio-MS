@@ -309,6 +309,14 @@ export const timeline: Chapter[] = [
     href: "/work/#giani-birbal-singh-ji",
   },
   {
+    org: "University of Delhi",
+    kind: "Education",
+    roles: [{ title: "Bachelor of Arts (B.A.) in History", when: "Jun 2023 — Jun 2026" }],
+    text: "An undergraduate degree in History, studied alongside my design work.",
+    points: ["Bachelor of Arts, History"],
+    href: "/about/#story",
+  },
+  {
     org: "Arena Animation",
     kind: "Education",
     roles: [{ title: "UI/UX Advanced Programme", when: "May 2023 — Nov 2024" }],
