@@ -140,7 +140,7 @@ export const projects: Project[] = [
     slug: "booking-junction",
     title: "Booking Junction",
     kind: "Design partner",
-    year: "2026 — now",
+    year: "Mar 2026 — now",
     summary:
       "I handle design for Booking Junction, a B2B travel company: event posters, daily posts and destination reels for their Instagram.",
     highlights: ["Event posters and daily social posts", "Destination reels: Japan, Bali, Europe, Dubai and more"],
@@ -254,7 +254,7 @@ export const timeline: Chapter[] = [
     org: "Booking Junction",
     place: "Remote · bookingjunction.co.in",
     kind: "Freelance",
-    roles: [{ title: "Designer", when: "2026 — now" }],
+    roles: [{ title: "Designer", when: "22 Mar 2026 — now" }],
     text: "Design for a B2B travel company's Instagram.",
     points: ["Event posters and daily posts", "Destination reels"],
     href: "/showcase/#booking-junction",
