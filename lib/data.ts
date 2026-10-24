@@ -19,10 +19,12 @@ export const nav = [
   { href: "/about", label: "About" },
   { href: "/skills", label: "Skills" },
   { href: "/work", label: "Work" },
+  { href: "/showcase", label: "Showcase" },
   { href: "/contact", label: "Contact" },
 ] as const
 
-export type Skill = { name: string; note: string; level: number }
+/** `href` is where that skill can be seen in action: a page on this site or a piece of work. */
+export type Skill = { name: string; note: string; level: number; href: string }
 export type SkillGroup = { id: string; title: string; blurb: string; art: ArtPreset; skills: Skill[] }
 
 export const skillGroups: SkillGroup[] = [
@@ -32,12 +34,12 @@ export const skillGroups: SkillGroup[] = [
     blurb: "The code that holds a page up and makes it move.",
     art: "glacier",
     skills: [
-      { name: "HTML", note: "Semantic, accessible structure that works on every device.", level: 92 },
-      { name: "CSS", note: "Layout, motion and responsive systems from first principles.", level: 88 },
-      { name: "JavaScript", note: "Interactivity and dynamic interfaces in the browser.", level: 78 },
-      { name: "Bootstrap", note: "Fast, mobile-first layouts from a proven grid.", level: 80 },
-      { name: "jQuery", note: "DOM traversal, events and quick animation.", level: 74 },
-      { name: "Python", note: "Scripting and automation beyond the browser.", level: 62 },
+      { name: "HTML", note: "Semantic, accessible structure that works on every device.", level: 92, href: "/work/#portfolio" },
+      { name: "CSS", note: "Layout, motion and responsive systems from first principles.", level: 88, href: "/work/#portfolio" },
+      { name: "JavaScript", note: "Interactivity and dynamic interfaces in the browser.", level: 78, href: "https://meharwansingh1.github.io/MyTravelVlogs/" },
+      { name: "Bootstrap", note: "Fast, mobile-first layouts from a proven grid.", level: 80, href: "https://www.behance.net/gallery/179151969/Web-Template" },
+      { name: "jQuery", note: "DOM traversal, events and quick animation.", level: 74, href: "https://meharwansingh1.github.io/MyTravelVlogs/" },
+      { name: "Python", note: "Scripting and automation beyond the browser.", level: 62, href: "https://github.com/meharwansingh1" },
     ],
   },
   {
@@ -46,9 +48,9 @@ export const skillGroups: SkillGroup[] = [
     blurb: "Shape, colour and type before a single line of code.",
     art: "dusk",
     skills: [
-      { name: "UI / UX", note: "Interfaces that read clearly and feel considered.", level: 82 },
-      { name: "Graphic Design", note: "Posters, brand pieces and social visuals.", level: 86 },
-      { name: "Adobe Illustrator", note: "Clean vector artwork and characters.", level: 84 },
+      { name: "UI / UX", note: "Interfaces that read clearly and feel considered.", level: 82, href: "https://www.behance.net/gallery/179151969/Web-Template" },
+      { name: "Graphic Design", note: "Posters, brand pieces and social visuals.", level: 86, href: "/showcase/#dussehra-mahatam" },
+      { name: "Adobe Illustrator", note: "Clean vector artwork and characters.", level: 84, href: "https://www.behance.net/meharramgarh1a" },
     ],
   },
   {
@@ -57,9 +59,9 @@ export const skillGroups: SkillGroup[] = [
     blurb: "Stories told frame by frame, with sound to carry them.",
     art: "ember",
     skills: [
-      { name: "After Effects", note: "Vector motion, intros, teasers and long-form animation.", level: 85 },
-      { name: "Video Editing", note: "Reels and long videos cut to narration and music.", level: 88 },
-      { name: "AI-assisted visuals", note: "Cinematic scene prompting with locked character design.", level: 80 },
+      { name: "After Effects", note: "Vector motion, intros, teasers and long-form animation.", level: 85, href: "/showcase/#vectoristory" },
+      { name: "Video Editing", note: "Reels and long videos cut to narration and music.", level: 88, href: "/showcase/#bhujangyy" },
+      { name: "AI-assisted visuals", note: "Cinematic scene prompting with locked character design.", level: 80, href: "/showcase/#kharag-singh-yudh" },
     ],
   },
 ]
@@ -75,7 +77,15 @@ export type Project = {
   tags: string[]
   art: ArtPreset
   links: { label: string; href: string }[]
+  /** the sheets inside the project's glass folder; each one opens somewhere specific */
+  files: FolderLink[]
 }
+
+/** A sheet in a glass folder. `to` is a page on this site ("/showcase/#…") or a full URL. */
+export type FolderLink = { name: string; meta: string; to: string; image?: string; art?: ArtPreset }
+
+const reelCover = (code: string) => asset(`/work/${code}.jpg`)
+const ytCover = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
 
 /** The main body of work, strongest first. */
 export const projects: Project[] = [
@@ -93,6 +103,12 @@ export const projects: Project[] = [
     ],
     tags: ["Brand", "Motion design", "AI visuals", "Editing"],
     art: "ember",
+    files: [
+      { name: "All Bhujangyy reels", meta: "Showcase", to: "/showcase/#bhujangyy" },
+      { name: "Dussehra Mahatam · Day 9", meta: "30.6K plays", to: "https://www.instagram.com/reel/DeqFOaaB7zp/", image: reelCover("DeqFOaaB7zp") },
+      { name: "Kharag Singh Yudh · Part 41", meta: "Latest", to: "https://www.instagram.com/reel/De2-7D0BEHB/", image: reelCover("De2-7D0BEHB") },
+      { name: "Kharag Singh Yudh · Part 40", meta: "29.5K plays", to: "https://www.instagram.com/reel/Dewq-vvTCi8/", image: reelCover("Dewq-vvTCi8") },
+    ],
     links: [{ label: "Instagram", href: "https://www.instagram.com/bhujangyy/" }],
   },
   {
@@ -108,6 +124,12 @@ export const projects: Project[] = [
     ],
     tags: ["Video editing", "Graphic design", "Social"],
     art: "verdant",
+    files: [
+      { name: "Giani Birbal Singh Ji", meta: "Instagram", to: "https://www.instagram.com/gianibirbalsinghji/" },
+      { name: "All 10 days", meta: "Showcase", to: "/showcase/#dussehra-mahatam", art: "verdant" },
+      { name: "Day 10 · Bhog", meta: "Dussehra Mahatam", to: "https://www.instagram.com/reel/DesAiuEzkA_/", image: reelCover("DesAiuEzkA_") },
+      { name: "Shahidi Bagh, Anandpur Sahib", meta: "21.1K plays", to: "https://www.instagram.com/reel/DetvuhmTaks/", image: reelCover("DetvuhmTaks") },
+    ],
     links: [{ label: "Instagram", href: "https://www.instagram.com/gianibirbalsinghji/" }],
   },
   {
@@ -120,6 +142,12 @@ export const projects: Project[] = [
     highlights: ["Samudra Manthan", "Part 2: Mohini & the Stolen Amrit", "Untold-story reels from many faiths"],
     tags: ["After Effects", "Vector motion", "Storytelling"],
     art: "dusk",
+    files: [
+      { name: "YouTube channel", meta: "@vectoristory", to: "https://www.youtube.com/@vectoristory" },
+      { name: "Mohini · Part 2", meta: "4:50", to: "https://www.youtube.com/watch?v=DDlEpPzR6UY", image: ytCover("DDlEpPzR6UY") },
+      { name: "The temple that opens when Ravan burns", meta: "2.4K views", to: "https://www.youtube.com/shorts/DkwZ0D6srJY", image: ytCover("DkwZ0D6srJY") },
+      { name: "Samudra Manthan", meta: "5:43", to: "https://www.youtube.com/watch?v=FQ76hjBlx78", image: ytCover("FQ76hjBlx78") },
+    ],
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@vectoristory" },
       { label: "Instagram", href: "https://www.instagram.com/vectoristory/" },
@@ -134,6 +162,11 @@ export const projects: Project[] = [
       "The site you're on: a multi-page Next.js build with glass folders whose artwork is generated in code, dark mode, and automatic deploys to GitHub Pages.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     art: "aurora",
+    files: [
+      { name: "Source code", meta: "GitHub", to: "https://github.com/meharwansingh1/portfolioo" },
+      { name: "Showcase page", meta: "Built here", to: "/showcase/", art: "aurora" },
+      { name: "Live site", meta: "github.io", to: "https://meharwansingh1.github.io/portfolioo/", art: "glacier" },
+    ],
     links: [
       { label: "Live site", href: "https://meharwansingh1.github.io/portfolioo/" },
       { label: "Source code", href: "https://github.com/meharwansingh1/portfolioo" },
@@ -158,20 +191,46 @@ export const earlyWork = [
   },
 ]
 
+/** Career so far, newest first. */
 export const timeline = [
   {
+    when: "Oct 2026",
+    role: "Collaborator",
+    org: "Bhujangyy × Giani Birbal Singh Ji",
+    text: "Dussehra Mahatam: ten days of katha released across both pages, from 11 October to the bhog samagam.",
+    points: ["A reel for every day, released on both pages", "140K+ plays across the series on Bhujangyy"],
+    href: "/showcase/#dussehra-mahatam",
+  },
+  {
+    when: "2026 — now",
+    role: "Founder & creator",
+    org: "Bhujangyy",
+    text: "My own brand for cinematic Sikh storytelling, built around an original Nihang Singh character.",
+    points: ["Kharag Singh Yudh: 40+ reels from the Dasam Granth", "Multi-part long-form katha video in production", "Brand identity, intros and teasers in After Effects"],
+    href: "/showcase/#bhujangyy",
+  },
+  {
+    when: "2026 — now",
+    role: "Creator & animator",
+    org: "Vectoristory",
+    text: "Vector-motion reels and long videos retelling ancient sacred stories, on YouTube and Instagram.",
+    points: ["Animated in After Effects with Indian-English narration", "Long videos and untold-story shorts"],
+    href: "/showcase/#vectoristory",
+  },
+  {
+    when: "Current role",
+    role: "Frontend Developer & Graphic Designer",
+    org: "",
+    text: "Building and styling interfaces, and designing the graphics that go on them.",
+    points: ["HTML, CSS and JavaScript interfaces", "Graphic and UI design"],
+    href: "/skills/",
+  },
+  {
     when: "First role",
-    title: "Content & design for Giani Birbal Singh Ji",
-    text: "Where I learned to make work that people actually watch: reels, graphics and recorded series across platforms. We still collaborate, most recently on Dussehra Mahatam.",
-  },
-  {
-    when: "Since",
-    title: "Frontend developer & designer",
-    text: "Building and styling the web by day, while growing my own brand, Bhujangyy, and my motion series, Vectoristory.",
-  },
-  {
-    when: "Now",
-    title: "Open to remote roles",
-    text: "Looking for a remote team where development, design and motion can sit in the same pair of hands.",
+    role: "Content & design",
+    org: "Giani Birbal Singh Ji",
+    text: "Where my professional work began: reels, graphics and recorded series across platforms.",
+    points: ["Video editing for reels and recorded series", "Social graphics and covers"],
+    href: "https://www.instagram.com/gianibirbalsinghji/",
   },
 ]

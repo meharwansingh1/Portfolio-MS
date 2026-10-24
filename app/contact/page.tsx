@@ -16,7 +16,7 @@ const channels = [
 export default function ContactPage() {
   return (
     <div className="page-in">
-      <PageHeader index="05" eyebrow="Get in touch" title="Let's talk" intro="A role, a project or just a hello — my inbox is open." />
+      <PageHeader index="06" eyebrow="Get in touch" title="Let's talk" intro="A role, a project or just a hello — my inbox is open." />
 
       <section className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 py-8 sm:px-6 md:grid-cols-[1fr_1.2fr]">
         <div className="space-y-4">

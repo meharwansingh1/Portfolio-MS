@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { PageHeader } from "@/components/site/page-header"
+import { ArrowUpRight } from "lucide-react"
 import { Reveal } from "@/components/site/reveal"
+import { SmartLink } from "@/components/site/smart-link"
 import { SkillFolder } from "@/components/site/skill-folder"
 import { skillGroups } from "@/lib/data"
 
@@ -26,10 +28,13 @@ export default function SkillsPage() {
               <ul className="mt-10 divide-y divide-border border-y border-border">
                 {g.skills.map((s, i) => (
                   <Reveal as="li" key={s.name} delay={i * 60} className="group py-5">
-                    <div className="flex items-baseline justify-between gap-4">
+                    <SmartLink href={s.href} className="flex items-baseline justify-between gap-4">
                       <h3 className="text-xl font-medium tracking-tight transition group-hover:translate-x-1">{s.name}</h3>
-                      <span className="font-mono text-xs text-muted-foreground">{s.level}%</span>
-                    </div>
+                      <span className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+                        <span className="opacity-0 transition group-hover:opacity-100">see it</span>
+                        <ArrowUpRight className="size-3.5 transition group-hover:text-accent" /> {s.level}%
+                      </span>
+                    </SmartLink>
                     <p className="mt-1 text-sm text-muted-foreground">{s.note}</p>
                     <div className="mt-3 h-1 overflow-hidden rounded-full bg-muted">
                       <div className="h-full origin-left rounded-full bg-foreground transition-all duration-700 group-hover:bg-accent" style={{ width: s.level + "%" }} />

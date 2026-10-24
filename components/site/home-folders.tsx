@@ -1,58 +1,47 @@
 "use client"
 
-import { useRouter } from "next/navigation"
-import type { FolderFile } from "@/components/ui/glass-folder-cards"
 import { FitFolder } from "./fit-folder"
-import { projects, skillGroups } from "@/lib/data"
-
-type Routed = FolderFile & { to: string }
+import { toFolderFile, useOpenLink, type LinkedFile } from "./use-open-link"
+import { asset, projects, skillGroups } from "@/lib/data"
 
 /**
- * The home page's doorway: one glass folder per section. Click a folder to
- * open it, then pick a file to go straight to that part of the site.
- * (Files carry a `to` route instead of `href`, so navigation stays client-side.)
+ * The home page's doorway: one glass folder per part of the site. Click a
+ * folder to open it, then pick a sheet to go straight there.
  */
 export function HomeFolders() {
-  const router = useRouter()
-  const go = (f: FolderFile) => router.push((f as Routed).to)
+  const open = useOpenLink()
 
-  const work: Routed[] = [...projects].reverse().map((p) => ({ name: p.title, meta: p.kind, art: p.art, to: "/work#" + p.slug }))
-  const about: Routed[] = [
-    { name: "My story", meta: "Read", to: "/about#story" },
-    { name: "Timeline", meta: "3 chapters", art: "glacier", to: "/about#timeline" },
-    { name: "What I value", meta: "Read", to: "/about#values" },
+  // the stack shows its last items nearest the glass, so the strongest work goes last
+  const work: LinkedFile[] = [...projects].reverse().map((p) => ({ name: p.title, meta: p.kind, art: p.art, to: "/work/#" + p.slug }))
+  const showcase: LinkedFile[] = [
+    toFolderFile({ name: "Vectoristory", meta: "YouTube", to: "/showcase/#vectoristory", image: "https://i.ytimg.com/vi/FQ76hjBlx78/hqdefault.jpg" }),
+    toFolderFile({ name: "Kharag Singh Yudh", meta: "Reels", to: "/showcase/#kharag-singh-yudh", image: asset("/work/Dewq-vvTCi8.jpg") }),
+    toFolderFile({ name: "Dussehra Mahatam", meta: "10 days", to: "/showcase/#dussehra-mahatam", image: asset("/work/DeqFOaaB7zp.jpg") }),
   ]
-  const skills: Routed[] = skillGroups.map((g) => ({ name: g.title, meta: g.skills.length + " skills", art: g.art, to: "/skills#" + g.id }))
+  const about: LinkedFile[] = [
+    { name: "What I value", meta: "Read", to: "/about/#values" },
+    { name: "Experience", meta: "Timeline", art: "glacier", to: "/about/#timeline" },
+    { name: "My story", meta: "Read", to: "/about/#story" },
+  ]
+  const skills: LinkedFile[] = skillGroups.map((g) => ({ name: g.title, meta: g.skills.length + " skills", art: g.art, to: "/skills/#" + g.id }))
 
   return (
-    <div className="grid grid-cols-1 items-end justify-items-center gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 items-end justify-items-center gap-x-16 gap-y-16 sm:grid-cols-2">
+      <FitFolder max={400} label="Work" meta={projects.length + " projects"} art="ember" seed={11} tone="dark" action="none" labelPlacement="top-right" files={work} onFileSelect={open} />
+      <FitFolder max={400} label="Showcase" meta="Reels & videos" art="dusk" seed={5} action="none" appearDelay={120} files={showcase} onFileSelect={open} />
+      <FitFolder max={400} label="About me" art="aurora" seed={3} action="none" appearDelay={200} files={about} onFileSelect={open} />
       <FitFolder
-        label="Work"
-        meta={projects.length + " projects"}
-        art="ember"
-        seed={11}
-        tone="dark"
-        action="none"
-        labelPlacement="top-right"
-        files={work}
-        onFileSelect={go}
-      />
-      <FitFolder label="About me" art="aurora" seed={3} action="none" appearDelay={140} files={about} onFileSelect={go} />
-      <FitFolder
+        max={400}
         label="Skills"
         meta={skillGroups.reduce((n, g) => n + g.skills.length, 0) + " tools"}
         art="verdant"
         seed={7}
         tone="dark"
-        action="more"
+        action="none"
         labelPlacement="top-left"
         appearDelay={280}
-        menu={[
-          { label: "See all skills", onSelect: () => router.push("/skills") },
-          { label: "Get in touch", onSelect: () => router.push("/contact") },
-        ]}
         files={skills}
-        onFileSelect={go}
+        onFileSelect={open}
       />
     </div>
   )

@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { PageHeader } from "@/components/site/page-header"
 import { Reveal } from "@/components/site/reveal"
+import { SmartLink } from "@/components/site/smart-link"
 import { timeline } from "@/lib/data"
 
 export const metadata: Metadata = { title: "About" }
@@ -41,16 +42,42 @@ export default function AboutPage() {
 
       {/* timeline */}
       <section id="timeline" className="mx-auto max-w-6xl scroll-mt-28 px-4 py-24 sm:px-6">
-        <Reveal>
-          <h2 className="font-display text-5xl sm:text-6xl">The path so far</h2>
+        <Reveal className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              <span className="text-accent">Experience</span> — newest first
+            </p>
+            <h2 className="mt-4 font-display text-5xl sm:text-6xl">The path so far</h2>
+          </div>
+          <p className="max-w-xs text-sm text-muted-foreground">Every role links to the work it produced.</p>
         </Reveal>
-        <ol className="mt-14 border-l border-border">
+        <ol className="relative mt-14">
+          <span aria-hidden="true" className="absolute top-2 bottom-2 left-[7px] w-px bg-gradient-to-b from-accent via-border to-transparent md:left-[calc(30%+7px)]" />
           {timeline.map((t, i) => (
-            <Reveal as="li" key={t.title} delay={i * 100} className="group relative pb-14 pl-10 last:pb-0">
-              <span className="absolute top-2 -left-[7px] size-3.5 rounded-full border-2 border-background bg-foreground ring-1 ring-border transition group-hover:scale-150 group-hover:bg-accent" />
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">{t.when}</p>
-              <h3 className="mt-2 text-2xl font-medium tracking-tight sm:text-3xl">{t.title}</h3>
-              <p className="mt-3 max-w-xl text-muted-foreground">{t.text}</p>
+            <Reveal as="li" key={t.role + t.org} delay={i * 90} className="group relative grid gap-4 pb-14 pl-10 last:pb-0 md:grid-cols-[30%_1fr] md:gap-0 md:pl-0">
+              <div className="md:pr-12 md:text-right">
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">{t.when}</p>
+                <p className="mt-2 text-lg font-medium">{t.role}</p>
+              </div>
+              <span className="absolute top-1.5 left-0 size-[15px] rounded-full border-[3px] border-background bg-foreground ring-1 ring-border transition duration-500 group-hover:scale-125 group-hover:bg-accent md:left-[30%]" />
+              <SmartLink
+                href={t.href}
+                className="block rounded-3xl border border-transparent p-0 transition duration-500 hover:border-border hover:bg-card md:ml-10 md:-mt-5 md:p-5"
+              >
+                {t.org ? <h3 className="font-display text-3xl sm:text-4xl">{t.org}</h3> : null}
+                <p className="mt-2 max-w-xl text-muted-foreground">{t.text}</p>
+                <ul className="mt-4 space-y-1.5">
+                  {t.points.map((pt) => (
+                    <li key={pt} className="flex gap-3 text-sm">
+                      <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition group-hover:text-foreground">
+                  See the work <ArrowUpRight className="size-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </span>
+              </SmartLink>
             </Reveal>
           ))}
         </ol>
