@@ -5,8 +5,6 @@ import { Reveal, RiseText } from "@/components/site/reveal"
 import { Portrait } from "@/components/site/portrait"
 import { HomeFolders } from "@/components/site/home-folders"
 
-const disciplines = ["Frontend Development", "UI / UX", "Graphic Design", "Motion Design", "Video Editing", "Storytelling"]
-
 export default function Home() {
   return (
     <>
@@ -58,20 +56,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* marquee */}
-        <div className="relative border-y border-border py-5">
-          <div className="flex w-max marquee">
-            {[0, 1].map((k) => (
-              <div key={k} className="flex shrink-0 items-center" aria-hidden={k === 1}>
-                {disciplines.map((d) => (
-                  <span key={d} className="flex items-center gap-8 px-8 font-display text-2xl sm:text-3xl">
-                    {d} <span className="text-accent">✦</span>
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ---------- the folders ---------- */}

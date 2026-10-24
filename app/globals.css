@@ -110,15 +110,6 @@ body {
   }
 }
 
-.marquee {
-  animation: marquee 40s linear infinite;
-}
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 .page-in {
   animation: page-in 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
@@ -140,7 +131,6 @@ body {
     filter: none;
   }
   .rise > span,
-  .marquee,
   .page-in {
     animation: none;
   }
