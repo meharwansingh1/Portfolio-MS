@@ -37,7 +37,7 @@ export function Nav() {
         )}
       >
         <Link href="/" className="group flex items-center gap-2 pl-2" aria-label="Home">
-          <span className="grid size-9 place-items-center rounded-full bg-foreground font-display text-lg italic text-background transition group-hover:rotate-[-8deg]">
+          <span className="grid size-9 place-items-center rounded-full bg-foreground font-display text-lg text-background transition group-hover:rotate-[-8deg]">
             {site.short}
           </span>
           <span className="hidden text-sm font-medium tracking-tight sm:block">{site.name}</span>
@@ -91,7 +91,7 @@ export function Nav() {
             <li key={l.href} style={{ transitionDelay: open ? 150 + i * 60 + "ms" : "0ms" }} className={cn("transition duration-500", open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0")}>
               <Link href={l.href} className="flex items-baseline gap-4 py-1">
                 <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
-                <span className={cn("font-display text-5xl italic", active(l.href) && "text-accent")}>{l.label}</span>
+                <span className={cn("font-display text-5xl", active(l.href) && "text-accent")}>{l.label}</span>
               </Link>
             </li>
           ))}

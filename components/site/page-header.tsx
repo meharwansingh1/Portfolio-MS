@@ -8,7 +8,7 @@ export function PageHeader({ index, eyebrow, title, intro }: { index: string; ey
         <span className="h-px w-10 bg-border" />
         {eyebrow}
       </div>
-      <h1 className="mt-6 font-display text-6xl leading-[0.95] tracking-tight italic sm:text-8xl md:text-9xl">
+      <h1 className="mt-6 font-display text-6xl leading-[0.95] tracking-tight sm:text-8xl md:text-9xl">
         <RiseText text={title} />
       </h1>
       {intro ? <p className="page-in mt-8 max-w-xl text-lg text-muted-foreground [animation-delay:.4s]">{intro}</p> : null}

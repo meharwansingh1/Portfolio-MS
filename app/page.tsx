@@ -24,9 +24,9 @@ export default function Home() {
               </span>
               Available for remote work
             </p>
-            <h1 className="mt-6 font-display text-[17vw] leading-[0.85] tracking-tight sm:text-8xl lg:text-[9.5rem]">
-              <RiseText text="Meharwan" className="block" delay={100} />
-              <RiseText text="Singh." className="block italic text-accent" delay={450} />
+            <h1 className="mt-6 font-display text-[15vw] leading-[0.9] tracking-tight sm:text-8xl lg:text-[7.5rem]">
+              <RiseText text="Meharwan" className="block whitespace-nowrap" delay={100} />
+              <RiseText text="Singh." className="block whitespace-nowrap text-accent" delay={450} />
             </h1>
             <p className="page-in mt-8 max-w-md text-lg leading-relaxed text-muted-foreground [animation-delay:.7s]">
               I build for the web, design what goes on it, and animate the stories in between.
@@ -53,7 +53,7 @@ export default function Home() {
                   <textPath href="#badge" textLength="222" lengthAdjust="spacingAndGlyphs">Developer · Designer · Storyteller ·</textPath>
                 </text>
               </svg>
-              <span className="font-display text-3xl italic">MS</span>
+              <span className="font-display text-3xl">MS</span>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function Home() {
             {[0, 1].map((k) => (
               <div key={k} className="flex shrink-0 items-center" aria-hidden={k === 1}>
                 {disciplines.map((d) => (
-                  <span key={d} className="flex items-center gap-8 px-8 font-display text-3xl italic sm:text-4xl">
+                  <span key={d} className="flex items-center gap-8 px-8 font-display text-2xl sm:text-3xl">
                     {d} <span className="text-accent">✦</span>
                   </span>
                 ))}
@@ -82,7 +82,7 @@ export default function Home() {
               <span className="text-accent">01</span> — The desk
             </p>
             <h2 className="mt-4 max-w-xl font-display text-5xl leading-none sm:text-6xl">
-              Everything I make, <span className="italic text-muted-foreground">filed neatly.</span>
+              Everything I make, <span className="text-muted-foreground">filed neatly.</span>
             </h2>
           </div>
           <p className="max-w-xs text-sm text-muted-foreground">Hover a folder to lean its glass. Click to open it, then pick a file to jump straight there.</p>
@@ -100,7 +100,7 @@ export default function Home() {
             ["Daily", "new animated stories"],
           ].map(([n, l], i) => (
             <Reveal key={l} delay={i * 80} className="bg-background p-8">
-              <p className="font-display text-5xl italic">{n}</p>
+              <p className="font-display text-5xl">{n}</p>
               <p className="mt-2 text-sm text-muted-foreground">{l}</p>
             </Reveal>
           ))}
@@ -114,7 +114,7 @@ export default function Home() {
             <div aria-hidden="true" className="absolute -right-20 -bottom-24 size-96 rounded-full bg-accent/60 blur-3xl transition duration-700 group-hover:scale-125" />
             <p className="relative font-mono text-xs uppercase tracking-[0.2em] opacity-60">Who is behind this?</p>
             <p className="relative mt-6 max-w-3xl font-display text-4xl leading-tight sm:text-6xl">
-              A fresher with a <span className="italic">burning</span> desire to get very, very good at this.
+              A fresher with a <span className="text-accent">burning</span> desire to get very, very good at this.
             </p>
             <span className="relative mt-10 inline-flex items-center gap-2 text-sm">
               Read my story <ArrowUpRight className="size-4 transition group-hover:translate-x-1 group-hover:-translate-y-1" />

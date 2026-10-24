@@ -27,7 +27,7 @@ export default function AboutPage() {
         </Reveal>
         <Reveal delay={120} className="flex flex-col justify-center">
           <p className="font-display text-3xl leading-snug sm:text-4xl">
-            I&apos;m thrilled to be on my journey in the creative realms of <span className="italic text-accent">UI/UX design</span>, video editing and
+            I&apos;m thrilled to be on my journey in the creative realms of <span className="text-accent">UI/UX design</span>, video editing and
             graphic design.
           </p>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
@@ -46,7 +46,7 @@ export default function AboutPage() {
       {/* timeline */}
       <section id="timeline" className="mx-auto max-w-6xl scroll-mt-28 px-4 py-24 sm:px-6">
         <Reveal>
-          <h2 className="font-display text-5xl italic sm:text-6xl">The path so far</h2>
+          <h2 className="font-display text-5xl sm:text-6xl">The path so far</h2>
         </Reveal>
         <ol className="mt-14 border-l border-border">
           {timeline.map((t, i) => (
@@ -66,7 +66,7 @@ export default function AboutPage() {
           {values.map((v, i) => (
             <Reveal key={v.k} delay={i * 80} className="group rounded-3xl border border-border bg-card p-8 transition hover:-translate-y-1 hover:border-foreground/30">
               <p className="font-mono text-xs text-muted-foreground">0{i + 1}</p>
-              <h3 className="mt-6 font-display text-4xl italic transition group-hover:text-accent">{v.k}</h3>
+              <h3 className="mt-6 font-display text-4xl transition group-hover:text-accent">{v.k}</h3>
               <p className="mt-3 text-muted-foreground">{v.v}</p>
             </Reveal>
           ))}

@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Have an idea?</p>
-            <Link href="/contact" className="group mt-3 inline-flex items-center gap-3 font-display text-5xl italic sm:text-6xl">
+            <Link href="/contact" className="group mt-3 inline-flex items-center gap-3 font-display text-5xl sm:text-6xl">
               Let&apos;s talk
               <ArrowUpRight className="size-10 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent" />
             </Link>
@@ -32,7 +32,7 @@ export function Footer() {
         </div>
         <p className="mt-14 text-xs text-muted-foreground">© 2026 {site.name}. All rights reserved.</p>
       </div>
-      <p aria-hidden="true" className="pointer-events-none -mb-[0.22em] select-none text-center font-display text-[22vw] leading-none italic text-foreground/[0.04]">
+      <p aria-hidden="true" className="pointer-events-none -mb-[0.22em] select-none text-center font-display text-[22vw] leading-none text-foreground/[0.04]">
         Meharwan
       </p>
     </footer>

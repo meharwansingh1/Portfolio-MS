@@ -20,7 +20,7 @@ export default function SkillsPage() {
             <div>
               <Reveal>
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">0{gi + 1}</p>
-                <h2 className="mt-3 font-display text-6xl italic sm:text-7xl">{g.title}</h2>
+                <h2 className="mt-3 font-display text-6xl sm:text-7xl">{g.title}</h2>
                 <p className="mt-3 text-muted-foreground">{g.blurb}</p>
               </Reveal>
               <ul className="mt-10 divide-y divide-border border-y border-border">

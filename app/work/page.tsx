@@ -23,7 +23,7 @@ export default function WorkPage() {
                 <span className="text-accent">{String(i + 1).padStart(2, "0")}</span>
                 {p.kind} · {p.year}
               </div>
-              <h2 className="mt-4 font-display text-5xl leading-none italic sm:text-6xl">{p.title}</h2>
+              <h2 className="mt-4 font-display text-5xl leading-none sm:text-6xl">{p.title}</h2>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">{p.summary}</p>
               <ul className="mt-6 flex flex-wrap gap-2">
                 {p.tags.map((t) => (

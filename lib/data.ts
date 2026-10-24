@@ -79,6 +79,20 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "portfolio",
+    title: "This Portfolio",
+    kind: "Website",
+    year: "2026",
+    summary:
+      "The site you're on: a multi-page Next.js build with glass folders whose artwork is generated in code, dark mode, and automatic deploys to GitHub Pages.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    art: "aurora",
+    links: [
+      { label: "Live site", href: "https://meharwansingh1.github.io/Portfolio-MS/" },
+      { label: "Source code", href: "https://github.com/meharwansingh1/Portfolio-MS" },
+    ],
+  },
+  {
     slug: "travel-vlogs",
     title: "My Travel Vlogs",
     kind: "Website",
@@ -110,7 +124,10 @@ export const projects: Project[] = [
       "A page of vector-motion reels and long videos retelling ancient sacred stories, starting with Samudra Manthan and its sequel, Mohini & the Stolen Amrit. Animated in After Effects.",
     tags: ["After Effects", "Vector motion", "Storytelling"],
     art: "ember",
-    links: [],
+    links: [
+      { label: "YouTube", href: "https://www.youtube.com/@vectoristory" },
+      { label: "Instagram", href: "https://www.instagram.com/vectoristory/" },
+    ],
   },
   {
     slug: "bhujangyy",
@@ -120,8 +137,8 @@ export const projects: Project[] = [
     summary:
       "Sikh and Gurmat content for Instagram, built around an original young Nihang Singh character, with a consistent motion-design identity of intros and teasers.",
     tags: ["Motion design", "Character", "Social"],
-    art: "aurora",
-    links: [],
+    art: "dusk",
+    links: [{ label: "Instagram", href: "https://www.instagram.com/bhujangyy/" }],
   },
   {
     slug: "kharag-singh-yudh",
@@ -132,7 +149,7 @@ export const projects: Project[] = [
       "A long-running reel series and multi-part long-form katha video, with ultra-real cinematic scenes, on-screen Gurbani and katha narration.",
     tags: ["AI visuals", "Editing", "Long-form"],
     art: "verdant",
-    links: [],
+    links: [{ label: "Watch the reels", href: "https://www.instagram.com/bhujangyy/" }],
   },
 ]
 

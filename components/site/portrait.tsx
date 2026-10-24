@@ -22,7 +22,7 @@ export function Portrait({ src, alt, className }: { src: string; alt: string; cl
         <img ref={img} src={src} alt={alt} onError={() => setFailed(true)} className="absolute inset-0 size-full object-cover grayscale transition duration-700 hover:grayscale-0" />
       ) : (
         <div className="absolute inset-0 grid place-items-center bg-[radial-gradient(120%_90%_at_30%_10%,#ff8a5c_0%,#a3201a_38%,#16252c_75%,#07090c_100%)]">
-          <span className="font-display text-8xl italic text-white/90">MS</span>
+          <span className="font-display text-8xl text-white/90">MS</span>
         </div>
       )}
     </div>
