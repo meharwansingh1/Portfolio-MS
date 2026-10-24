@@ -17,13 +17,14 @@ export function useNoticeOver() {
 }
 
 /** The short status line: "Serving notice · …" now, "Open to …" from 10 Nov 2026. */
-export function AvailabilityText() {
+export function AvailabilityText({ short }: { short?: boolean }) {
   const over = useNoticeOver()
-  return <>{over ? "Open to remote work & freelance" : "Serving notice · open to remote & freelance from 10 Nov 2026"}</>
+  if (over) return <>Open to remote work &amp; freelance</>
+  return <>{short ? "Open to remote & freelance from 10 Nov" : "Serving notice · open to remote & freelance from 10 Nov 2026"}</>
 }
 
 /** A pill with a status dot: amber while on notice, green once available. */
-export function AvailabilityBadge({ className }: { className?: string }) {
+export function AvailabilityBadge({ className, short }: { className?: string; short?: boolean }) {
   const over = useNoticeOver()
   const dot = over ? "bg-emerald-500" : "bg-amber-500"
   return (
@@ -32,7 +33,7 @@ export function AvailabilityBadge({ className }: { className?: string }) {
         <span className={cn("absolute inline-flex size-full animate-ping rounded-full opacity-60", dot)} />
         <span className={cn("relative inline-flex size-2 rounded-full", dot)} />
       </span>
-      <AvailabilityText />
+      <AvailabilityText short={short} />
     </p>
   )
 }

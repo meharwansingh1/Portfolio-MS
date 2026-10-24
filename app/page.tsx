@@ -5,6 +5,8 @@ import { Reveal, RiseText } from "@/components/site/reveal"
 import { HomeFolders } from "@/components/site/home-folders"
 import { Signature } from "@/components/site/signature"
 import { AvailabilityBadge, UntilNoticeEnds } from "@/components/site/availability"
+import { HeroEditor } from "@/components/site/hero-editor"
+import { RotatingWord } from "@/components/site/rotating-word"
 
 const now = [
   { label: "Building Bhujangyy", note: "own brand", href: "/work/#bhujangyy" },
@@ -18,46 +20,52 @@ export default function Home() {
     <>
       {/* ---------- hero ---------- */}
       <section className="relative overflow-hidden">
-        <div aria-hidden="true" className="dot-grid absolute inset-0 [mask-image:radial-gradient(70%_60%_at_50%_40%,#000,transparent)]" />
-        <div aria-hidden="true" className="absolute -top-40 right-[-10%] size-[38rem] rounded-full bg-accent/20 blur-[120px]" />
+        <div aria-hidden="true" className="dot-grid absolute inset-0 [mask-image:radial-gradient(80%_70%_at_60%_40%,#000,transparent)]" />
+        <div aria-hidden="true" className="absolute -top-40 right-[-10%] size-[42rem] rounded-full bg-accent/20 blur-[140px]" />
 
-        <div className="relative mx-auto max-w-6xl px-4 pt-36 pb-24 sm:px-6 md:pt-48">
-          <AvailabilityBadge className="page-in" />
-          <h1 className="mt-6 font-display text-[16vw] leading-[0.88] tracking-tight md:text-[10rem] lg:text-[12rem]">
-            <RiseText text="Meharwan" className="block whitespace-nowrap" delay={100} />
-            <RiseText text="Singh." className="block whitespace-nowrap text-accent" delay={450} />
-          </h1>
-
-          <div className="mt-14 grid gap-12 border-t border-border pt-10 md:grid-cols-[1.2fr_1fr]">
-            <div className="page-in [animation-delay:.7s]">
-              <p className="max-w-md text-xl leading-relaxed text-muted-foreground">
-                Frontend developer and graphic designer. I build for the web, design what goes on it, and animate the stories in between.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/work" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition hover:gap-3">
-                  See my work <ArrowDownRight className="size-4 transition group-hover:-rotate-45" />
-                </Link>
-                <a href={site.cv} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-medium transition hover:border-foreground">
-                  <Download className="size-4" /> Download CV
-                </a>
-              </div>
+        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 pt-32 pb-20 sm:px-6 md:pt-40 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+          <div>
+            <AvailabilityBadge short className="page-in" />
+            <h1 className="mt-6 font-display text-[17vw] leading-[0.88] tracking-tight sm:text-[7.5rem] lg:text-[6.4rem] xl:text-[7.4rem]">
+              <RiseText text="Meharwan" className="block whitespace-nowrap" delay={100} />
+              <RiseText text="Singh." className="block whitespace-nowrap text-accent" delay={450} />
+            </h1>
+            <p className="page-in mt-8 font-display text-2xl leading-snug sm:text-3xl [animation-delay:.6s]">
+              Visual storyteller. <span className="text-muted-foreground">I tell stories in</span> <RotatingWord words={["thumbnails.", "edits.", "motion.", "AI animation.", "code."]} />
+            </p>
+            <p className="page-in mt-5 max-w-md text-lg leading-relaxed text-muted-foreground [animation-delay:.75s]">
+              Graphic design, video editing, motion and AI animation aren&apos;t four jobs — they&apos;re one craft: taking a story from the first frame
+              to the final upload.
+            </p>
+            <div className="page-in mt-9 flex flex-wrap gap-3 [animation-delay:.9s]">
+              <Link href="/showcase" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition hover:gap-3">
+                Watch the work <ArrowDownRight className="size-4 transition group-hover:-rotate-45" />
+              </Link>
+              <a href={site.cv} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-medium transition hover:border-foreground">
+                <Download className="size-4" /> Download CV
+              </a>
             </div>
-            <ul className="page-in space-y-px [animation-delay:.85s]">
-              <li className="pb-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Right now</li>
-              {now.map((n) => {
-                const row = (
-                  <li key={n.label}>
-                    <Link href={n.href} className="group flex items-baseline justify-between gap-4 border-b border-border py-3 transition hover:pl-2">
-                      <span className="text-lg font-medium">{n.label}</span>
-                      <span className="flex items-center gap-1 text-sm text-muted-foreground transition group-hover:text-accent">
-                        {n.note} <ArrowUpRight className="size-3.5" />
-                      </span>
-                    </Link>
-                  </li>
-                )
-                return "endsWithNotice" in n ? <UntilNoticeEnds key={n.label}>{row}</UntilNoticeEnds> : row
-              })}
-            </ul>
+          </div>
+
+          <div className="page-in [animation-delay:.35s]">
+            <HeroEditor />
+          </div>
+        </div>
+
+        {/* right now */}
+        <div className="relative mx-auto max-w-7xl px-4 pb-16 sm:px-6">
+          <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-border bg-card/60 backdrop-blur sm:grid-cols-2 lg:grid-cols-4">
+            {now.map((n) => {
+              const cell = (
+                <Link key={n.label} href={n.href} className="group flex flex-col gap-1 border-b border-border p-5 transition hover:bg-card sm:border-r lg:border-b-0">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Right now · {n.note}</span>
+                  <span className="flex items-center justify-between gap-2 font-medium">
+                    {n.label} <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition group-hover:text-accent" />
+                  </span>
+                </Link>
+              )
+              return "endsWithNotice" in n ? <UntilNoticeEnds key={n.label}>{cell}</UntilNoticeEnds> : cell
+            })}
           </div>
         </div>
       </section>
