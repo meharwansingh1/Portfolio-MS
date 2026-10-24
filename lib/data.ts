@@ -265,8 +265,8 @@ export const timeline: Chapter[] = [
     kind: "Job",
     roles: [
       { title: "Production Head", when: "Jun 2025 — 10 Nov 2026" },
-      { title: "Head Designer", when: "Until Jun 2025" },
-      { title: "Graphic & Web Designer", when: "From Sep 2024" },
+      { title: "Head Designer", when: "Feb 2025 — Jun 2025" },
+      { title: "Graphic & Web Designer", when: "Sep 2024 — Feb 2025" },
     ],
     text: "Ran The Musafir Podcast's YouTube channel end to end, from design to production, and led design across the company.",
     points: ["The Musafir Podcast: top episode at 111K views", "Brand, web and graphic design", "Adobe Creative Suite, website building"],
