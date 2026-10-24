@@ -11,7 +11,7 @@ export const site = {
   email: "meharramgarhia16@gmail.com",
   linkedin: "https://www.linkedin.com/in/meharwan-singh-316388278/",
   behance: "https://www.behance.net/meharramgarh1a",
-  cv: asset("/images/CV.pdf"),
+  cv: asset("/cv/Meharwan-Singh-CV.pdf"),
 }
 
 export const nav = [

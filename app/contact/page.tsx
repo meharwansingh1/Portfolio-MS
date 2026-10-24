@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ArrowUpRight, BriefcaseBusiness, Mail, Palette } from "lucide-react"
+import { ArrowUpRight, BriefcaseBusiness, FileText, Mail, Palette } from "lucide-react"
 import { PageHeader } from "@/components/site/page-header"
 import { Reveal } from "@/components/site/reveal"
 import { ContactForm } from "@/components/site/contact-form"
@@ -12,6 +12,7 @@ const channels = [
   { icon: Mail, label: "Email", value: site.email, href: "mailto:" + site.email },
   { icon: BriefcaseBusiness, label: "LinkedIn", value: "meharwan-singh", href: site.linkedin },
   { icon: Palette, label: "Behance", value: "meharramgarh1a", href: site.behance },
+  { icon: FileText, label: "CV", value: "Download as PDF", href: site.cv },
 ]
 
 export default function ContactPage() {
@@ -28,7 +29,7 @@ export default function ContactPage() {
             <Reveal key={c.label} delay={i * 80}>
               <a
                 href={c.href}
-                target={c.href.startsWith("http") ? "_blank" : undefined}
+                target={c.href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noreferrer"
                 className="group flex items-center gap-5 rounded-3xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-foreground/30"
               >
