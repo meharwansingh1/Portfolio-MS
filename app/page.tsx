@@ -1,11 +1,11 @@
 import Link from "next/link"
 import { ArrowDownRight, ArrowUpRight, Download } from "lucide-react"
 import { site, projects } from "@/lib/data"
-import { Reveal, RiseText } from "@/components/site/reveal"
+import { Reveal } from "@/components/site/reveal"
 import { HomeFolders } from "@/components/site/home-folders"
 import { Signature } from "@/components/site/signature"
 import { AvailabilityBadge, UntilNoticeEnds } from "@/components/site/availability"
-import { HeroEditor } from "@/components/site/hero-editor"
+import { ProximityName } from "@/components/site/proximity-name"
 import { RotatingWord } from "@/components/site/rotating-word"
 
 const now = [
@@ -20,36 +20,42 @@ export default function Home() {
     <>
       {/* ---------- hero ---------- */}
       <section className="relative overflow-hidden">
-        <div aria-hidden="true" className="dot-grid absolute inset-0 [mask-image:radial-gradient(80%_70%_at_60%_40%,#000,transparent)]" />
-        <div aria-hidden="true" className="absolute -top-40 right-[-10%] size-[42rem] rounded-full bg-accent/20 blur-[140px]" />
+        <div aria-hidden="true" className="dot-grid absolute inset-0 [mask-image:radial-gradient(70%_60%_at_50%_40%,#000,transparent)]" />
+        <div aria-hidden="true" className="absolute top-10 left-1/2 size-[44rem] -translate-x-1/2 rounded-full bg-accent/15 blur-[150px]" />
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 pt-32 pb-20 sm:px-6 md:pt-40 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
-          <div>
-            <AvailabilityBadge short className="page-in" />
-            <h1 className="mt-6 font-display text-[17vw] leading-[0.88] tracking-tight sm:text-[7.5rem] lg:text-[6.4rem] xl:text-[7.4rem]">
-              <RiseText text="Meharwan" className="block whitespace-nowrap" delay={100} />
-              <RiseText text="Singh." className="block whitespace-nowrap text-accent" delay={450} />
-            </h1>
-            <p className="page-in mt-8 font-display text-2xl leading-snug sm:text-3xl [animation-delay:.6s]">
-              Visual storyteller. <span className="text-muted-foreground">I tell stories in</span> <RotatingWord words={["thumbnails.", "edits.", "motion.", "AI animation.", "code."]} />
-            </p>
-            <p className="page-in mt-5 max-w-md text-lg leading-relaxed text-muted-foreground [animation-delay:.75s]">
-              Graphic design, video editing, motion and AI animation aren&apos;t four jobs — they&apos;re one craft: taking a story from the first frame
-              to the final upload.
-            </p>
-            <div className="page-in mt-9 flex flex-wrap gap-3 [animation-delay:.9s]">
-              <Link href="/showcase" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition hover:gap-3">
-                Watch the work <ArrowDownRight className="size-4 transition group-hover:-rotate-45" />
-              </Link>
-              <a href={site.cv} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-medium transition hover:border-foreground">
-                <Download className="size-4" /> Download CV
-              </a>
-            </div>
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-36 pb-16 text-center sm:px-6 md:pt-44">
+          <AvailabilityBadge short className="page-in" />
+
+          <div className="relative mt-8">
+            <ProximityName
+              className="text-[18vw] leading-[0.86] tracking-[-0.05em] md:text-[13.5vw] xl:text-[12.5rem]"
+              lines={[{ text: "Meharwan" }, { text: "Singh.", className: "text-accent" }]}
+            />
+            {/* signed, like a poster: under the name on phones, tucked at its lower right on bigger screens */}
+            <span className="page-in mt-2 block text-[13vw] text-foreground [animation-delay:1.1s] md:absolute md:-right-10 md:-bottom-[1.05em] md:mt-0 md:text-[5vw] xl:text-[4.4rem]">
+              <Signature className="-rotate-[5deg] [&_.signature-stroke]:text-accent" />
+            </span>
           </div>
 
-          <div className="page-in [animation-delay:.35s]">
-            <HeroEditor />
+          <p className="page-in mt-10 font-display text-2xl md:mt-28 leading-snug sm:text-4xl [animation-delay:.6s]">
+            Visual storyteller. <span className="text-muted-foreground">I tell stories in</span>{" "}
+            <RotatingWord words={["thumbnails.", "edits.", "motion.", "AI animation.", "code."]} />
+          </p>
+          <p className="page-in mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground [animation-delay:.75s]">
+            Graphic design, video editing, motion and AI animation aren&apos;t four jobs — they&apos;re one craft: taking a story from the first frame to
+            the final upload.
+          </p>
+          <div className="page-in mt-10 flex flex-wrap justify-center gap-3 [animation-delay:.9s]">
+            <Link href="/showcase" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-sm font-medium text-background transition hover:gap-3">
+              Watch the work <ArrowDownRight className="size-4 transition group-hover:-rotate-45" />
+            </Link>
+            <a href={site.cv} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-4 text-sm font-medium transition hover:border-foreground">
+              <Download className="size-4" /> Download CV
+            </a>
           </div>
+          <p className="page-in mt-14 hidden font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground/70 md:block [animation-delay:1.4s]">
+            Move your cursor over my name
+          </p>
         </div>
 
         {/* right now */}

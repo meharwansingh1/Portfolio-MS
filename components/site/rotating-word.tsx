@@ -12,7 +12,7 @@ export function RotatingWord({ words, interval = 2200 }: { words: string[]; inte
   }, [words.length, interval])
 
   return (
-    <span className="relative inline-grid overflow-hidden align-bottom">
+    <span className="relative inline-grid overflow-hidden text-left align-bottom">
       {/* the widest word reserves the space, so the line never jumps */}
       <span aria-hidden="true" className="invisible col-start-1 row-start-1">
         {words.reduce((a, b) => (b.length > a.length ? b : a))}

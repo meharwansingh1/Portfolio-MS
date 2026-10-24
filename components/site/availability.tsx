@@ -28,8 +28,8 @@ export function AvailabilityBadge({ className, short }: { className?: string; sh
   const over = useNoticeOver()
   const dot = over ? "bg-emerald-500" : "bg-amber-500"
   return (
-    <p className={cn("flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground", className)}>
-      <span className="relative flex size-2">
+    <p className={cn("flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground sm:text-xs sm:tracking-[0.2em]", className)}>
+      <span className="relative flex size-2 shrink-0">
         <span className={cn("absolute inline-flex size-full animate-ping rounded-full opacity-60", dot)} />
         <span className={cn("relative inline-flex size-2 rounded-full", dot)} />
       </span>
