@@ -68,6 +68,7 @@ function Cover({ piece }: { piece: Piece }) {
 
 function Card({ piece, onOpen }: { piece: Piece; onOpen: (p: Piece) => void }) {
   const Icon = piece.kind === "video" ? Play : piece.kind === "image" ? Expand : ArrowUpRight
+  const still = piece.kind === "image" && !!piece.cover
   return (
     <button
       type="button"
@@ -78,15 +79,23 @@ function Card({ piece, onOpen }: { piece: Piece; onOpen: (p: Piece) => void }) {
       )}
     >
       <Cover piece={piece} />
-      <span className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/5 to-transparent opacity-90 transition duration-500 group-hover:opacity-100" />
+      {/* stills are design work: keep them clean and show the caption only on hover */}
+      <span
+        className={cn(
+          "absolute inset-0 bg-gradient-to-t from-black/85 via-black/5 to-transparent transition duration-500",
+          still ? "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100" : "opacity-90 group-hover:opacity-100",
+        )}
+      />
 
-      <span className="absolute top-3 left-3 rounded-full bg-black/45 px-2.5 py-1 text-[11px] text-white backdrop-blur-md">{piece.note}</span>
+      <span className={cn("absolute top-3 left-3 rounded-full bg-black/45 px-2.5 py-1 text-[11px] text-white backdrop-blur-md transition duration-500", still && "opacity-0 group-hover:opacity-100")}>
+        {piece.note}
+      </span>
 
       <span className="absolute top-1/2 left-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 scale-75 place-items-center rounded-full bg-white/95 text-black opacity-0 shadow-2xl transition duration-500 group-hover:scale-100 group-hover:opacity-100">
         <Icon className={cn("size-5", piece.kind === "video" && "ml-0.5 fill-current")} />
       </span>
 
-      <span className="absolute inset-x-0 bottom-0 p-4 text-white">
+      <span className={cn("absolute inset-x-0 bottom-0 p-4 text-white transition duration-500", still && "translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100")}>
         {piece.collab ? <span className="mb-1.5 block text-[11px] text-white/75">Collab {piece.collab}</span> : null}
         <span className="block font-display text-lg leading-tight">{piece.title}</span>
       </span>
