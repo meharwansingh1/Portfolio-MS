@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // components pasted in from 21st.dev, kept exactly as published
+    "components/ui/**",
   ]),
 ]);
 
