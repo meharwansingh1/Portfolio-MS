@@ -8,7 +8,7 @@ import { AvailabilityBadge, UntilNoticeEnds } from "@/components/site/availabili
 const now = [
   { label: "Building Bhujangyy", note: "my brand", href: "/work/#bhujangyy" },
   { label: "Designing for Booking Junction", note: "freelance", href: "/work/#booking-junction" },
-  { label: "Head Designer, Musafir Media", note: "until 10 Nov", href: "/work/#musafir-podcast", endsWithNotice: true },
+  { label: "Production Head, Musafir Media", note: "until 10 Nov", href: "/work/#musafir-podcast", endsWithNotice: true },
   { label: "Animating Vectoristory", note: "daily stories", href: "/work/#vectoristory" },
 ]
 

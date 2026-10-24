@@ -33,7 +33,7 @@ export default function AboutPage() {
               enthusiasm, eager to soak up knowledge and grow with every opportunity that comes my way.
             </p>
             <p>
-              Since 2024 I&apos;ve designed for Musafir Media Publications in New Delhi, rising from Graphic &amp; Web Designer to Head Designer and running
+              Since 2024 I&apos;ve designed for Musafir Media Publications in New Delhi, rising from Graphic &amp; Web Designer to Head Designer and then Production Head, and running
               The Musafir Podcast&apos;s YouTube channel end to end. I also design for Booking Junction, a B2B travel company.
             </p>
             <p>

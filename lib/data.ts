@@ -117,13 +117,13 @@ export const projects: Project[] = [
     kind: "Musafir Media Publications",
     year: "Sep 2024 — Nov 2026",
     summary:
-      "I ran The Musafir Podcast's YouTube channel end to end at Musafir Media Publications in New Delhi — first as Graphic & Web Designer, then as Head Designer.",
+      "I ran The Musafir Podcast's YouTube channel end to end at Musafir Media Publications in New Delhi — growing from Graphic & Web Designer to Head Designer to Production Head.",
     highlights: [
       "Top episode: 111K views — Distress Deals Flooding Noida Real Estate",
       "Long-form podcasts, teasers and the channel launch with Raftaar",
       "Brand, web and graphic design across Musafir Media",
     ],
-    tags: ["Head Designer", "YouTube", "Adobe Creative Suite", "Web"],
+    tags: ["Production Head", "YouTube", "Adobe Creative Suite", "Web"],
     art: "glacier",
     files: [
       { name: "The Musafir Podcast", meta: "YouTube", to: "https://www.youtube.com/@themusafirpodcast-tmp" },
@@ -264,10 +264,11 @@ export const timeline: Chapter[] = [
     place: "MusafirMediaHub · New Delhi",
     kind: "Job",
     roles: [
-      { title: "Head Designer", when: "Jun 2025 — 10 Nov 2026" },
-      { title: "Graphic & Web Designer", when: "Sep 2024 — Jun 2025" },
+      { title: "Production Head", when: "Jun 2025 — 10 Nov 2026" },
+      { title: "Head Designer", when: "Until Jun 2025" },
+      { title: "Graphic & Web Designer", when: "From Sep 2024" },
     ],
-    text: "Ran The Musafir Podcast's YouTube channel end to end, and led design across the company.",
+    text: "Ran The Musafir Podcast's YouTube channel end to end, from design to production, and led design across the company.",
     points: ["The Musafir Podcast: top episode at 111K views", "Brand, web and graphic design", "Adobe Creative Suite, website building"],
     href: "/showcase/#musafir-podcast",
   },
