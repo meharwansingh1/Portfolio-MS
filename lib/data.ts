@@ -49,7 +49,7 @@ export const skillGroups: SkillGroup[] = [
     art: "dusk",
     skills: [
       { name: "UI / UX", note: "Interfaces that read clearly and feel considered.", level: 82, href: "https://www.behance.net/gallery/179151969/Web-Template" },
-      { name: "Graphic Design", note: "Posters, brand pieces and social visuals.", level: 86, href: "/showcase/#dussehra-mahatam" },
+      { name: "Graphic Design", note: "Posters, brand pieces and social visuals.", level: 86, href: "/showcase/#graphic-design" },
       { name: "Adobe Illustrator", note: "Clean vector artwork and characters.", level: 84, href: "https://www.behance.net/meharramgarh1a" },
     ],
   },
@@ -59,9 +59,9 @@ export const skillGroups: SkillGroup[] = [
     blurb: "Stories told frame by frame, with sound to carry them.",
     art: "ember",
     skills: [
-      { name: "After Effects", note: "Vector motion, intros, teasers and long-form animation.", level: 85, href: "/showcase/#vectoristory" },
-      { name: "Video Editing", note: "Reels and long videos cut to narration and music.", level: 88, href: "/showcase/#bhujangyy" },
-      { name: "AI-assisted visuals", note: "Cinematic scene prompting with locked character design.", level: 80, href: "/showcase/#kharag-singh-yudh" },
+      { name: "After Effects", note: "Vector motion, intros, teasers and long-form animation.", level: 85, href: "/showcase/#motion-animation" },
+      { name: "Video Editing", note: "Reels and long videos cut to narration and music.", level: 88, href: "/showcase/#video-editing" },
+      { name: "AI-assisted visuals", note: "Cinematic scene prompting with locked character design.", level: 80, href: "/showcase/#ai-animation" },
     ],
   },
 ]
@@ -104,10 +104,10 @@ export const projects: Project[] = [
     tags: ["Brand", "Motion design", "AI visuals", "Editing"],
     art: "ember",
     files: [
-      { name: "All Bhujangyy reels", meta: "Showcase", to: "/showcase/#bhujangyy" },
-      { name: "Dussehra Mahatam · Day 9", meta: "30.6K plays", to: "https://www.instagram.com/reel/DeqFOaaB7zp/", image: reelCover("DeqFOaaB7zp") },
+      { name: "All Bhujangyy reels", meta: "Showcase", to: "/showcase/#ai-animation" },
+      { name: "Dussehra Mahatam · Day 9", meta: "Katha reel", to: "https://www.instagram.com/reel/DeqFOaaB7zp/", image: reelCover("DeqFOaaB7zp") },
       { name: "Kharag Singh Yudh · Part 41", meta: "Latest", to: "https://www.instagram.com/reel/De2-7D0BEHB/", image: reelCover("De2-7D0BEHB") },
-      { name: "Kharag Singh Yudh · Part 40", meta: "29.5K plays", to: "https://www.instagram.com/reel/Dewq-vvTCi8/", image: reelCover("Dewq-vvTCi8") },
+      { name: "Kharag Singh Yudh · Part 40", meta: "AI cinematic reel", to: "https://www.instagram.com/reel/Dewq-vvTCi8/", image: reelCover("Dewq-vvTCi8") },
     ],
     links: [{ label: "Instagram", href: "https://www.instagram.com/bhujangyy/" }],
   },
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     summary:
       "I ran The Musafir Podcast's YouTube channel end to end at Musafir Media Publications in New Delhi — growing from Graphic & Web Designer to Head Designer to Production Head.",
     highlights: [
-      "Top episode: 111K views — Distress Deals Flooding Noida Real Estate",
+      "Full podcast episodes edited end to end, plus their thumbnails",
       "Long-form podcasts, teasers and the channel launch with Raftaar",
       "Brand, web and graphic design across Musafir Media",
     ],
@@ -127,13 +127,13 @@ export const projects: Project[] = [
     art: "glacier",
     files: [
       { name: "The Musafir Podcast", meta: "YouTube", to: "https://www.youtube.com/@themusafirpodcast-tmp" },
-      { name: "All episodes I made", meta: "Showcase", to: "/showcase/#musafir-podcast", image: ytCover("PkQGxPIoazg") },
-      { name: "High-Rise Building Secrets", meta: "39.8K views", to: "https://www.youtube.com/watch?v=vaTk8Kx-EJo", image: ytCover("vaTk8Kx-EJo") },
-      { name: "Noida Distress Deals", meta: "111K views", to: "https://www.youtube.com/watch?v=nSyyCXZpXw4", image: ytCover("nSyyCXZpXw4") },
+      { name: "All episodes I made", meta: "Showcase", to: "/showcase/#video-editing", image: ytCover("PkQGxPIoazg") },
+      { name: "High-Rise Building Secrets", meta: "Episode", to: "https://www.youtube.com/watch?v=vaTk8Kx-EJo", image: ytCover("vaTk8Kx-EJo") },
+      { name: "Noida Distress Deals", meta: "Episode", to: "https://www.youtube.com/watch?v=nSyyCXZpXw4", image: ytCover("nSyyCXZpXw4") },
     ],
     links: [
       { label: "YouTube channel", href: "https://www.youtube.com/@themusafirpodcast-tmp" },
-      { label: "See the episodes", href: "/showcase/#musafir-podcast" },
+      { label: "See the episodes", href: "/showcase/#video-editing" },
     ],
   },
   {
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     art: "verdant",
     files: [
       { name: "bookingjunction.co.in", meta: "Website", to: "https://bookingjunction.co.in" },
-      { name: "All reels", meta: "Showcase", to: "/showcase/#booking-junction", image: reelCover("Da4kXYvs5uV") },
+      { name: "All reels", meta: "Showcase", to: "/showcase/#video-editing", image: reelCover("Da4kXYvs5uV") },
       { name: "Bali", meta: "Reel", to: "https://www.instagram.com/reel/DbNKXuaMsUM/", image: reelCover("DbNKXuaMsUM") },
       { name: "Japan", meta: "Reel", to: "https://www.instagram.com/reel/Db2XXqpuTmJ/", image: reelCover("Db2XXqpuTmJ") },
     ],
@@ -172,9 +172,9 @@ export const projects: Project[] = [
     art: "verdant",
     files: [
       { name: "Giani Birbal Singh Ji", meta: "Instagram", to: "https://www.instagram.com/gianibirbalsinghji/" },
-      { name: "All 10 days", meta: "Showcase", to: "/showcase/#dussehra-mahatam", art: "verdant" },
+      { name: "All 10 days", meta: "Showcase", to: "/showcase/#video-editing", art: "verdant" },
       { name: "Day 10 · Bhog", meta: "Dussehra Mahatam", to: "https://www.instagram.com/reel/DesAiuEzkA_/", image: reelCover("DesAiuEzkA_") },
-      { name: "Shahidi Bagh, Anandpur Sahib", meta: "21.1K plays", to: "https://www.instagram.com/reel/DetvuhmTaks/", image: reelCover("DetvuhmTaks") },
+      { name: "Shahidi Bagh, Anandpur Sahib", meta: "Reel", to: "https://www.instagram.com/reel/DetvuhmTaks/", image: reelCover("DetvuhmTaks") },
     ],
     links: [{ label: "Instagram", href: "https://www.instagram.com/gianibirbalsinghji/" }],
   },
@@ -191,7 +191,7 @@ export const projects: Project[] = [
     files: [
       { name: "YouTube channel", meta: "@vectoristory", to: "https://www.youtube.com/@vectoristory" },
       { name: "Mohini · Part 2", meta: "4:50", to: "https://www.youtube.com/watch?v=DDlEpPzR6UY", image: ytCover("DDlEpPzR6UY") },
-      { name: "The temple that opens when Ravan burns", meta: "2.4K views", to: "https://www.youtube.com/shorts/DkwZ0D6srJY", image: ytCover("DkwZ0D6srJY") },
+      { name: "The temple that opens when Ravan burns", meta: "Animated short", to: "https://www.youtube.com/shorts/DkwZ0D6srJY", image: ytCover("DkwZ0D6srJY") },
       { name: "Samudra Manthan", meta: "5:43", to: "https://www.youtube.com/watch?v=FQ76hjBlx78", image: ytCover("FQ76hjBlx78") },
     ],
     links: [
@@ -257,7 +257,7 @@ export const timeline: Chapter[] = [
     roles: [{ title: "Designer", when: "22 Mar 2026 — now" }],
     text: "Design for a B2B travel company's Instagram.",
     points: ["Event posters and daily posts", "Destination reels"],
-    href: "/showcase/#booking-junction",
+    href: "/showcase/#video-editing",
   },
   {
     org: "Musafir Media Publications",
@@ -269,8 +269,8 @@ export const timeline: Chapter[] = [
       { title: "Graphic & Web Designer", when: "Sep 2024 — Feb 2025" },
     ],
     text: "Ran The Musafir Podcast's YouTube channel end to end, from design to production, and led design across the company.",
-    points: ["The Musafir Podcast: top episode at 111K views", "Brand, web and graphic design", "Adobe Creative Suite, website building"],
-    href: "/showcase/#musafir-podcast",
+    points: ["The Musafir Podcast: episodes, teasers and thumbnails", "Brand, web and graphic design", "Adobe Creative Suite, website building"],
+    href: "/showcase/#video-editing",
   },
   {
     org: "Bhujangyy",
@@ -278,8 +278,8 @@ export const timeline: Chapter[] = [
     kind: "Own brand",
     roles: [{ title: "Founder & creator", when: "2026 — now" }],
     text: "Cinematic Sikh storytelling around an original Nihang Singh character.",
-    points: ["Kharag Singh Yudh: 40+ reels from the Dasam Granth", "Dussehra Mahatam with Giani Birbal Singh Ji: 140K+ plays"],
-    href: "/showcase/#bhujangyy",
+    points: ["Kharag Singh Yudh: 40+ reels from the Dasam Granth", "Dussehra Mahatam with Giani Birbal Singh Ji: a reel and cover for every day"],
+    href: "/showcase/#ai-animation",
   },
   {
     org: "Vectoristory",
@@ -288,7 +288,7 @@ export const timeline: Chapter[] = [
     roles: [{ title: "Creator & animator", when: "2026 — now" }],
     text: "Vector-motion reels and long videos retelling ancient sacred stories.",
     points: ["Animated in After Effects", "Long videos and untold-story shorts"],
-    href: "/showcase/#vectoristory",
+    href: "/showcase/#motion-animation",
   },
   {
     org: "The Purple Brick",
