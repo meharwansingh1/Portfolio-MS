@@ -88,8 +88,8 @@ export const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     art: "aurora",
     links: [
-      { label: "Live site", href: "https://meharwansingh1.github.io/Portfolio-MS/" },
-      { label: "Source code", href: "https://github.com/meharwansingh1/Portfolio-MS" },
+      { label: "Live site", href: "https://meharwansingh1.github.io/portfolioo/" },
+      { label: "Source code", href: "https://github.com/meharwansingh1/portfolioo" },
     ],
   },
   {
