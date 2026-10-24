@@ -3,10 +3,11 @@ import { ArrowDownRight, ArrowUpRight, Download } from "lucide-react"
 import { site, projects } from "@/lib/data"
 import { Reveal, RiseText } from "@/components/site/reveal"
 import { HomeFolders } from "@/components/site/home-folders"
+import { Signature } from "@/components/site/signature"
 import { AvailabilityBadge, UntilNoticeEnds } from "@/components/site/availability"
 
 const now = [
-  { label: "Building Bhujangyy", note: "my brand", href: "/work/#bhujangyy" },
+  { label: "Building Bhujangyy", note: "own brand", href: "/work/#bhujangyy" },
   { label: "Designing for Booking Junction", note: "freelance", href: "/work/#booking-junction" },
   { label: "Production Head, Musafir Media", note: "until 10 Nov", href: "/work/#musafir-podcast", endsWithNotice: true },
   { label: "Animating Vectoristory", note: "daily stories", href: "/work/#vectoristory" },
@@ -99,11 +100,14 @@ export default function Home() {
         <Reveal>
           <Link href="/about" className="group relative block overflow-hidden rounded-[2.5rem] bg-foreground px-8 py-16 text-background sm:px-14 sm:py-24">
             <div aria-hidden="true" className="absolute -right-20 -bottom-24 size-96 rounded-full bg-accent/60 blur-3xl transition duration-700 group-hover:scale-125" />
-            <p className="relative font-mono text-xs uppercase tracking-[0.2em] opacity-60">Who is behind this?</p>
+            <p className="relative font-mono text-xs uppercase tracking-[0.2em] opacity-60">Who&apos;s behind this?</p>
             <p className="relative mt-6 max-w-3xl font-display text-4xl leading-tight sm:text-6xl">
-              A fresher with a <span className="text-accent">burning</span> desire to get very, very good at this.
+              A <span className="text-accent">history graduate</span> who brings stories back to life, frame by frame.
             </p>
-            <span className="relative mt-10 inline-flex items-center gap-2 text-sm">
+            <span className="relative mt-8 block text-6xl text-background sm:text-7xl">
+              <Signature className="[&_.signature-stroke]:text-accent" />
+            </span>
+            <span className="relative mt-8 inline-flex items-center gap-2 text-sm">
               Read my story <ArrowUpRight className="size-4 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
             </span>
           </Link>

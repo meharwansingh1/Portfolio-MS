@@ -92,10 +92,10 @@ export const projects: Project[] = [
   {
     slug: "bhujangyy",
     title: "Bhujangyy",
-    kind: "My brand",
+    kind: "Own brand",
     year: "2026 — now",
     summary:
-      "My own brand for Sikh and Gurmat storytelling, built around an original young Nihang Singh character. Everything I make in this space lives here, from cinematic katha series to motion-designed intros and teasers.",
+      "An own brand for Sikh and Gurmat storytelling, built around an original young Nihang Singh character — home to cinematic katha series, motion-designed intros and teasers.",
     highlights: [
       "Kharag Singh Yudh: 40+ cinematic reels from the Dasam Granth, and a multi-part long-form video with Giani Sher Singh Ji's katha",
       "Dussehra Mahatam: a collaboration series with Giani Birbal Singh Ji",
@@ -181,7 +181,7 @@ export const projects: Project[] = [
   {
     slug: "vectoristory",
     title: "Vectoristory",
-    kind: "Motion series",
+    kind: "Own brand",
     year: "2026 — now",
     summary:
       "Vector-motion reels and long videos retelling ancient sacred stories, animated in After Effects, with a new animated story every day.",
@@ -274,9 +274,9 @@ export const timeline: Chapter[] = [
   },
   {
     org: "Bhujangyy",
-    place: "My own brand",
+    place: "Own brand",
     kind: "Own brand",
-    roles: [{ title: "Founder & creator", when: "2026 — now" }],
+    roles: [{ title: "Creator & designer", when: "2026 — now" }],
     text: "Cinematic Sikh storytelling around an original Nihang Singh character.",
     points: ["Kharag Singh Yudh: 40+ reels from the Dasam Granth", "Dussehra Mahatam with Giani Birbal Singh Ji: a reel and cover for every day"],
     href: "/showcase/#ai-animation",

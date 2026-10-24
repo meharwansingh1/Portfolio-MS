@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Work" }
 export default function WorkPage() {
   return (
     <div className="page-in">
-      <PageHeader index="04" eyebrow="Browse my recent" title="Work" intro="My brand, the companies I design for, my collaborations and my motion series — with where it all started at the end." />
+      <PageHeader index="04" eyebrow="Browse my recent" title="Work" intro="Own brands, the companies I design for and my collaborations — with where it all started at the end." />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {projects.map((p, i) => (

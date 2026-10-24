@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react"
 import { PageHeader } from "@/components/site/page-header"
 import { Reveal } from "@/components/site/reveal"
 import { SmartLink } from "@/components/site/smart-link"
+import { Identity } from "@/components/site/identity"
 import { timeline } from "@/lib/data"
 
 export const metadata: Metadata = { title: "About" }
@@ -18,31 +19,32 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="page-in">
-      <PageHeader index="02" eyebrow="Get to know more" title="About me" intro="Developer, designer and storyteller — learning in public, one project at a time." />
+      <PageHeader index="02" eyebrow="Get to know more" title="About me" intro="History by degree. Storytelling by craft." />
 
       {/* story */}
       <section id="story" className="mx-auto max-w-6xl scroll-mt-28 px-4 py-12 sm:px-6">
         <Reveal className="max-w-4xl">
           <p className="font-display text-3xl leading-snug sm:text-4xl">
-            I&apos;m thrilled to be on my journey in the creative realms of <span className="text-accent">UI/UX design</span>, video editing and
-            graphic design.
+            I studied <span className="text-accent">history</span>. Now I bring stories back to life — in thumbnails, edits, motion and code.
           </p>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
             <p>
-              I&apos;m deeply passionate about these fields and have a burning desire to excel in each of them. I tackle every project with dedication and
-              enthusiasm, eager to soak up knowledge and grow with every opportunity that comes my way.
+              A degree in History from the University of Delhi taught me that every story deserves to be told well. Design, video editing and animation
+              are how I do it, and I bring the same dedication to every brief, however small.
             </p>
             <p>
-              Since 2024 I&apos;ve designed for Musafir Media Publications in New Delhi, rising from Graphic &amp; Web Designer to Head Designer and then Production Head, and running
-              The Musafir Podcast&apos;s YouTube channel end to end. I also design for Booking Junction, a B2B travel company.
+              Since 2024 I&apos;ve designed for Musafir Media Publications in New Delhi, rising from Graphic &amp; Web Designer to Head Designer and then
+              Production Head, and running The Musafir Podcast&apos;s YouTube channel end to end. I also design for Booking Junction, a B2B travel company.
             </p>
             <p>
-              Alongside that I run my own brand, Bhujangyy, for cinematic Sikh storytelling, and Vectoristory, where I animate ancient sacred
-              stories in vector motion. My professional work began with Giani Birbal Singh Ji, and we still create together.
+              Alongside that I create for two own brands: Bhujangyy, for cinematic Sikh storytelling, and Vectoristory, where ancient sacred stories are
+              animated in vector motion. My professional work began with Giani Birbal Singh Ji, and we still create together.
             </p>
           </div>
         </Reveal>
       </section>
+
+      <Identity />
 
       {/* timeline */}
       <section id="timeline" className="mx-auto max-w-6xl scroll-mt-28 px-4 py-24 sm:px-6">
