@@ -3,14 +3,14 @@ import { ArrowUpRight } from "lucide-react"
 import { PageHeader } from "@/components/site/page-header"
 import { Reveal } from "@/components/site/reveal"
 import { ProjectFolder } from "@/components/site/project-folder"
-import { projects } from "@/lib/data"
+import { earlyWork, projects } from "@/lib/data"
 
 export const metadata: Metadata = { title: "Work" }
 
 export default function WorkPage() {
   return (
     <div className="page-in">
-      <PageHeader index="04" eyebrow="Browse my recent" title="Work" intro="Websites, graphics and motion series. Each folder holds a project — open it up." />
+      <PageHeader index="04" eyebrow="Browse my recent" title="Work" intro="My brand, my collaborations and my motion series — with where it all started at the end." />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {projects.map((p, i) => (
@@ -25,6 +25,16 @@ export default function WorkPage() {
               </div>
               <h2 className="mt-4 font-display text-5xl leading-none sm:text-6xl">{p.title}</h2>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">{p.summary}</p>
+              {p.highlights ? (
+                <ul className="mt-6 max-w-md space-y-2.5">
+                  {p.highlights.map((h) => (
+                    <li key={h} className="flex gap-3 text-sm leading-relaxed">
+                      <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
               <ul className="mt-6 flex flex-wrap gap-2">
                 {p.tags.map((t) => (
                   <li key={t} className="rounded-full border border-border px-3 py-1 text-xs">
@@ -56,6 +66,32 @@ export default function WorkPage() {
           </article>
         ))}
       </div>
+
+      {/* where it started */}
+      <section id="early" className="mx-auto max-w-6xl scroll-mt-28 px-4 pt-12 sm:px-6">
+        <Reveal className="border-t border-border pt-16">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            <span className="text-accent">00</span> — Where it started
+          </p>
+          <h2 className="mt-4 font-display text-4xl sm:text-5xl">My starting work</h2>
+          <p className="mt-3 max-w-md text-muted-foreground">The first pieces I put out on Behance, before the brand and the series.</p>
+        </Reveal>
+        <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+          {earlyWork.map((w, i) => (
+            <Reveal key={w.title} delay={i * 80} className="flex flex-col rounded-3xl border border-border bg-card p-8">
+              <h3 className="font-display text-2xl">{w.title}</h3>
+              <p className="mt-2 flex-1 text-muted-foreground">{w.text}</p>
+              <div className="mt-6 flex flex-wrap gap-4">
+                {w.links.map((l) => (
+                  <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline">
+                    {l.label} <ArrowUpRight className="size-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </a>
+                ))}
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
     </div>
   )
 }

@@ -16,7 +16,7 @@ export function HomeFolders() {
   const router = useRouter()
   const go = (f: FolderFile) => router.push((f as Routed).to)
 
-  const work: Routed[] = projects.slice(-4).map((p) => ({ name: p.title, meta: p.kind, art: p.art, to: "/work#" + p.slug }))
+  const work: Routed[] = [...projects].reverse().map((p) => ({ name: p.title, meta: p.kind, art: p.art, to: "/work#" + p.slug }))
   const about: Routed[] = [
     { name: "My story", meta: "Read", to: "/about#story" },
     { name: "Timeline", meta: "3 chapters", art: "glacier", to: "/about#timeline" },

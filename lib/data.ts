@@ -12,8 +12,6 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/meharwan-singh-316388278/",
   behance: "https://www.behance.net/meharramgarh1a",
   cv: asset("/images/CV.pdf"),
-  portrait: asset("/images/sec-pic.jpg"),
-  aboutPortrait: asset("/images/ms2.jpg"),
 }
 
 export const nav = [
@@ -72,12 +70,61 @@ export type Project = {
   kind: string
   year: string
   summary: string
+  /** the pieces of work inside a project, shown as a short list */
+  highlights?: string[]
   tags: string[]
   art: ArtPreset
   links: { label: string; href: string }[]
 }
 
+/** The main body of work, strongest first. */
 export const projects: Project[] = [
+  {
+    slug: "bhujangyy",
+    title: "Bhujangyy",
+    kind: "My brand",
+    year: "2026 — now",
+    summary:
+      "My own brand for Sikh and Gurmat storytelling, built around an original young Nihang Singh character. Everything I make in this space lives here, from cinematic katha series to motion-designed intros and teasers.",
+    highlights: [
+      "Kharag Singh Yudh: 40+ cinematic reels from the Dasam Granth, and a multi-part long-form video with Giani Sher Singh Ji's katha",
+      "Dussehra Mahatam: a collaboration series with Giani Birbal Singh Ji",
+      "A consistent motion-design identity: character, intros and teasers",
+    ],
+    tags: ["Brand", "Motion design", "AI visuals", "Editing"],
+    art: "ember",
+    links: [{ label: "Instagram", href: "https://www.instagram.com/bhujangyy/" }],
+  },
+  {
+    slug: "giani-birbal-singh-ji",
+    title: "Giani Birbal Singh Ji",
+    kind: "Content & collaboration",
+    year: "First role — now",
+    summary:
+      "Where my professional work began: reels, graphics and recorded series for Giani Birbal Singh Ji across platforms. We still create together.",
+    highlights: [
+      "Dussehra Mahatam (October 2026): nine days of recorded katha from 11 October, closing with the bhog samagam live on the tenth day, released across both pages with Bhujangyy",
+      "Reels, graphics and recorded series for his pages",
+    ],
+    tags: ["Video editing", "Graphic design", "Social"],
+    art: "verdant",
+    links: [{ label: "Instagram", href: "https://www.instagram.com/gianibirbalsinghji/" }],
+  },
+  {
+    slug: "vectoristory",
+    title: "Vectoristory",
+    kind: "Motion series",
+    year: "2026 — now",
+    summary:
+      "Vector-motion reels and long videos retelling ancient sacred stories, animated in After Effects, with a new animated story every day.",
+    highlights: ["Samudra Manthan", "Part 2: Mohini & the Stolen Amrit", "Untold-story reels from many faiths"],
+    tags: ["After Effects", "Vector motion", "Storytelling"],
+    art: "dusk",
+    links: [
+      { label: "YouTube", href: "https://www.youtube.com/@vectoristory" },
+      { label: "Instagram", href: "https://www.instagram.com/vectoristory/" },
+    ],
+  },
   {
     slug: "portfolio",
     title: "This Portfolio",
@@ -92,64 +139,22 @@ export const projects: Project[] = [
       { label: "Source code", href: "https://github.com/meharwansingh1/portfolioo" },
     ],
   },
+]
+
+/** Where it started: the first pieces on Behance. */
+export const earlyWork = [
   {
-    slug: "travel-vlogs",
     title: "My Travel Vlogs",
-    kind: "Website",
-    year: "2023",
-    summary: "A responsive travel-vlog web template, designed first in Behance and then built and shipped live.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    art: "glacier",
+    text: "A responsive travel-vlog web template — designed on Behance, then built and shipped live.",
     links: [
       { label: "Live demo", href: "https://meharwansingh1.github.io/MyTravelVlogs/" },
       { label: "Behance", href: "https://www.behance.net/gallery/179151969/Web-Template" },
     ],
   },
   {
-    slug: "illustrator",
-    title: "Illustrator Series",
-    kind: "Graphic Design",
-    year: "2023",
-    summary: "A collection of vector illustration and graphic pieces made in Adobe Illustrator.",
-    tags: ["Illustrator", "Vector", "Branding"],
-    art: "dusk",
-    links: [{ label: "Behance", href: "https://www.behance.net/gallery/186112193/Adobe-Illustrator" }],
-  },
-  {
-    slug: "vectoristory",
-    title: "Vectoristory",
-    kind: "Motion Series",
-    year: "2026",
-    summary:
-      "A page of vector-motion reels and long videos retelling ancient sacred stories, starting with Samudra Manthan and its sequel, Mohini & the Stolen Amrit. Animated in After Effects.",
-    tags: ["After Effects", "Vector motion", "Storytelling"],
-    art: "ember",
-    links: [
-      { label: "YouTube", href: "https://www.youtube.com/@vectoristory" },
-      { label: "Instagram", href: "https://www.instagram.com/vectoristory/" },
-    ],
-  },
-  {
-    slug: "bhujangyy",
-    title: "Bhujangyy",
-    kind: "Channel & Brand",
-    year: "2026",
-    summary:
-      "Sikh and Gurmat content for Instagram, built around an original young Nihang Singh character, with a consistent motion-design identity of intros and teasers.",
-    tags: ["Motion design", "Character", "Social"],
-    art: "dusk",
-    links: [{ label: "Instagram", href: "https://www.instagram.com/bhujangyy/" }],
-  },
-  {
-    slug: "kharag-singh-yudh",
-    title: "Kharag Singh Yudh",
-    kind: "Cinematic Series",
-    year: "2026",
-    summary:
-      "A long-running reel series and multi-part long-form katha video, with ultra-real cinematic scenes, on-screen Gurbani and katha narration.",
-    tags: ["AI visuals", "Editing", "Long-form"],
-    art: "verdant",
-    links: [{ label: "Watch the reels", href: "https://www.instagram.com/bhujangyy/" }],
+    title: "Behance profile",
+    text: "My first design pieces — layouts, graphics and the experiments that got me here.",
+    links: [{ label: "View on Behance", href: "https://www.behance.net/meharramgarh1a" }],
   },
 ]
 
@@ -157,12 +162,12 @@ export const timeline = [
   {
     when: "First role",
     title: "Content & design for Giani Birbal Singh Ji",
-    text: "Where I learned to make work that people actually watch: reels, graphics and recorded series across platforms.",
+    text: "Where I learned to make work that people actually watch: reels, graphics and recorded series across platforms. We still collaborate, most recently on Dussehra Mahatam.",
   },
   {
     when: "Since",
     title: "Frontend developer & designer",
-    text: "Building and styling the web by day, while growing my own channels in motion and storytelling.",
+    text: "Building and styling the web by day, while growing my own brand, Bhujangyy, and my motion series, Vectoristory.",
   },
   {
     when: "Now",

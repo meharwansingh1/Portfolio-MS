@@ -3,8 +3,7 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { PageHeader } from "@/components/site/page-header"
 import { Reveal } from "@/components/site/reveal"
-import { Portrait } from "@/components/site/portrait"
-import { site, timeline } from "@/lib/data"
+import { timeline } from "@/lib/data"
 
 export const metadata: Metadata = { title: "About" }
 
@@ -21,11 +20,8 @@ export default function AboutPage() {
       <PageHeader index="02" eyebrow="Get to know more" title="About me" intro="Developer, designer and storyteller — learning in public, one project at a time." />
 
       {/* story */}
-      <section id="story" className="mx-auto grid max-w-6xl grid-cols-1 scroll-mt-28 gap-12 px-4 py-12 sm:px-6 md:grid-cols-[1fr_1.3fr]">
-        <Reveal>
-          <Portrait src={site.aboutPortrait} alt={site.name} className="aspect-[4/5] rounded-[2.5rem]" />
-        </Reveal>
-        <Reveal delay={120} className="flex flex-col justify-center">
+      <section id="story" className="mx-auto max-w-6xl scroll-mt-28 px-4 py-12 sm:px-6">
+        <Reveal className="max-w-4xl">
           <p className="font-display text-3xl leading-snug sm:text-4xl">
             I&apos;m thrilled to be on my journey in the creative realms of <span className="text-accent">UI/UX design</span>, video editing and
             graphic design.
@@ -36,8 +32,8 @@ export default function AboutPage() {
               enthusiasm, eager to soak up knowledge and grow with every opportunity that comes my way.
             </p>
             <p>
-              Alongside frontend work, I run my own storytelling channels — animating ancient sacred stories in vector motion, and producing cinematic
-              Sikh content with an original character at its heart.
+              Alongside frontend work I run my own brand, Bhujangyy, for cinematic Sikh storytelling, and Vectoristory, where I animate ancient sacred
+              stories in vector motion. My professional work began with Giani Birbal Singh Ji, and we still create together.
             </p>
           </div>
         </Reveal>

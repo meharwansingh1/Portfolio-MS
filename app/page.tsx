@@ -2,8 +2,13 @@ import Link from "next/link"
 import { ArrowDownRight, ArrowUpRight, Download } from "lucide-react"
 import { site, projects } from "@/lib/data"
 import { Reveal, RiseText } from "@/components/site/reveal"
-import { Portrait } from "@/components/site/portrait"
 import { HomeFolders } from "@/components/site/home-folders"
+
+const now = [
+  { label: "Building Bhujangyy", note: "my brand", href: "/work/#bhujangyy" },
+  { label: "Animating Vectoristory", note: "daily stories", href: "/work/#vectoristory" },
+  { label: "Creating with Giani Birbal Singh Ji", note: "collaboration", href: "/work/#giani-birbal-singh-ji" },
+]
 
 export default function Home() {
   return (
@@ -13,49 +18,48 @@ export default function Home() {
         <div aria-hidden="true" className="dot-grid absolute inset-0 [mask-image:radial-gradient(70%_60%_at_50%_40%,#000,transparent)]" />
         <div aria-hidden="true" className="absolute -top-40 right-[-10%] size-[38rem] rounded-full bg-accent/20 blur-[120px]" />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pt-36 pb-20 sm:px-6 md:grid-cols-[1.4fr_1fr] md:pt-44">
-          <div>
-            <p className="page-in flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="relative flex size-2">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-60" />
-                <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
-              </span>
-              Available for remote work
-            </p>
-            <h1 className="mt-6 font-display text-[15vw] leading-[0.9] tracking-tight sm:text-8xl lg:text-[7.5rem]">
-              <RiseText text="Meharwan" className="block whitespace-nowrap" delay={100} />
-              <RiseText text="Singh." className="block whitespace-nowrap text-accent" delay={450} />
-            </h1>
-            <p className="page-in mt-8 max-w-md text-lg leading-relaxed text-muted-foreground [animation-delay:.7s]">
-              I build for the web, design what goes on it, and animate the stories in between.
-            </p>
-            <div className="page-in mt-10 flex flex-wrap gap-3 [animation-delay:.85s]">
-              <Link href="/work" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition hover:gap-3">
-                See my work <ArrowDownRight className="size-4 transition group-hover:-rotate-45" />
-              </Link>
-              <a href={site.cv} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-medium transition hover:border-foreground">
-                <Download className="size-4" /> Download CV
-              </a>
-            </div>
-          </div>
+        <div className="relative mx-auto max-w-6xl px-4 pt-36 pb-24 sm:px-6 md:pt-48">
+          <p className="page-in flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-60" />
+              <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+            </span>
+            Available for remote work
+          </p>
+          <h1 className="mt-6 font-display text-[16vw] leading-[0.88] tracking-tight md:text-[10rem] lg:text-[12rem]">
+            <RiseText text="Meharwan" className="block whitespace-nowrap" delay={100} />
+            <RiseText text="Singh." className="block whitespace-nowrap text-accent" delay={450} />
+          </h1>
 
-          <div className="page-in relative mx-auto w-full max-w-sm [animation-delay:.3s]">
-            <Portrait src={site.portrait} alt={site.name} className="aspect-[4/5] rounded-[2.5rem] shadow-2xl" />
-            {/* rotating badge */}
-            <div className="absolute -bottom-8 -left-8 grid size-32 place-items-center rounded-full bg-background shadow-xl">
-              <svg viewBox="0 0 100 100" className="absolute inset-0 size-full animate-[spin_18s_linear_infinite]" aria-hidden="true">
-                <defs>
-                  <path id="badge" d="M50 50m-36 0a36 36 0 1 1 72 0a36 36 0 1 1-72 0" />
-                </defs>
-                <text className="fill-foreground font-mono text-[8px] uppercase">
-                  <textPath href="#badge" textLength="222" lengthAdjust="spacingAndGlyphs">Developer · Designer · Storyteller ·</textPath>
-                </text>
-              </svg>
-              <span className="font-display text-3xl">MS</span>
+          <div className="mt-14 grid gap-12 border-t border-border pt-10 md:grid-cols-[1.2fr_1fr]">
+            <div className="page-in [animation-delay:.7s]">
+              <p className="max-w-md text-xl leading-relaxed text-muted-foreground">
+                Frontend developer and graphic designer. I build for the web, design what goes on it, and animate the stories in between.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/work" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition hover:gap-3">
+                  See my work <ArrowDownRight className="size-4 transition group-hover:-rotate-45" />
+                </Link>
+                <a href={site.cv} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-medium transition hover:border-foreground">
+                  <Download className="size-4" /> Download CV
+                </a>
+              </div>
             </div>
+            <ul className="page-in space-y-px [animation-delay:.85s]">
+              <li className="pb-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Right now</li>
+              {now.map((n) => (
+                <li key={n.label}>
+                  <Link href={n.href} className="group flex items-baseline justify-between gap-4 border-b border-border py-3 transition hover:pl-2">
+                    <span className="text-lg font-medium">{n.label}</span>
+                    <span className="flex items-center gap-1 text-sm text-muted-foreground transition group-hover:text-accent">
+                      {n.note} <ArrowUpRight className="size-3.5" />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-
       </section>
 
       {/* ---------- the folders ---------- */}

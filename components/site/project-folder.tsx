@@ -13,7 +13,7 @@ export function ProjectFolder({ project, index }: { project: Project; index: num
     <FitFolder
       max={400}
       label={project.title}
-      meta={project.kind + " · " + project.year}
+      meta={project.kind}
       art={project.art}
       seed={index * 7 + 1}
       tone={index % 2 ? "light" : "dark"}
