@@ -33,7 +33,11 @@ export default function AboutPage() {
               enthusiasm, eager to soak up knowledge and grow with every opportunity that comes my way.
             </p>
             <p>
-              Alongside frontend work I run my own brand, Bhujangyy, for cinematic Sikh storytelling, and Vectoristory, where I animate ancient sacred
+              Since 2024 I&apos;ve designed for Musafir Media Publications in New Delhi, rising from Graphic &amp; Web Designer to Head Designer and running
+              The Musafir Podcast&apos;s YouTube channel end to end. I also design for Booking Junction, a B2B travel company.
+            </p>
+            <p>
+              Alongside that I run my own brand, Bhujangyy, for cinematic Sikh storytelling, and Vectoristory, where I animate ancient sacred
               stories in vector motion. My professional work began with Giani Birbal Singh Ji, and we still create together.
             </p>
           </div>
@@ -54,18 +58,33 @@ export default function AboutPage() {
         <ol className="relative mt-14">
           <span aria-hidden="true" className="absolute top-2 bottom-2 left-[7px] w-px bg-gradient-to-b from-accent via-border to-transparent md:left-[calc(30%+7px)]" />
           {timeline.map((t, i) => (
-            <Reveal as="li" key={t.role + t.org} delay={i * 90} className="group relative grid gap-4 pb-14 pl-10 last:pb-0 md:grid-cols-[30%_1fr] md:gap-0 md:pl-0">
+            <Reveal as="li" key={t.org} delay={i * 80} className="group relative grid gap-4 pb-14 pl-10 last:pb-0 md:grid-cols-[30%_1fr] md:gap-0 md:pl-0">
               <div className="md:pr-12 md:text-right">
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">{t.when}</p>
-                <p className="mt-2 text-lg font-medium">{t.role}</p>
+                <span
+                  className={
+                    "inline-block rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.15em] " +
+                    (t.kind === "Own brand" ? "bg-accent text-white" : t.kind === "Education" ? "border border-border text-muted-foreground" : "bg-foreground text-background")
+                  }
+                >
+                  {t.kind}
+                </span>
+                <ul className="mt-3 space-y-2">
+                  {t.roles.map((r) => (
+                    <li key={r.title}>
+                      <p className="text-lg leading-snug font-medium">{r.title}</p>
+                      <p className="font-mono text-xs text-accent">{r.when}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
               <span className="absolute top-1.5 left-0 size-[15px] rounded-full border-[3px] border-background bg-foreground ring-1 ring-border transition duration-500 group-hover:scale-125 group-hover:bg-accent md:left-[30%]" />
               <SmartLink
                 href={t.href}
-                className="block rounded-3xl border border-transparent p-0 transition duration-500 hover:border-border hover:bg-card md:ml-10 md:-mt-5 md:p-5"
+                className="block rounded-3xl border border-transparent transition duration-500 hover:border-border hover:bg-card md:ml-10 md:-mt-5 md:p-5"
               >
-                {t.org ? <h3 className="font-display text-3xl sm:text-4xl">{t.org}</h3> : null}
-                <p className="mt-2 max-w-xl text-muted-foreground">{t.text}</p>
+                <h3 className="font-display text-3xl sm:text-4xl">{t.org}</h3>
+                {t.place ? <p className="mt-1 text-sm text-muted-foreground">{t.place}</p> : null}
+                <p className="mt-3 max-w-xl text-muted-foreground">{t.text}</p>
                 <ul className="mt-4 space-y-1.5">
                   {t.points.map((pt) => (
                     <li key={pt} className="flex gap-3 text-sm">

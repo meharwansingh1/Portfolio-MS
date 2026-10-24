@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react"
 import { PageHeader } from "@/components/site/page-header"
 import { Reveal } from "@/components/site/reveal"
 import { ProjectFolder } from "@/components/site/project-folder"
+import { SmartLink } from "@/components/site/smart-link"
 import { earlyWork, projects } from "@/lib/data"
 
 export const metadata: Metadata = { title: "Work" }
@@ -10,7 +11,7 @@ export const metadata: Metadata = { title: "Work" }
 export default function WorkPage() {
   return (
     <div className="page-in">
-      <PageHeader index="04" eyebrow="Browse my recent" title="Work" intro="My brand, my collaborations and my motion series — with where it all started at the end." />
+      <PageHeader index="04" eyebrow="Browse my recent" title="Work" intro="My brand, the companies I design for, my collaborations and my motion series — with where it all started at the end." />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {projects.map((p, i) => (
@@ -45,18 +46,16 @@ export default function WorkPage() {
               {p.links.length ? (
                 <div className="mt-8 flex flex-wrap gap-3">
                   {p.links.map((l, li) => (
-                    <a
+                    <SmartLink
                       key={l.href}
                       href={l.href}
-                      target="_blank"
-                      rel="noreferrer"
                       className={
                         "inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition hover:gap-3 " +
                         (li === 0 ? "bg-foreground text-background" : "border border-border hover:border-foreground")
                       }
                     >
                       {l.label} <ArrowUpRight className="size-4" />
-                    </a>
+                    </SmartLink>
                   ))}
                 </div>
               ) : (

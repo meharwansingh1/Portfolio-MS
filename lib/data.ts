@@ -112,12 +112,58 @@ export const projects: Project[] = [
     links: [{ label: "Instagram", href: "https://www.instagram.com/bhujangyy/" }],
   },
   {
+    slug: "musafir-podcast",
+    title: "The Musafir Podcast",
+    kind: "Musafir Media Publications",
+    year: "Sep 2024 — Nov 2026",
+    summary:
+      "I ran The Musafir Podcast's YouTube channel end to end at Musafir Media Publications in New Delhi — first as Graphic & Web Designer, then as Head Designer.",
+    highlights: [
+      "Top episode: 111K views — Distress Deals Flooding Noida Real Estate",
+      "Long-form podcasts, teasers and the channel launch with Raftaar",
+      "Brand, web and graphic design across Musafir Media",
+    ],
+    tags: ["Head Designer", "YouTube", "Adobe Creative Suite", "Web"],
+    art: "glacier",
+    files: [
+      { name: "The Musafir Podcast", meta: "YouTube", to: "https://www.youtube.com/@themusafirpodcast-tmp" },
+      { name: "All episodes I made", meta: "Showcase", to: "/showcase/#musafir-podcast", image: ytCover("PkQGxPIoazg") },
+      { name: "High-Rise Building Secrets", meta: "39.8K views", to: "https://www.youtube.com/watch?v=vaTk8Kx-EJo", image: ytCover("vaTk8Kx-EJo") },
+      { name: "Noida Distress Deals", meta: "111K views", to: "https://www.youtube.com/watch?v=nSyyCXZpXw4", image: ytCover("nSyyCXZpXw4") },
+    ],
+    links: [
+      { label: "YouTube channel", href: "https://www.youtube.com/@themusafirpodcast-tmp" },
+      { label: "See the episodes", href: "/showcase/#musafir-podcast" },
+    ],
+  },
+  {
+    slug: "booking-junction",
+    title: "Booking Junction",
+    kind: "Design partner",
+    year: "2026 — now",
+    summary:
+      "I handle design for Booking Junction, a B2B travel company: event posters, daily posts and destination reels for their Instagram.",
+    highlights: ["Event posters and daily social posts", "Destination reels: Japan, Bali, Europe, Dubai and more"],
+    tags: ["Social design", "Posters", "Reels"],
+    art: "verdant",
+    files: [
+      { name: "bookingjunction.co.in", meta: "Website", to: "https://bookingjunction.co.in" },
+      { name: "All reels", meta: "Showcase", to: "/showcase/#booking-junction", image: reelCover("Da4kXYvs5uV") },
+      { name: "Bali", meta: "Reel", to: "https://www.instagram.com/reel/DbNKXuaMsUM/", image: reelCover("DbNKXuaMsUM") },
+      { name: "Japan", meta: "Reel", to: "https://www.instagram.com/reel/Db2XXqpuTmJ/", image: reelCover("Db2XXqpuTmJ") },
+    ],
+    links: [
+      { label: "Instagram", href: "https://www.instagram.com/booking.junction/" },
+      { label: "Website", href: "https://bookingjunction.co.in" },
+    ],
+  },
+  {
     slug: "giani-birbal-singh-ji",
     title: "Giani Birbal Singh Ji",
     kind: "Content & collaboration",
-    year: "First role — now",
+    year: "Mar 2023 — now",
     summary:
-      "Where my professional work began: reels, graphics and recorded series for Giani Birbal Singh Ji across platforms. We still create together.",
+      "Where my professional work began: video editing and graphic design for Giani Birbal Singh Ji's YouTube channel from Sri Anandpur Sahib, remotely, from March 2023 to September 2024. We still create together.",
     highlights: [
       "Dussehra Mahatam (October 2026): nine days of recorded katha from 11 October, closing with the bhog samagam live on the tenth day, released across both pages with Bhujangyy",
       "Reels, graphics and recorded series for his pages",
@@ -191,46 +237,85 @@ export const earlyWork = [
   },
 ]
 
-/** Career so far, newest first. */
-export const timeline = [
+/** Career so far, newest first. Each entry links to the work it produced. */
+export type Role = { title: string; when: string }
+export type Chapter = {
+  org: string
+  place?: string
+  kind: "Job" | "Freelance" | "Internship" | "Own brand" | "Collaboration" | "Education"
+  roles: Role[]
+  text: string
+  points: string[]
+  href: string
+}
+
+export const timeline: Chapter[] = [
   {
-    when: "Oct 2026",
-    role: "Collaborator",
-    org: "Bhujangyy × Giani Birbal Singh Ji",
-    text: "Dussehra Mahatam: ten days of katha released across both pages, from 11 October to the bhog samagam.",
-    points: ["A reel for every day, released on both pages", "140K+ plays across the series on Bhujangyy"],
-    href: "/showcase/#dussehra-mahatam",
+    org: "Booking Junction",
+    place: "Remote · bookingjunction.co.in",
+    kind: "Freelance",
+    roles: [{ title: "Designer", when: "2026 — now" }],
+    text: "Design for a B2B travel company's Instagram.",
+    points: ["Event posters and daily posts", "Destination reels"],
+    href: "/showcase/#booking-junction",
   },
   {
-    when: "2026 — now",
-    role: "Founder & creator",
+    org: "Musafir Media Publications",
+    place: "MusafirMediaHub · New Delhi",
+    kind: "Job",
+    roles: [
+      { title: "Head Designer", when: "Jun 2025 — 10 Nov 2026" },
+      { title: "Graphic & Web Designer", when: "Sep 2024 — Jun 2025" },
+    ],
+    text: "Ran The Musafir Podcast's YouTube channel end to end, and led design across the company.",
+    points: ["The Musafir Podcast: top episode at 111K views", "Brand, web and graphic design", "Adobe Creative Suite, website building"],
+    href: "/showcase/#musafir-podcast",
+  },
+  {
     org: "Bhujangyy",
-    text: "My own brand for cinematic Sikh storytelling, built around an original Nihang Singh character.",
-    points: ["Kharag Singh Yudh: 40+ reels from the Dasam Granth", "Multi-part long-form katha video in production", "Brand identity, intros and teasers in After Effects"],
+    place: "My own brand",
+    kind: "Own brand",
+    roles: [{ title: "Founder & creator", when: "2026 — now" }],
+    text: "Cinematic Sikh storytelling around an original Nihang Singh character.",
+    points: ["Kharag Singh Yudh: 40+ reels from the Dasam Granth", "Dussehra Mahatam with Giani Birbal Singh Ji: 140K+ plays"],
     href: "/showcase/#bhujangyy",
   },
   {
-    when: "2026 — now",
-    role: "Creator & animator",
     org: "Vectoristory",
-    text: "Vector-motion reels and long videos retelling ancient sacred stories, on YouTube and Instagram.",
-    points: ["Animated in After Effects with Indian-English narration", "Long videos and untold-story shorts"],
+    place: "YouTube & Instagram",
+    kind: "Own brand",
+    roles: [{ title: "Creator & animator", when: "2026 — now" }],
+    text: "Vector-motion reels and long videos retelling ancient sacred stories.",
+    points: ["Animated in After Effects", "Long videos and untold-story shorts"],
     href: "/showcase/#vectoristory",
   },
   {
-    when: "Current role",
-    role: "Frontend Developer & Graphic Designer",
-    org: "",
-    text: "Building and styling interfaces, and designing the graphics that go on them.",
-    points: ["HTML, CSS and JavaScript interfaces", "Graphic and UI design"],
-    href: "/skills/",
+    org: "The Purple Brick",
+    place: "Gurugram · Remote",
+    kind: "Internship",
+    roles: [{ title: "Graphic Designer Intern", when: "May 2024 — Jul 2024" }],
+    text: "A three-month design internship.",
+    points: ["Typography and social graphics"],
+    href: "/skills/#design",
   },
   {
-    when: "First role",
-    role: "Content & design",
     org: "Giani Birbal Singh Ji",
-    text: "Where my professional work began: reels, graphics and recorded series across platforms.",
-    points: ["Video editing for reels and recorded series", "Social graphics and covers"],
-    href: "https://www.instagram.com/gianibirbalsinghji/",
+    place: "YouTube channel · Sri Anandpur Sahib · Remote",
+    kind: "Freelance",
+    roles: [{ title: "Video Editor & Graphic Designer", when: "Mar 2023 — Sep 2024" }],
+    text: "Where my professional work began. We still collaborate.",
+    points: ["Video editing for the YouTube channel", "Covers and graphics in Photoshop", "Premiere Pro"],
+    href: "/work/#giani-birbal-singh-ji",
+  },
+  {
+    org: "Arena Animation",
+    kind: "Education",
+    roles: [{ title: "UI/UX Advanced Programme", when: "May 2023 — Nov 2024" }],
+    text: "Formal training in UI/UX design.",
+    points: ["Interface and experience design"],
+    href: "/skills/#design",
   },
 ]
+
+/** Notice period at Musafir Media ends on this day; the site switches its status by itself. */
+export const noticeEnds = "2026-11-10T00:00:00+05:30"

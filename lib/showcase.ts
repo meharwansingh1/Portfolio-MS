@@ -5,8 +5,8 @@ import { asset } from "./data"
  * /public/work (named by the reel's shortcode); YouTube covers come straight
  * from YouTube. To add a piece, add an object here.
  */
-export type Channel = "Bhujangyy" | "Vectoristory" | "Web"
-export type Format = "Reel" | "Short" | "Long video" | "Website"
+export type Channel = "Bhujangyy" | "Vectoristory" | "The Musafir Podcast" | "Booking Junction" | "Web"
+export type Format = "Reel" | "Short" | "Long video" | "Podcast" | "Website"
 
 export type Piece = {
   id: string
@@ -70,6 +70,29 @@ export const pieces: Piece[] = [
   { id: "vs-arjun", title: "The Pandavas sacrificed Arjun's own son", series: "Untold stories", channel: "Vectoristory", format: "Short", shape: "tall", views: 984, date: "2026-10-22", ...yt("kZneCUOoYCM", true) },
   { id: "vs-shiva", title: "Why is Shiva's throat blue?", series: "Samudra Manthan in 60 seconds", channel: "Vectoristory", format: "Short", shape: "tall", views: 259, date: "2026-10-19", ...yt("YyCDBgLsCGI", true) },
 
+  // ---- The Musafir Podcast (Musafir Media): the channel I ran end to end.
+  //      The three newest episodes are left out on purpose.
+  { id: "tmp-noida-distress", title: "Distress Deals Flooding Noida Real Estate", series: "Unfiltered Truth", channel: "The Musafir Podcast", format: "Podcast", shape: "wide", views: 111683, date: "2026-05-08", ...yt("nSyyCXZpXw4") },
+  { id: "tmp-high-rise", title: "The Biggest High-Rise Building Secrets", series: "with Kamal Chandel", channel: "The Musafir Podcast", format: "Podcast", shape: "wide", views: 39846, date: "2025-08-30", ...yt("vaTk8Kx-EJo") },
+  { id: "tmp-astrology-ep2", title: "Astrology Is Fake — Episode 2", series: "with Nidan Guru", channel: "The Musafir Podcast", format: "Podcast", shape: "wide", views: 38245, date: "2025-06-28", ...yt("30CFmklHaJE") },
+  { id: "tmp-studio-apartment", title: "Studio Apartment Exposed", series: "The biggest real-estate trap of 2026?", channel: "The Musafir Podcast", format: "Podcast", shape: "wide", views: 32648, date: "2026-07-17", ...yt("GFR4KLEh2H4") },
+  { id: "tmp-noida-2026", title: "Noida 2026: ₹1 Crore Budget & Resale Deals", series: "Real-estate scams exposed", channel: "The Musafir Podcast", format: "Podcast", shape: "wide", views: 23156, date: "2026-04-24", ...yt("QRtwT-ajv6o") },
+  { id: "tmp-ghost-offroading", title: "Ghost of Offroading", series: "with Rajiv Chawla · Episode 1", channel: "The Musafir Podcast", format: "Podcast", shape: "wide", views: 12168, date: "2024-11-08", ...yt("PkQGxPIoazg") },
+  { id: "tmp-myths", title: "Real Estate Myths Busted", series: "ft. Saurav Sharma & Vishal Bhargava", channel: "The Musafir Podcast", format: "Podcast", shape: "wide", views: 11833, date: "2025-08-01", ...yt("LofQS-VjP7k") },
+  { id: "tmp-manish-dua", title: "The Most Trusted Face in Travel", series: "with Manish Dua", channel: "The Musafir Podcast", format: "Podcast", shape: "wide", views: 7785, date: "2025-08-08", ...yt("0N65UQGRlJ8") },
+  { id: "tmp-parenting", title: "Biggest Parenting Mistakes in 2026", series: "with Dr Rajat", channel: "The Musafir Podcast", format: "Podcast", shape: "wide", views: 4459, date: "2026-05-15", ...yt("L8bzLZazqVg") },
+  { id: "tmp-boxer", title: "The BrahMos Punch", series: "with boxer Harsh Gill", channel: "The Musafir Podcast", format: "Podcast", shape: "wide", views: 4327, date: "2025-01-17", ...yt("GhsN1THDDxw") },
+  { id: "tmp-anthem", title: "TMP Anthem with Raftaar", series: "Channel launch", channel: "The Musafir Podcast", format: "Long video", shape: "wide", views: 994, date: "2024-11-05", ...yt("l8C4EreYkgk") },
+  { id: "tmp-teaser", title: "Official Teaser · Episode 1", series: "Ghost of Offroading", channel: "The Musafir Podcast", format: "Long video", shape: "wide", views: 984, date: "2024-11-06", ...yt("iL_4QLKjfpY") },
+
+  // ---- Booking Junction: destination reels for a B2B travel company
+  { id: "bj-japan", title: "Discover the Magic of Japan", series: "Destination reel", channel: "Booking Junction", format: "Reel", shape: "tall", views: 250, date: "2026-08-10", ...ig("Db2XXqpuTmJ") },
+  { id: "bj-seychelles", title: "Seychelles", series: "Destination reel", channel: "Booking Junction", format: "Reel", shape: "tall", views: 211, date: "2026-07-29", ...ig("DbXe6H0MYMr") },
+  { id: "bj-bali", title: "Bali: Island of the Gods", series: "Destination reel", channel: "Booking Junction", format: "Reel", shape: "tall", views: 241, date: "2026-07-25", ...ig("DbNKXuaMsUM") },
+  { id: "bj-europe", title: "Unlock Europe", series: "Destination reel", channel: "Booking Junction", format: "Reel", shape: "tall", views: 208, date: "2026-07-18", ...ig("Da7IBY9M6W3") },
+  { id: "bj-malaysia", title: "Malaysia Awaits", series: "Destination reel", channel: "Booking Junction", format: "Reel", shape: "tall", views: 204, date: "2026-07-17", ...ig("Da4kXYvs5uV") },
+  { id: "bj-dubai", title: "The Best of Dubai", series: "Destination reel", channel: "Booking Junction", format: "Reel", shape: "tall", views: 204, date: "2026-06-26", ...ig("DaCfw-XMJgF") },
+
   // ---- Web
   { id: "web-portfolio", title: "This portfolio", series: "Next.js · TypeScript · Tailwind", channel: "Web", format: "Website", shape: "wide", date: "2026-10-24", cover: "", href: "https://meharwansingh1.github.io/portfolioo/" },
   { id: "web-travel", title: "My Travel Vlogs", series: "HTML · CSS · JavaScript", channel: "Web", format: "Website", shape: "wide", date: "2023-08-01", cover: "", href: "https://meharwansingh1.github.io/MyTravelVlogs/" },
@@ -81,6 +104,8 @@ export const filters = [
   { id: "bhujangyy", label: "Bhujangyy", test: (p: Piece) => p.channel === "Bhujangyy" },
   { id: "kharag-singh-yudh", label: "Kharag Singh Yudh", test: (p: Piece) => p.id.startsWith("ksy") },
   { id: "dussehra-mahatam", label: "Dussehra Mahatam", test: (p: Piece) => !!p.collab },
+  { id: "musafir-podcast", label: "The Musafir Podcast", test: (p: Piece) => p.channel === "The Musafir Podcast" },
+  { id: "booking-junction", label: "Booking Junction", test: (p: Piece) => p.channel === "Booking Junction" },
   { id: "vectoristory", label: "Vectoristory", test: (p: Piece) => p.channel === "Vectoristory" },
   { id: "web", label: "Websites", test: (p: Piece) => p.channel === "Web" },
 ] as const

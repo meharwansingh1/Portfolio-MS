@@ -75,7 +75,7 @@ function Card({ piece, onOpen, big }: { piece: Piece; onOpen: (p: Piece) => void
         </span>
         {piece.views ? (
           <span className="rounded-full bg-white/90 px-2.5 py-1 font-mono text-[10px] font-medium text-black">
-            {compact(piece.views)} {piece.channel === "Vectoristory" ? "views" : "plays"}
+            {compact(piece.views)} {piece.href.includes("youtube") ? "views" : "plays"}
           </span>
         ) : null}
       </span>
@@ -144,7 +144,7 @@ function Player({ piece, onClose }: { piece: Piece; onClose: () => void }) {
           <h3 className="mt-2 font-display text-3xl leading-tight">{piece.title}</h3>
           <p className="mt-1 text-white/70">{piece.series}</p>
           {piece.collab ? <p className="mt-3 text-sm text-white/80">In collaboration {piece.collab}</p> : null}
-          {piece.views ? <p className="mt-3 font-mono text-sm text-white/80">{piece.views.toLocaleString("en-IN")} {piece.channel === "Vectoristory" ? "views" : "plays"}</p> : null}
+          {piece.views ? <p className="mt-3 font-mono text-sm text-white/80">{piece.views.toLocaleString("en-IN")} {piece.href.includes("youtube") ? "views" : "plays"}</p> : null}
           <a
             href={piece.href}
             target="_blank"

@@ -3,11 +3,13 @@ import { ArrowDownRight, ArrowUpRight, Download } from "lucide-react"
 import { site, projects } from "@/lib/data"
 import { Reveal, RiseText } from "@/components/site/reveal"
 import { HomeFolders } from "@/components/site/home-folders"
+import { AvailabilityBadge, UntilNoticeEnds } from "@/components/site/availability"
 
 const now = [
   { label: "Building Bhujangyy", note: "my brand", href: "/work/#bhujangyy" },
+  { label: "Designing for Booking Junction", note: "freelance", href: "/work/#booking-junction" },
+  { label: "Head Designer, Musafir Media", note: "until 10 Nov", href: "/work/#musafir-podcast", endsWithNotice: true },
   { label: "Animating Vectoristory", note: "daily stories", href: "/work/#vectoristory" },
-  { label: "Creating with Giani Birbal Singh Ji", note: "collaboration", href: "/work/#giani-birbal-singh-ji" },
 ]
 
 export default function Home() {
@@ -19,13 +21,7 @@ export default function Home() {
         <div aria-hidden="true" className="absolute -top-40 right-[-10%] size-[38rem] rounded-full bg-accent/20 blur-[120px]" />
 
         <div className="relative mx-auto max-w-6xl px-4 pt-36 pb-24 sm:px-6 md:pt-48">
-          <p className="page-in flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-60" />
-              <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
-            </span>
-            Available for remote work
-          </p>
+          <AvailabilityBadge className="page-in" />
           <h1 className="mt-6 font-display text-[16vw] leading-[0.88] tracking-tight md:text-[10rem] lg:text-[12rem]">
             <RiseText text="Meharwan" className="block whitespace-nowrap" delay={100} />
             <RiseText text="Singh." className="block whitespace-nowrap text-accent" delay={450} />
@@ -47,16 +43,19 @@ export default function Home() {
             </div>
             <ul className="page-in space-y-px [animation-delay:.85s]">
               <li className="pb-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Right now</li>
-              {now.map((n) => (
-                <li key={n.label}>
-                  <Link href={n.href} className="group flex items-baseline justify-between gap-4 border-b border-border py-3 transition hover:pl-2">
-                    <span className="text-lg font-medium">{n.label}</span>
-                    <span className="flex items-center gap-1 text-sm text-muted-foreground transition group-hover:text-accent">
-                      {n.note} <ArrowUpRight className="size-3.5" />
-                    </span>
-                  </Link>
-                </li>
-              ))}
+              {now.map((n) => {
+                const row = (
+                  <li key={n.label}>
+                    <Link href={n.href} className="group flex items-baseline justify-between gap-4 border-b border-border py-3 transition hover:pl-2">
+                      <span className="text-lg font-medium">{n.label}</span>
+                      <span className="flex items-center gap-1 text-sm text-muted-foreground transition group-hover:text-accent">
+                        {n.note} <ArrowUpRight className="size-3.5" />
+                      </span>
+                    </Link>
+                  </li>
+                )
+                return "endsWithNotice" in n ? <UntilNoticeEnds key={n.label}>{row}</UntilNoticeEnds> : row
+              })}
             </ul>
           </div>
         </div>

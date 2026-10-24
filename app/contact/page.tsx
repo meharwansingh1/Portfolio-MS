@@ -3,6 +3,7 @@ import { ArrowUpRight, BriefcaseBusiness, Mail, Palette } from "lucide-react"
 import { PageHeader } from "@/components/site/page-header"
 import { Reveal } from "@/components/site/reveal"
 import { ContactForm } from "@/components/site/contact-form"
+import { AvailabilityBadge } from "@/components/site/availability"
 import { site } from "@/lib/data"
 
 export const metadata: Metadata = { title: "Contact" }
@@ -16,8 +17,11 @@ const channels = [
 export default function ContactPage() {
   return (
     <div className="page-in">
-      <PageHeader index="06" eyebrow="Get in touch" title="Let's talk" intro="A role, a project or just a hello — my inbox is open." />
+      <PageHeader index="06" eyebrow="Get in touch" title="Let's talk" intro="A remote role, a freelance project or just a hello — my inbox is open." />
 
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <AvailabilityBadge className="mb-10 w-fit rounded-full border border-border px-4 py-2.5" />
+      </div>
       <section className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 py-8 sm:px-6 md:grid-cols-[1fr_1.2fr]">
         <div className="space-y-4">
           {channels.map((c, i) => (
