@@ -44,8 +44,8 @@ export const crafts: Craft[] = [
   {
     id: "web",
     title: "Web",
-    line: "Sites designed and built by hand, from layout to code.",
-    tools: ["Next.js", "HTML / CSS / JS"],
+    line: "Sites designed and built by hand, from layout to code — each with its own look.",
+    tools: ["Next.js", "Tailwind CSS", "HTML / CSS / JS"],
   },
 ]
 
@@ -165,6 +165,9 @@ export const pieces: Piece[] = [
   { id: "a-ksy-all", craft: "ai-animation", group: "Kharag Singh Yudh · Bhujangyy", title: "All 41 parts", note: "The full series on @bhujangyy", kind: "link", shape: "tall", cover: "", href: "https://www.instagram.com/bhujangyy/" },
 
   /* ============================================================= web */
+  { id: "w-vectoristory", craft: "web", group: "Concept websites", title: "Vectoristory", note: "Cinematic channel site", kind: "link", shape: "wide", cover: "https://i.ytimg.com/vi/FQ76hjBlx78/hqdefault.jpg", href: asset("/lab/vectoristory/") },
+  { id: "w-bhujangyy", craft: "web", group: "Concept websites", title: "Bhujangyy", note: "Brand site in Gurmukhi", kind: "link", shape: "wide", cover: "", href: asset("/lab/bhujangyy/") },
+  { id: "w-rahgir", craft: "web", group: "Concept websites", title: "Rahgir", note: "Interactive travel landing", kind: "link", shape: "wide", cover: "", href: asset("/lab/rahgir/") },
   { id: "w-portfolio", craft: "web", group: "Websites", title: "This portfolio", note: "Next.js · TypeScript · Tailwind", kind: "link", shape: "wide", cover: "", href: "https://meharwansingh1.github.io/portfolioo/" },
   { id: "w-travel", craft: "web", group: "Websites", title: "My Travel Vlogs", note: "HTML · CSS · JavaScript", kind: "link", shape: "wide", cover: "", href: "https://meharwansingh1.github.io/MyTravelVlogs/" },
 ]

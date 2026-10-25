@@ -31,9 +31,11 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "build",
     title: "Build",
-    blurb: "The code that holds a page up and makes it move.",
+    blurb: "The code that holds a page up and makes it move — from hand-written HTML to Next.js.",
     art: "glacier",
     skills: [
+      { name: "Next.js", note: "Multi-page React sites, statically exported and deployed to GitHub Pages.", level: 76, href: "/work/#portfolio" },
+      { name: "Tailwind CSS", note: "Utility-first styling for fast, consistent, responsive layouts.", level: 84, href: "/lab/rahgir/" },
       { name: "HTML", note: "Semantic, accessible structure that works on every device.", level: 92, href: "/work/#portfolio" },
       { name: "CSS", note: "Layout, motion and responsive systems from first principles.", level: 88, href: "/work/#portfolio" },
       { name: "JavaScript", note: "Interactivity and dynamic interfaces in the browser.", level: 78, href: "https://meharwansingh1.github.io/MyTravelVlogs/" },
@@ -218,7 +220,40 @@ export const projects: Project[] = [
       { label: "Source code", href: "https://github.com/meharwansingh1/portfolioo" },
     ],
   },
+  {
+    slug: "web-lab",
+    title: "Web Lab",
+    kind: "Concept websites",
+    year: "2026",
+    summary:
+      "Three concept websites, each with its own look and its own interaction — built to show range beyond this portfolio.",
+    highlights: [
+      "Vectoristory: cinematic, a live starfield and an episode grid",
+      "Bhujangyy: Gurmukhi titles and an interactive ten-day picker",
+      "Rahgir: a fictional travel brand with SVG postcards and a live estimator",
+    ],
+    tags: ["Next.js", "Tailwind CSS", "TypeScript"],
+    art: "glacier",
+    files: [
+      { name: "Rahgir", meta: "Travel concept", to: "/lab/rahgir/", art: "verdant" },
+      { name: "Bhujangyy", meta: "Brand concept", to: "/lab/bhujangyy/", image: reelCover("DeqFOaaB7zp") },
+      { name: "Vectoristory", meta: "Channel concept", to: "/lab/vectoristory/", image: ytCover("FQ76hjBlx78") },
+    ],
+    links: [
+      { label: "Open Rahgir", href: "/lab/rahgir/" },
+      { label: "Bhujangyy", href: "/lab/bhujangyy/" },
+      { label: "Vectoristory", href: "/lab/vectoristory/" },
+    ],
+  },
 ]
+
+/** Concept websites, each its own full page under /lab. */
+export const webLab = [
+  { slug: "vectoristory", title: "Vectoristory", line: "A dark, cinematic site for an animation channel — starfield, gold serif type, episode grid.", tags: ["Next.js", "Canvas", "Tailwind"] },
+  { slug: "bhujangyy", title: "Bhujangyy", line: "A brand site in night blue and steel, with Gurmukhi titles and a ten-day Dussehra Mahatam picker.", tags: ["Next.js", "Gurmukhi type", "Tailwind"] },
+  { slug: "rahgir", title: "Rahgir", line: "A playful travel landing page for a fictional brand: mood tabs, SVG postcards, live trip estimator.", tags: ["Next.js", "SVG", "Tailwind"] },
+]
+
 
 /** Where it started: the first pieces on Behance. */
 export const earlyWork = [

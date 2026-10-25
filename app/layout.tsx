@@ -4,8 +4,6 @@ import { GeistMono } from "geist/font/mono"
 import "@fontsource-variable/inter-tight"
 import "@fontsource/mrs-saint-delafield/400.css"
 import "./globals.css"
-import { Nav } from "@/components/site/nav"
-import { Footer } from "@/components/site/footer"
 import { themeScript } from "@/components/site/theme-toggle"
 
 
@@ -20,11 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="grain flex min-h-screen flex-col overflow-x-hidden font-sans">
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
+      <body className="min-h-screen overflow-x-hidden font-sans">{children}</body>
     </html>
   )
 }
