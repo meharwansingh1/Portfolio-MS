@@ -131,6 +131,8 @@ export const pieces: Piece[] = [
   { id: "e-tmp-teaser", craft: "video-editing", group: TMP, title: "Official Teaser · Episode 1", note: "Teaser edit", kind: "video", shape: "wide", ...video("iL_4QLKjfpY") },
   { id: "e-tmp-anthem", craft: "video-editing", group: TMP, title: "TMP Anthem with Raftaar", note: "Channel launch edit", kind: "video", shape: "wide", ...video("l8C4EreYkgk") },
 
+  { id: "e-gbs-shastar", craft: "video-editing", group: DM, title: "Shastar Pooja", note: "Most viral reel", kind: "video", shape: "tall", collab: giani, ...reel("DertFswz8eu") },
+  { id: "e-dm-1", craft: "video-editing", group: DM, title: "Day 1", note: "Katha reel", kind: "video", shape: "tall", collab: giani, ...reel("DeVe1aghvDG") },
   { id: "e-dm-bagh", craft: "video-editing", group: DM, title: "Gurdwara Shahidi Bagh", note: "Sri Anandpur Sahib", kind: "video", shape: "tall", collab: giani, ...reel("DetvuhmTaks") },
   { id: "e-dm-10", craft: "video-editing", group: DM, title: "Day 10 · Bhog", note: "Katha reel", kind: "video", shape: "tall", collab: giani, ...reel("DesAiuEzkA_") },
   { id: "e-dm-9", craft: "video-editing", group: DM, title: "Day 9", note: "Katha reel", kind: "video", shape: "tall", collab: giani, ...reel("DeqFOaaB7zp") },
@@ -169,7 +171,7 @@ export const pieces: Piece[] = [
   { id: "w-bhujangyy", craft: "web", group: "Concept websites", title: "Bhujangyy", note: "Brand site in Gurmukhi", kind: "link", shape: "wide", cover: "", href: asset("/lab/bhujangyy/") },
   { id: "w-rahgir", craft: "web", group: "Concept websites", title: "Rahgir", note: "Interactive travel landing", kind: "link", shape: "wide", cover: "", href: asset("/lab/rahgir/") },
   { id: "w-portfolio", craft: "web", group: "Websites", title: "This portfolio", note: "Next.js · TypeScript · Tailwind", kind: "link", shape: "wide", cover: "", href: "https://meharwansingh1.github.io/portfolioo/" },
-  { id: "w-travel", craft: "web", group: "Websites", title: "My Travel Vlogs", note: "HTML · CSS · JavaScript", kind: "link", shape: "wide", cover: "", href: "https://meharwansingh1.github.io/MyTravelVlogs/" },
+  { id: "w-travel", craft: "web", group: "Websites", title: "My Travel Vlogs", note: "HTML · CSS · JavaScript", kind: "link", shape: "wide", cover: "", href: "https://www.behance.net/gallery/179151969/Web-Template" },
 ]
 
 /** older links on the site used these names; they now open the matching craft */

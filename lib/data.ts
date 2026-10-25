@@ -38,9 +38,9 @@ export const skillGroups: SkillGroup[] = [
       { name: "Tailwind CSS", note: "Utility-first styling for fast, consistent, responsive layouts.", level: 84, href: "/lab/rahgir/" },
       { name: "HTML", note: "Semantic, accessible structure that works on every device.", level: 92, href: "/work/#portfolio" },
       { name: "CSS", note: "Layout, motion and responsive systems from first principles.", level: 88, href: "/work/#portfolio" },
-      { name: "JavaScript", note: "Interactivity and dynamic interfaces in the browser.", level: 78, href: "https://meharwansingh1.github.io/MyTravelVlogs/" },
+      { name: "JavaScript", note: "Interactivity and dynamic interfaces in the browser.", level: 78, href: "/lab/rahgir/" },
       { name: "Bootstrap", note: "Fast, mobile-first layouts from a proven grid.", level: 80, href: "https://www.behance.net/gallery/179151969/Web-Template" },
-      { name: "jQuery", note: "DOM traversal, events and quick animation.", level: 74, href: "https://meharwansingh1.github.io/MyTravelVlogs/" },
+      { name: "jQuery", note: "DOM traversal, events and quick animation.", level: 74, href: "https://www.behance.net/gallery/179151969/Web-Template" },
       { name: "Python", note: "Scripting and automation beyond the browser.", level: 62, href: "https://github.com/meharwansingh1" },
     ],
   },
@@ -81,6 +81,9 @@ export type Project = {
   links: { label: string; href: string }[]
   /** the sheets inside the project's glass folder; each one opens somewhere specific */
   files: FolderLink[]
+  /** a strip of reels shown under the project, best first */
+  reels?: { title: string; code: string }[]
+  reelsLabel?: string
 }
 
 /** A sheet in a glass folder. `to` is a page on this site ("/showcase/#…") or a full URL. */
@@ -172,11 +175,19 @@ export const projects: Project[] = [
     ],
     tags: ["Video editing", "Graphic design", "Social"],
     art: "verdant",
+    reelsLabel: "Most viral reels I created",
+    reels: [
+      { title: "Shastar Pooja", code: "DertFswz8eu" },
+      { title: "Dussehra Mahatam · Day 9", code: "DeqFOaaB7zp" },
+      { title: "Gurdwara Shahidi Bagh", code: "DetvuhmTaks" },
+      { title: "Dussehra Mahatam · Day 2", code: "DeYDq3bhMoB" },
+      { title: "Dussehra Mahatam · Day 1", code: "DeVe1aghvDG" },
+    ],
     files: [
       { name: "Giani Birbal Singh Ji", meta: "Instagram", to: "https://www.instagram.com/gianibirbalsinghji/" },
-      { name: "All 10 days", meta: "Showcase", to: "/showcase/#video-editing", art: "verdant" },
-      { name: "Day 10 · Bhog", meta: "Dussehra Mahatam", to: "https://www.instagram.com/reel/DesAiuEzkA_/", image: reelCover("DesAiuEzkA_") },
-      { name: "Shahidi Bagh, Anandpur Sahib", meta: "Reel", to: "https://www.instagram.com/reel/DetvuhmTaks/", image: reelCover("DetvuhmTaks") },
+      { name: "Shahidi Bagh, Anandpur Sahib", meta: "Viral reel", to: "https://www.instagram.com/reel/DetvuhmTaks/", image: reelCover("DetvuhmTaks") },
+      { name: "Dussehra Mahatam · Day 9", meta: "Viral reel", to: "https://www.instagram.com/reel/DeqFOaaB7zp/", image: reelCover("DeqFOaaB7zp") },
+      { name: "Shastar Pooja", meta: "Most viral", to: "https://www.instagram.com/reel/DertFswz8eu/", image: reelCover("DertFswz8eu") },
     ],
     links: [{ label: "Instagram", href: "https://www.instagram.com/gianibirbalsinghji/" }],
   },
@@ -259,15 +270,14 @@ export const webLab = [
 export const earlyWork = [
   {
     title: "My Travel Vlogs",
-    text: "A responsive travel-vlog web template — designed on Behance, then built and shipped live.",
-    links: [
-      { label: "Live demo", href: "https://meharwansingh1.github.io/MyTravelVlogs/" },
-      { label: "Behance", href: "https://www.behance.net/gallery/179151969/Web-Template" },
-    ],
+    text: "A responsive travel-vlog web template, designed and built in HTML, CSS and JavaScript.",
+    cover: { kind: "Web template", year: "2023", tone: "travel" as const },
+    links: [{ label: "View on Behance", href: "https://www.behance.net/gallery/179151969/Web-Template" }],
   },
   {
     title: "Behance profile",
     text: "My first design pieces — layouts, graphics and the experiments that got me here.",
+    cover: { kind: "Design portfolio", year: "Since 2023", tone: "behance" as const },
     links: [{ label: "View on Behance", href: "https://www.behance.net/meharramgarh1a" }],
   },
 ]
