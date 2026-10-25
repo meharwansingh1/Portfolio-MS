@@ -175,8 +175,8 @@ export const projects: Project[] = [
     files: [
       { name: "Giani Birbal Singh Ji", meta: "Instagram", to: "https://www.instagram.com/gianibirbalsinghji/" },
       { name: "YouTube channel", meta: "@gianibirbalsinghji", to: "https://www.youtube.com/@gianibirbalsinghji" },
-      { name: "Bhavani Ustat", meta: "2023", to: "https://www.youtube.com/watch?v=WMruP3z8sTM", image: ytCover("WMruP3z8sTM") },
-      { name: "Ugardanti", meta: "2023", to: "https://www.youtube.com/watch?v=2thsVQWPpls", image: ytCover("2thsVQWPpls") },
+      { name: "Hola Mahalla di Upma", meta: "YouTube", to: "https://www.youtube.com/watch?v=Fi959u_T1xQ", image: ytCover("Fi959u_T1xQ") },
+      { name: "Guru Tegh Bahadur Ji", meta: "Viral reel", to: "https://www.instagram.com/reel/DRa01OHk9w9/", image: reelCover("DRa01OHk9w9") },
     ],
     links: [
       { label: "Instagram", href: "https://www.instagram.com/gianibirbalsinghji/" },
