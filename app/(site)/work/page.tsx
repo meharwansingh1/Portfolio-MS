@@ -5,7 +5,6 @@ import { Reveal } from "@/components/site/reveal"
 import { ProjectFolder } from "@/components/site/project-folder"
 import { SmartLink } from "@/components/site/smart-link"
 import { asset, earlyWork, projects } from "@/lib/data"
-import { EarlyCover } from "@/components/site/early-cover"
 
 export const metadata: Metadata = { title: "Work" }
 
@@ -36,30 +35,6 @@ export default function WorkPage() {
                     </li>
                   ))}
                 </ul>
-              ) : null}
-              {p.reels ? (
-                <div className="mt-7">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{p.reelsLabel}</p>
-                  <ul className="mt-3 flex gap-2.5 overflow-x-auto pb-1 [scrollbar-width:none]">
-                    {p.reels.map((r, ri) => (
-                      <li key={r.code} className="shrink-0">
-                        <a
-                          href={`https://www.instagram.com/reel/${r.code}/`}
-                          target="_blank"
-                          rel="noreferrer"
-                          title={r.title}
-                          className="group relative block w-[84px] overflow-hidden rounded-xl border border-border sm:w-[92px]"
-                        >
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={asset(`/work/${r.code}.jpg`)} alt={r.title} loading="lazy" className="aspect-[9/16] w-full object-cover transition duration-500 group-hover:scale-105" />
-                          {ri === 0 ? (
-                            <span className="absolute top-1.5 left-1.5 rounded-full bg-accent px-1.5 py-0.5 text-[9px] font-medium text-white">Top</span>
-                          ) : null}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               ) : null}
               <ul className="mt-6 flex flex-wrap gap-2">
                 {p.tags.map((t) => (
@@ -102,18 +77,15 @@ export default function WorkPage() {
         </Reveal>
         <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
           {earlyWork.map((w, i) => (
-            <Reveal key={w.title} delay={i * 80} className="flex flex-col overflow-hidden rounded-3xl border border-border bg-card">
-              <EarlyCover title={w.title} {...w.cover} />
-              <div className="flex flex-1 flex-col p-8 pt-6">
+            <Reveal key={w.title} delay={i * 80} className="flex flex-col rounded-3xl border border-border bg-card p-8">
               <h3 className="font-display text-2xl">{w.title}</h3>
               <p className="mt-2 flex-1 text-muted-foreground">{w.text}</p>
               <div className="mt-6 flex flex-wrap gap-4">
                 {w.links.map((l) => (
-                  <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline">
+                  <a key={l.href} href={l.href.startsWith("/") ? asset(l.href) : l.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline">
                     {l.label} <ArrowUpRight className="size-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </a>
                 ))}
-              </div>
               </div>
             </Reveal>
           ))}
