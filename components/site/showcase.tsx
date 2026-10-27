@@ -5,6 +5,7 @@ import { createPortal } from "react-dom"
 import { ArrowRight, ArrowUpRight, Expand, Globe, Play, X } from "lucide-react"
 import { crafts, legacyHash, pieces, type Craft, type CraftId, type Piece } from "@/lib/showcase"
 import { cn } from "@/lib/utils"
+import { CursorLabel, VelocitySkew } from "@/components/fx/cursor"
 import { Reveal } from "./reveal"
 
 type Filter = "all" | CraftId
@@ -73,8 +74,9 @@ function Card({ piece, onOpen }: { piece: Piece; onOpen: (p: Piece) => void }) {
     <button
       type="button"
       onClick={() => onOpen(piece)}
+      data-cursor={piece.kind === "video" ? "Play" : piece.kind === "image" ? "View" : "Open"}
       className={cn(
-        "group relative block w-full overflow-hidden rounded-[1.5rem] bg-muted text-left outline-none ring-accent ring-offset-4 ring-offset-background focus-visible:ring-2",
+        "group relative block w-full overflow-hidden rounded-[1.5rem] bg-muted [@media(hover:hover)_and_(pointer:fine)]:cursor-none text-left outline-none ring-accent ring-offset-4 ring-offset-background focus-visible:ring-2",
         piece.shape === "tall" ? "aspect-[9/16]" : "aspect-video",
       )}
     >
@@ -91,7 +93,7 @@ function Card({ piece, onOpen }: { piece: Piece; onOpen: (p: Piece) => void }) {
         {piece.note}
       </span>
 
-      <span className="absolute top-1/2 left-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 scale-75 place-items-center rounded-full bg-white/95 text-black opacity-0 shadow-2xl transition duration-500 group-hover:scale-100 group-hover:opacity-100">
+      <span className="absolute top-1/2 left-1/2 grid size-14 -translate-x-1/2 [@media(hover:hover)_and_(pointer:fine)]:hidden -translate-y-1/2 scale-75 place-items-center rounded-full bg-white/95 text-black opacity-0 shadow-2xl transition duration-500 group-hover:scale-100 group-hover:opacity-100">
         <Icon className={cn("size-5", piece.kind === "video" && "ml-0.5 fill-current")} />
       </span>
 
@@ -334,11 +336,12 @@ export function Showcase() {
       </div>
 
       {/* ---------- the work, craft by craft ---------- */}
-      <div key={filter} className="mx-auto max-w-6xl px-4 pt-12 sm:px-6">
+      <VelocitySkew key={filter} className="mx-auto max-w-6xl px-4 pt-12 sm:px-6">
         {shown.map((c) => (
           <CraftSection key={c.id} craft={c} index={crafts.indexOf(c)} preview={filter === "all"} onOpen={openPiece} onMore={() => choose(c.id)} />
         ))}
-      </div>
+      </VelocitySkew>
+      <CursorLabel />
 
       {open ? <Viewer piece={open} onClose={() => setOpen(null)} /> : null}
     </>

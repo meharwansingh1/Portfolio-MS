@@ -178,3 +178,29 @@ body {
     animation: none;
   }
 }
+
+/* a torch under the cursor: lights the card's surface and its border */
+.spotlight::before,
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.spotlight::before {
+  background: radial-gradient(420px circle at var(--x, 50%) var(--y, 50%), color-mix(in oklab, var(--accent) 14%, transparent), transparent 60%);
+}
+.spotlight::after {
+  padding: 1px;
+  background: radial-gradient(260px circle at var(--x, 50%) var(--y, 50%), var(--accent), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.spotlight:hover::before,
+.spotlight:hover::after {
+  opacity: 1;
+}

@@ -1,51 +1,75 @@
 import type { Metadata } from "next"
+import { ArrowUpRight, Hand } from "lucide-react"
 import { PageHeader } from "@/components/site/page-header"
-import { ArrowUpRight } from "lucide-react"
 import { Reveal } from "@/components/site/reveal"
 import { SmartLink } from "@/components/site/smart-link"
-import { SkillFolder } from "@/components/site/skill-folder"
+import { LevelRing, SkillSphere, Spotlight } from "@/components/fx/skill-sphere"
 import { skillGroups } from "@/lib/data"
 
 export const metadata: Metadata = { title: "Skills" }
+
+const dots = ["bg-accent", "bg-foreground", "border border-foreground/40 bg-card"]
 
 export default function SkillsPage() {
   return (
     <div className="page-in">
       <PageHeader index="03" eyebrow="Explore my" title="Skills" intro="Three toolkits that keep borrowing from each other: building, designing and moving." />
 
-      <div className="mx-auto max-w-6xl space-y-28 px-4 py-12 sm:px-6">
+      {/* ---------- the sphere ---------- */}
+      <section className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 pb-20 sm:px-6 md:grid-cols-[1.3fr_1fr]">
+        <SkillSphere groups={skillGroups} />
+        <Reveal>
+          <p className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 font-mono text-[11px] tracking-[0.15em] text-muted-foreground uppercase">
+            <Hand className="size-3.5" /> Drag to spin · tap to open
+          </p>
+          <h2 className="mt-6 font-display text-4xl leading-tight sm:text-5xl">
+            {skillGroups.reduce((n, g) => n + g.skills.length, 0)} tools, <span className="text-muted-foreground">one orbit.</span>
+          </h2>
+          <ul className="mt-8 space-y-3">
+            {skillGroups.map((g, i) => (
+              <li key={g.id}>
+                <a href={`#${g.id}`} className="group flex items-center gap-3 text-lg">
+                  <span className={`size-3 rounded-full ${dots[i % 3]}`} />
+                  <span className="font-medium">{g.title}</span>
+                  <span className="text-sm text-muted-foreground">· {g.skills.length} skills</span>
+                  <ArrowUpRight className="size-4 rotate-90 text-muted-foreground transition group-hover:text-accent" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </section>
+
+      {/* ---------- the toolkits ---------- */}
+      <section className="mx-auto grid max-w-6xl grid-cols-1 gap-5 px-4 pb-12 sm:px-6 lg:grid-cols-3">
         {skillGroups.map((g, gi) => (
-          <section key={g.id} id={g.id} className="grid grid-cols-1 scroll-mt-28 items-center gap-12 md:grid-cols-[1fr_1.25fr]">
-            <Reveal className={gi % 2 ? "md:order-2" : ""}>
-              <SkillFolder group={g} index={gi} />
-            </Reveal>
-            <div>
-              <Reveal>
+          <Reveal key={g.id} delay={gi * 100} className="h-full">
+            <Spotlight className="h-full">
+              <div id={g.id} className="relative scroll-mt-28">
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">0{gi + 1}</p>
-                <h2 className="mt-3 font-display text-6xl sm:text-7xl">{g.title}</h2>
+                <h2 className="mt-3 font-display text-5xl">{g.title}</h2>
                 <p className="mt-3 text-muted-foreground">{g.blurb}</p>
-              </Reveal>
-              <ul className="mt-10 divide-y divide-border border-y border-border">
-                {g.skills.map((s, i) => (
-                  <Reveal as="li" key={s.name} delay={i * 60} className="group py-5">
-                    <SmartLink href={s.href} className="flex items-baseline justify-between gap-4">
-                      <h3 className="text-xl font-medium tracking-tight transition group-hover:translate-x-1">{s.name}</h3>
-                      <span className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-                        <span className="opacity-0 transition group-hover:opacity-100">see it</span>
-                        <ArrowUpRight className="size-3.5 transition group-hover:text-accent" /> {s.level}%
-                      </span>
-                    </SmartLink>
-                    <p className="mt-1 text-sm text-muted-foreground">{s.note}</p>
-                    <div className="mt-3 h-1 overflow-hidden rounded-full bg-muted">
-                      <div className="h-full origin-left rounded-full bg-foreground transition-all duration-700 group-hover:bg-accent" style={{ width: s.level + "%" }} />
-                    </div>
-                  </Reveal>
-                ))}
-              </ul>
-            </div>
-          </section>
+                <ul className="mt-8 space-y-1">
+                  {g.skills.map((s) => (
+                    <li key={s.name}>
+                      <SmartLink href={s.href} className="group -mx-2 flex items-center gap-4 rounded-2xl p-2 transition hover:bg-muted/60">
+                        <LevelRing level={s.level} />
+                        <span className="min-w-0 flex-1">
+                          <span className="flex items-center gap-1.5 font-medium">
+                            {s.name}
+                            <ArrowUpRight className="size-3.5 text-muted-foreground opacity-0 transition group-hover:text-accent group-hover:opacity-100" />
+                          </span>
+                          <span className="mt-0.5 block text-sm text-muted-foreground">{s.note}</span>
+                        </span>
+                      </SmartLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Spotlight>
+          </Reveal>
         ))}
-      </div>
+      </section>
     </div>
   )
 }

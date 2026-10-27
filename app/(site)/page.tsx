@@ -2,7 +2,7 @@ import Link from "next/link"
 import { ArrowDownRight, ArrowUpRight, Download } from "lucide-react"
 import { site, projects } from "@/lib/data"
 import { Reveal } from "@/components/site/reveal"
-import { HomeFolders } from "@/components/site/home-folders"
+import { CountUp, ProjectIndex } from "@/components/fx/project-index"
 import { Signature } from "@/components/site/signature"
 import { AvailabilityBadge, UntilNoticeEnds } from "@/components/site/availability"
 import { ProximityName } from "@/components/site/proximity-name"
@@ -76,20 +76,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- the folders ---------- */}
+      {/* ---------- the index ---------- */}
       <section className="relative mx-auto max-w-6xl px-4 py-28 sm:px-6">
-        <Reveal className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <Reveal className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="text-accent">01</span> — The desk
+              <span className="text-accent">01</span> — The index
             </p>
             <h2 className="mt-4 max-w-xl font-display text-5xl leading-none sm:text-6xl">
-              Everything I make, <span className="text-muted-foreground">filed neatly.</span>
+              Selected work, <span className="text-muted-foreground">one line each.</span>
             </h2>
           </div>
-          <p className="max-w-xs text-sm text-muted-foreground">Hover a folder to lean its glass. Click to open it, then pick a file to jump straight there.</p>
+          <p className="max-w-xs text-sm text-muted-foreground">Run your cursor down the list — a preview follows it. Click any line to open the project.</p>
         </Reveal>
-        <HomeFolders />
+        <ProjectIndex />
       </section>
 
       {/* ---------- numbers ---------- */}
@@ -102,7 +102,7 @@ export default function Home() {
             ["Daily", "new animated stories"],
           ].map(([n, l], i) => (
             <Reveal key={l} delay={i * 80} className="bg-background p-8">
-              <p className="font-display text-5xl">{n}</p>
+              <CountUp value={n} className="block font-display text-5xl" />
               <p className="mt-2 text-sm text-muted-foreground">{l}</p>
             </Reveal>
           ))}
