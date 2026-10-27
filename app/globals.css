@@ -221,7 +221,7 @@ html.intro-on #hero-title {
 .hero-word {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: min(16.5vw, 15rem);
+  font-size: min(15.5vw, 14rem);
   line-height: 0.9;
   letter-spacing: -0.04em;
   white-space: nowrap;
@@ -232,7 +232,9 @@ html.intro-on #hero-title {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  padding-inline: 0.01em;
+  /* room on the right so the last letter's overhang isn't clipped by background-clip */
+  padding-inline: 0.1em;
+  margin-inline: -0.1em;
 }
 
 /* while it spells the name, the intro word is set smaller, then grows into the title */

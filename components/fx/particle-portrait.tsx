@@ -38,9 +38,9 @@ export function ParticlePortrait({ className }: { className?: string }) {
     // dark pixels (turban, beard) become deep Nihang blue; light ones go to silver-white
     const fills = Array.from({ length: BUCKETS }, (_, i) => {
       const k = i / (BUCKETS - 1)
-      const r = Math.round(60 + (236 - 60) * k)
-      const g = Math.round(90 + (240 - 90) * k)
-      const b = Math.round(230 + (255 - 230) * k)
+      const r = Math.round(95 + (245 - 95) * k)
+      const g = Math.round(125 + (248 - 125) * k)
+      const b = Math.round(255)
       return `rgb(${r},${g},${b})`
     })
 
@@ -55,16 +55,16 @@ export function ParticlePortrait({ className }: { className?: string }) {
 
       // the picture sits behind the title, feet on the bottom of the hero
       const narrow = w < 640
-      const dispH = Math.min(h * (narrow ? 0.72 : 0.9), (w * (narrow ? 0.95 : 0.6) * src.height) / src.width)
+      const dispH = Math.min(h * (narrow ? 0.55 : 0.86), (w * (narrow ? 1 : 0.62) * src.height) / src.width)
       const s = dispH / src.height
       const ox = (w - src.width * s) / 2
-      const oy = h - dispH - h * (narrow ? 0.2 : 0.06)
+      const oy = narrow ? Math.max(72, h * 0.1) : h - dispH - h * 0.04
 
-      const target = narrow ? 6000 : 13000
+      const target = narrow ? 8000 : 18000
       let opaque = 0
       for (let i = 3; i < src.data.length; i += 4) if (src.data[i] > 140) opaque++
       const step = Math.max(1, Math.sqrt(opaque / target))
-      size = Math.max(1.4, step * s * 0.46)
+      size = Math.max(1.4, step * s * 0.48)
 
       const old = parts
       parts = []
@@ -72,9 +72,11 @@ export function ParticlePortrait({ className }: { className?: string }) {
         for (let x = 0; x < src.width; x += step) {
           const i = (Math.floor(y) * src.width + Math.floor(x)) * 4
           if (src.data[i + 3] <= 140) continue
-          const lum = (0.299 * src.data[i] + 0.587 * src.data[i + 1] + 0.114 * src.data[i + 2]) / 255
+          const raw = (0.299 * src.data[i] + 0.587 * src.data[i + 1] + 0.114 * src.data[i + 2]) / 255
+          // stretch the contrast so eyes, brows and beard read against the skin
+          const lum = clamp((raw - 0.22) / 0.6)
           // dark areas (turban, beard, eyes) thin out, so the face reads clearly
-          if (Math.random() > 0.3 + 0.7 * Math.pow(lum, 0.7)) continue
+          if (Math.random() > 0.5 + 0.5 * Math.pow(lum, 0.8)) continue
           const hx = ox + x * s + (Math.random() - 0.5) * step * s * 0.5
           const hy = oy + y * s + (Math.random() - 0.5) * step * s * 0.5
           const a = Math.random() * Math.PI * 2
@@ -90,7 +92,7 @@ export function ParticlePortrait({ className }: { className?: string }) {
             sx: Math.cos(a) * spread,
             sy: Math.sin(a) * spread - h * 0.25,
             d: Math.random() * 0.9,
-            b: Math.min(BUCKETS - 1, Math.floor(Math.pow(lum, 1.1) * BUCKETS)),
+            b: Math.min(BUCKETS - 1, Math.floor(Math.pow(lum, 0.9) * BUCKETS)),
             ph: Math.random() * Math.PI * 2,
           })
         }
@@ -137,7 +139,7 @@ export function ParticlePortrait({ className }: { className?: string }) {
       const fade = 1 - ease * 0.85
       for (let b = 0; b < BUCKETS; b++) {
         ctx.fillStyle = fills[b]
-        ctx.globalAlpha = (0.3 + Math.pow(b / (BUCKETS - 1), 1.3) * 0.7) * fade * (started ? 1 : 0.35)
+        ctx.globalAlpha = (0.45 + Math.pow(b / (BUCKETS - 1), 1.2) * 0.55) * fade * (started ? 1 : 0.35)
         for (const p of byBucket[b]) ctx.fillRect(p.x, p.y, size, size)
       }
       ctx.globalAlpha = 1
