@@ -5,6 +5,7 @@ import "@fontsource-variable/inter-tight"
 import "@fontsource/mrs-saint-delafield/400.css"
 import "./globals.css"
 import { themeScript } from "@/components/site/theme-toggle"
+import { introBootScript } from "@/lib/intro"
 
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: introBootScript }} />
       </head>
       <body className="min-h-screen overflow-x-hidden font-sans">{children}</body>
     </html>

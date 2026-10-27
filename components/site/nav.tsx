@@ -12,6 +12,8 @@ export function Nav() {
   const path = usePathname()
   const [open, setOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
+  // over the dark cover at the top of Home, the bar switches to light-on-dark
+  const [cover, setCover] = React.useState(false)
 
   // close the mobile menu whenever the route changes
   const [lastPath, setLastPath] = React.useState(path)
@@ -20,24 +22,38 @@ export function Nav() {
     setOpen(false)
   }
   React.useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 24)
+    const on = () => {
+      setScrolled(window.scrollY > 24)
+      const c = document.querySelector("[data-cover]")
+      setCover(!!c && c.getBoundingClientRect().bottom > 60)
+    }
     on()
     window.addEventListener("scroll", on, { passive: true })
-    return () => window.removeEventListener("scroll", on)
-  }, [])
+    const id = setTimeout(on, 50)
+    return () => {
+      clearTimeout(id)
+      window.removeEventListener("scroll", on)
+    }
+  }, [path])
 
   const active = (href: string) => (href === "/" ? path === "/" : path.startsWith(href))
+  const dark = cover && !open
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <nav
         className={cn(
           "mx-auto flex max-w-6xl items-center justify-between rounded-full border px-3 py-2 transition-all duration-500",
-          scrolled ? "border-border bg-background/70 shadow-[0_10px_40px_-20px_rgba(0,0,0,.35)] backdrop-blur-xl" : "border-transparent",
+          scrolled
+            ? dark
+              ? "border-white/10 bg-black/40 backdrop-blur-xl"
+              : "border-border bg-background/70 shadow-[0_10px_40px_-20px_rgba(0,0,0,.35)] backdrop-blur-xl"
+            : "border-transparent",
+          dark && "text-white [&_.nav-mute]:text-white/60 [&_.nav-mute:hover]:text-white",
         )}
       >
         <Link href="/" className="group flex items-center gap-2 pl-2" aria-label="Home">
-          <span className="grid size-9 place-items-center rounded-full bg-foreground font-display text-lg text-background transition group-hover:rotate-[-8deg]">
+          <span className={cn("grid size-9 place-items-center rounded-full font-display text-lg transition group-hover:rotate-[-8deg]", dark ? "bg-white text-[#05070d]" : "bg-foreground text-background")}>
             {site.short}
           </span>
           <span className="hidden text-sm font-medium tracking-tight sm:block">{site.name}</span>
@@ -50,7 +66,7 @@ export function Nav() {
                 href={l.href}
                 className={cn(
                   "relative rounded-full px-4 py-2 text-sm transition-colors",
-                  active(l.href) ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground",
+                  active(l.href) ? (dark ? "bg-white text-[#05070d]" : "bg-foreground text-background") : "nav-mute text-muted-foreground hover:text-foreground",
                 )}
               >
                 {l.label}
@@ -72,7 +88,7 @@ export function Nav() {
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            className="grid size-10 place-items-center rounded-full border border-border md:hidden"
+            className={cn("grid size-10 place-items-center rounded-full border md:hidden", dark ? "border-white/20" : "border-border")}
           >
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>

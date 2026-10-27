@@ -7,6 +7,8 @@ import { Signature } from "@/components/site/signature"
 import { AvailabilityBadge, UntilNoticeEnds } from "@/components/site/availability"
 import { ProximityName } from "@/components/site/proximity-name"
 import { RotatingWord } from "@/components/site/rotating-word"
+import { Intro } from "@/components/fx/intro"
+import { ParticlePortrait } from "@/components/fx/particle-portrait"
 
 const now = [
   { label: "Building Bhujangyy", note: "own brand", href: "/work/#bhujangyy" },
@@ -18,34 +20,63 @@ const now = [
 export default function Home() {
   return (
     <>
-      {/* ---------- hero ---------- */}
-      <section className="relative overflow-hidden">
+      <Intro />
+
+      {/* ---------- cover: the portrait in particles, behind the title ---------- */}
+      <section data-cover className="relative h-svh min-h-[600px] overflow-hidden bg-[#05070d] text-white">
+        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(55%_50%_at_50%_42%,rgba(91,124,255,.14),transparent_70%)]" />
+        <ParticlePortrait className="absolute inset-0 size-full" />
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#05070d] to-transparent" />
+
+        <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-10 sm:px-6 md:pb-14">
+          <h1 id="hero-title" className="hero-word chrome text-center">
+            <span className="sr-only">Meharwan Singh — </span>PORTFOLIO
+          </h1>
+          <div className="mt-6 flex flex-col gap-5 md:mt-8 md:flex-row md:items-center md:justify-between">
+            <p className="text-xl leading-snug sm:text-2xl">
+              <span className="font-semibold">Meharwan Singh</span> <span className="text-white/50">—</span> Graphic Designer &amp;{" "}
+              <span className="font-display text-[#8fa6ff] italic">Video Editor</span>
+            </p>
+            <div className="flex items-center gap-3">
+              <a href="#hello" aria-label="Scroll down" className="grid size-11 place-items-center rounded-full border border-white/20 transition hover:border-white/60">
+                <ArrowDownRight className="size-4" />
+              </a>
+              <Link href="/contact" className="rounded-full border border-white/20 px-6 py-2.5 text-sm transition hover:border-white/60 hover:bg-white hover:text-[#05070d]">
+                Contact
+              </Link>
+            </div>
+          </div>
+        </div>
+        <p className="absolute top-1/2 right-4 hidden -translate-y-1/2 rotate-90 font-mono text-[10px] tracking-[0.3em] text-white/35 uppercase md:block">Scroll to scatter</p>
+      </section>
+
+      {/* ---------- hello ---------- */}
+      <section id="hello" className="relative scroll-mt-0 overflow-hidden">
         <div aria-hidden="true" className="dot-grid absolute inset-0 [mask-image:radial-gradient(70%_60%_at_50%_40%,#000,transparent)]" />
         <div aria-hidden="true" className="absolute top-10 left-1/2 size-[44rem] -translate-x-1/2 rounded-full bg-accent/15 blur-[150px]" />
 
-        <div className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-36 pb-16 text-center sm:px-6 md:pt-44">
-          <AvailabilityBadge short className="page-in" />
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-28 pb-16 text-center sm:px-6 md:pt-36">
+          <AvailabilityBadge short />
 
           <div className="relative mt-8">
             <ProximityName
               className="text-[18vw] leading-[0.86] tracking-[-0.05em] md:text-[13.5vw] xl:text-[12.5rem]"
               lines={[{ text: "Meharwan" }, { text: "Singh.", className: "text-accent" }]}
             />
-            {/* signed, like a poster: under the name on phones, tucked at its lower right on bigger screens */}
-            <span className="page-in mt-2 block text-[13vw] text-foreground [animation-delay:1.1s] md:absolute md:-right-10 md:-bottom-[1.05em] md:mt-0 md:text-[5vw] xl:text-[4.4rem]">
+            <span className="mt-2 block text-[13vw] text-foreground md:absolute md:-right-10 md:-bottom-[1.05em] md:mt-0 md:text-[5vw] xl:text-[4.4rem]">
               <Signature className="-rotate-[5deg] [&_.signature-stroke]:text-accent" />
             </span>
           </div>
 
-          <p className="page-in mt-10 font-display text-2xl md:mt-28 leading-snug sm:text-4xl [animation-delay:.6s]">
+          <p className="mt-10 font-display text-2xl leading-snug sm:text-4xl md:mt-28">
             Visual storyteller. <span className="text-muted-foreground">I tell stories in</span>{" "}
             <RotatingWord words={["thumbnails.", "edits.", "motion.", "AI animation.", "code."]} />
           </p>
-          <p className="page-in mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground [animation-delay:.75s]">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
             Graphic design, video editing, motion and AI animation aren&apos;t four jobs — they&apos;re one craft: taking a story from the first frame to
             the final upload.
           </p>
-          <div className="page-in mt-10 flex flex-wrap justify-center gap-3 [animation-delay:.9s]">
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Link href="/showcase" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-sm font-medium text-background transition hover:gap-3">
               Watch the work <ArrowDownRight className="size-4 transition group-hover:-rotate-45" />
             </Link>
@@ -53,9 +84,7 @@ export default function Home() {
               <Download className="size-4" /> Download CV
             </a>
           </div>
-          <p className="page-in mt-14 hidden font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground/70 md:block [animation-delay:1.4s]">
-            Move your cursor over my name
-          </p>
+          <p className="mt-14 hidden font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground/70 md:block">Move your cursor over my name</p>
         </div>
 
         {/* right now */}
