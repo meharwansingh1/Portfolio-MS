@@ -72,7 +72,7 @@ export function CursorLabel() {
     <div
       ref={dot}
       aria-hidden="true"
-      className="group/c pointer-events-none fixed top-0 left-0 z-[70] hidden size-24 place-items-center rounded-full bg-accent text-white mix-blend-normal [@media(hover:hover)_and_(pointer:fine)]:grid"
+      className="group/c pointer-events-none fixed top-0 left-0 z-[70] hidden size-24 place-items-center rounded-full bg-accent text-accent-foreground mix-blend-normal [@media(hover:hover)_and_(pointer:fine)]:grid"
       style={{ transform: "translate3d(-100px,-100px,0)" }}
     >
       <span ref={text} className="font-mono text-xs tracking-[0.2em] uppercase opacity-0 transition-opacity duration-200 group-data-[on=1]/c:opacity-100" />

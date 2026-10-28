@@ -85,7 +85,7 @@ function ChapterCard({ t, i, total }: { t: Chapter; i: number; total: number }) 
         <span
           className={cn(
             "rounded-full px-2.5 py-1 font-mono text-[10px] tracking-[0.15em] uppercase",
-            t.kind === "Own brand" ? "bg-accent text-white" : t.kind === "Education" ? "border border-border text-muted-foreground" : "bg-foreground text-background",
+            t.kind === "Own brand" ? "bg-accent text-accent-foreground" : t.kind === "Education" ? "border border-border text-muted-foreground" : "bg-foreground text-background",
           )}
         >
           {t.kind}

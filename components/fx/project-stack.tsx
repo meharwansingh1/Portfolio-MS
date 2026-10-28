@@ -94,14 +94,14 @@ export function ProjectStack() {
                 </ul>
                 <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium sm:mt-auto sm:pt-8">
                   Open project
-                  <span className="grid size-9 place-items-center rounded-full bg-foreground text-background transition duration-500 group-hover:rotate-45 group-hover:bg-accent group-hover:text-white">
+                  <span className="grid size-9 place-items-center rounded-full bg-foreground text-background transition duration-500 group-hover:rotate-45 group-hover:bg-accent group-hover:text-accent-foreground">
                     <ArrowUpRight className="size-4" />
                   </span>
                 </span>
               </div>
 
               {/* the pictures: a fanned stack of the project's own covers */}
-              <div className="relative order-first h-48 overflow-hidden bg-[radial-gradient(120%_90%_at_20%_10%,#5b7cff,#0b1230_70%)] sm:h-64 md:order-none md:h-auto">
+              <div className="relative order-first h-48 overflow-hidden bg-[radial-gradient(120%_90%_at_20%_10%,#f2a33a,#1c1408_72%)] sm:h-64 md:order-none md:h-auto">
                 {p.images.length ? (
                   p.images.map((src, k) => (
                     <img

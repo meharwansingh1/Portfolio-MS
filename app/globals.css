@@ -3,25 +3,27 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f6f8fb;
-  --foreground: #0b0f1a;
-  --muted: #e8edf5;
-  --muted-foreground: #5a6475;
-  --card: #ffffff;
-  --border: rgba(11, 15, 26, 0.1);
-  --accent: #2245d6;
-  --grid: rgba(11, 15, 26, 0.07);
+  --background: #f4f1ea;
+  --foreground: #0e1116;
+  --muted: #e8e3d8;
+  --muted-foreground: #5f646c;
+  --card: #fbf9f4;
+  --border: rgba(14, 17, 22, 0.1);
+  --accent: #a85a06;
+  --accent-foreground: #ffffff;
+  --grid: rgba(14, 17, 22, 0.07);
 }
 
 .dark {
-  --background: #070a12;
-  --foreground: #eef2fa;
-  --muted: #111827;
-  --muted-foreground: #8a94a7;
-  --card: #0d1220;
-  --border: rgba(238, 242, 250, 0.09);
-  --accent: #5b7cff;
-  --grid: rgba(238, 242, 250, 0.05);
+  --background: #0e1116;
+  --foreground: #f4f1ea;
+  --muted: #181c23;
+  --muted-foreground: #8a8f98;
+  --card: #141820;
+  --border: rgba(244, 241, 234, 0.09);
+  --accent: #f2a33a;
+  --accent-foreground: #0e1116;
+  --grid: rgba(244, 241, 234, 0.05);
 }
 
 @theme inline {
@@ -32,6 +34,7 @@
   --color-card: var(--card);
   --color-border: var(--border);
   --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: "Inter Tight Variable", "Inter Tight", ui-sans-serif, system-ui, sans-serif;
@@ -228,7 +231,7 @@ html.intro-on #hero-title {
 }
 /* brushed-silver letters, lit from above */
 .chrome {
-  background-image: linear-gradient(180deg, #ffffff 0%, #e6ebf5 38%, #a9b3c9 70%, #6b7590 100%);
+  background-image: linear-gradient(180deg, #fffaf0 0%, #f4e6cc 38%, #d9a865 72%, #9c6420 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -243,12 +246,12 @@ html.intro-on #hero-title {
 }
 /* the hero title in ink, for the light studio */
 .ink {
-  background-image: linear-gradient(180deg, #0b0f1a 15%, #2245d6 130%);
+  background-image: linear-gradient(180deg, #0e1116 15%, #a85a06 130%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   padding-inline: 0.1em;
 }
 .dark .ink {
-  background-image: linear-gradient(180deg, #eef2fa 15%, #5b7cff 130%);
+  background-image: linear-gradient(180deg, #f4f1ea 20%, #f2a33a 135%);
 }

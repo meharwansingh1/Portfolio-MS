@@ -132,7 +132,7 @@ export function Intro() {
         const ty = to.top + to.height / 2 - (from.top + from.height / 2)
         r.animate([{ transform: "none" }, { transform: `translate(${tx}px, ${ty}px) scale(${s})` }], { duration: 900, easing: "cubic-bezier(.7,0,.2,1)", fill: "forwards" })
       }
-      await el.animate([{ backgroundColor: "rgba(5,7,13,1)" }, { backgroundColor: "rgba(5,7,13,1)", offset: 0.55 }, { backgroundColor: "rgba(5,7,13,0)" }], { duration: 900, fill: "forwards" }).finished
+      await el.animate([{ backgroundColor: "rgba(14,17,22,1)" }, { backgroundColor: "rgba(14,17,22,1)", offset: 0.55 }, { backgroundColor: "rgba(14,17,22,0)" }], { duration: 900, fill: "forwards" }).finished
       end()
     }
 
@@ -153,8 +153,8 @@ export function Intro() {
   }, [])
 
   return (
-    <div ref={stage} aria-hidden="true" className="intro-overlay fixed inset-0 z-[100] cursor-pointer overflow-hidden bg-[#05070d] select-none">
-      <div ref={glow} className="absolute inset-0 bg-[radial-gradient(45%_45%_at_50%_50%,rgba(91,124,255,.16),transparent_70%)] opacity-0" />
+    <div ref={stage} aria-hidden="true" className="intro-overlay fixed inset-0 z-[100] cursor-pointer overflow-hidden bg-[#0e1116] select-none">
+      <div ref={glow} className="absolute inset-0 bg-[radial-gradient(45%_45%_at_50%_50%,rgba(242,163,58,.16),transparent_70%)] opacity-0" />
       <div className="absolute inset-0 grid place-items-center px-4">
         <div ref={row} className="hero-word chrome-row flex items-baseline opacity-0 [perspective:800px]">
           {Array.from(WORD).map((_, i) => (
@@ -168,8 +168,8 @@ export function Intro() {
               {NAME[i] ?? ""}
             </span>
           ))}
-          <span ref={dot} className="relative inline-block size-[0.17em] translate-y-[-0.02em] rounded-full bg-white">
-            <span ref={bar} className="absolute bottom-[160%] left-1/2 -ml-[0.07em] h-[0.62em] w-[0.14em] origin-bottom rounded-[0.03em] bg-gradient-to-b from-white to-[#9aa6c0] opacity-0" />
+          <span ref={dot} className="relative inline-block size-[0.17em] translate-y-[-0.02em] rounded-full bg-[#f2a33a]">
+            <span ref={bar} className="absolute bottom-[160%] left-1/2 -ml-[0.07em] h-[0.62em] w-[0.14em] origin-bottom rounded-[0.03em] bg-gradient-to-b from-white to-[#d9a865] opacity-0" />
           </span>
         </div>
       </div>

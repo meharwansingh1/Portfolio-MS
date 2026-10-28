@@ -100,7 +100,7 @@ export function SkillSphere({ groups }: { groups: SkillGroup[] }) {
     }
   }
 
-  const tones = ["bg-accent text-white", "bg-foreground text-background", "border border-border bg-card text-foreground"]
+  const tones = ["bg-accent text-accent-foreground", "bg-foreground text-background", "border border-border bg-card text-foreground"]
 
   return (
     <div

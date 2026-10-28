@@ -42,7 +42,7 @@ export function ContactForm() {
           <label htmlFor="message" className={label}>Message</label>
         </div>
       </div>
-      <button type="submit" className="group mt-10 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-6 py-4 text-sm font-medium text-background transition hover:bg-accent hover:text-white">
+      <button type="submit" className="group mt-10 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-6 py-4 text-sm font-medium text-background transition hover:bg-accent hover:text-accent-foreground">
         {sent ? "Opening your mail app…" : "Send message"}
         <Send className="size-4 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
       </button>

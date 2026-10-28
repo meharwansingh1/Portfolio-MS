@@ -67,7 +67,7 @@ export default function ContactPage() {
                   rel="noreferrer"
                   className="group flex items-center gap-5 rounded-3xl border border-border bg-card p-6 transition hover:border-foreground/30"
                 >
-                  <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-foreground text-background transition group-hover:rotate-[-8deg] group-hover:bg-accent group-hover:text-white">
+                  <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-foreground text-background transition group-hover:rotate-[-8deg] group-hover:bg-accent group-hover:text-accent-foreground">
                     <c.icon className="size-5" />
                   </span>
                   <span className="min-w-0 flex-1">
