@@ -35,7 +35,7 @@ export function Hero3D({ className }: { className?: string }) {
       renderer.setPixelRatio(Math.min(1.75, window.devicePixelRatio || 1))
       renderer.outputColorSpace = THREE.SRGBColorSpace
       renderer.toneMapping = THREE.ACESFilmicToneMapping
-      renderer.toneMappingExposure = 1.05
+      renderer.toneMappingExposure = 0.95
       renderer.domElement.style.cssText = "position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .8s ease"
       renderer.domElement.setAttribute("aria-hidden", "true")
       el.appendChild(renderer.domElement)
@@ -43,16 +43,16 @@ export function Hero3D({ className }: { className?: string }) {
       const scene = new THREE.Scene()
       const pmrem = new THREE.PMREMGenerator(renderer)
       scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture
-      scene.environmentIntensity = 0.35
+      scene.environmentIntensity = 0.55
 
       const camera = new THREE.PerspectiveCamera(24, 1, 0.1, 100)
       camera.position.set(0, -0.2, 13)
       camera.lookAt(0, -0.55, 0)
 
       // a warm key from the left, a strong saffron rim from behind, a cool low fill
-      const key = new THREE.DirectionalLight(0xfff1e0, 2.4)
+      const key = new THREE.DirectionalLight(0xfff1e0, 1.15)
       key.position.set(-4, 4, 6)
-      const rim = new THREE.DirectionalLight(0xf2a33a, 3.2)
+      const rim = new THREE.DirectionalLight(0xf2a33a, 3.6)
       rim.position.set(5, 2.5, -4)
       const rim2 = new THREE.DirectionalLight(0xf2a33a, 1.4)
       rim2.position.set(-5, 1, -4)
@@ -69,6 +69,20 @@ export function Hero3D({ className }: { className?: string }) {
         return
       }
       const model = gltf.scene
+      // the scan's textures already carry their own light: keep the skin and cloth matte
+      model.traverse((o) => {
+        const mesh = o as InstanceType<typeof THREE.Mesh>
+        if (!mesh.isMesh) return
+        const m = mesh.material as InstanceType<typeof THREE.MeshStandardMaterial>
+        if (m.name === "Sclera") {
+          m.color.multiplyScalar(0.82)
+          return
+        }
+        if (m.name === "Iris") return
+        m.metalness = 0
+        m.roughness = Math.max(m.roughness, 0.72)
+        m.envMapIntensity = 0.6
+      })
       scene.add(model)
       const eyes = ["EyeL", "EyeR"].map((n) => model.getObjectByName(n)).filter(Boolean) as InstanceType<typeof THREE.Object3D>[]
 
@@ -158,8 +172,8 @@ export function Hero3D({ className }: { className?: string }) {
       <img
         ref={poster}
         src={asset("/3d/front.webp")}
-        alt="Meharwan Singh as a 3D character"
-        className="pointer-events-none absolute inset-0 m-auto h-full w-auto max-w-none object-contain transition-opacity duration-700"
+        alt="Meharwan Singh, 3D model"
+        className="pointer-events-none absolute top-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2 object-contain transition-opacity duration-700"
       />
     </div>
   )
