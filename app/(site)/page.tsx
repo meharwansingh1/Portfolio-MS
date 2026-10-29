@@ -1,8 +1,6 @@
 import Link from "next/link"
 import { ArrowDownRight, ArrowUpRight, Download } from "lucide-react"
 import { asset, site } from "@/lib/data"
-import { Reveal } from "@/components/site/reveal"
-import { ProjectStack } from "@/components/fx/project-stack"
 import { Signature } from "@/components/site/signature"
 import { AvailabilityBadge } from "@/components/site/availability"
 import { RotatingWord } from "@/components/site/rotating-word"
@@ -96,22 +94,6 @@ export default function Home() {
           <p className="max-w-xs text-sm text-muted-foreground">Hover a panel to open it. Click to see that work in the showcase.</p>
         </div>
         <CraftPanels />
-      </section>
-
-      {/* ---------- the work: a deck that deals itself as you scroll ---------- */}
-      <section className="relative mx-auto max-w-6xl px-4 pt-28 pb-16 sm:px-6">
-        <Reveal className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="text-accent">02</span> — Selected work
-            </p>
-            <h2 className="mt-4 max-w-xl font-display text-5xl leading-none sm:text-6xl">
-              One project <span className="text-muted-foreground">at a time.</span>
-            </h2>
-          </div>
-          <p className="max-w-xs text-sm text-muted-foreground">Keep scrolling — each project locks in place while the next one slides over it.</p>
-        </Reveal>
-        <ProjectStack />
       </section>
 
       {/* ---------- closing card ---------- */}
