@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Contact" }
 const channels = [
   { icon: Mail, label: "Email", value: site.email, href: "mailto:" + site.email },
   { icon: BriefcaseBusiness, label: "LinkedIn", value: "meharwan-singh", href: site.linkedin },
-  { icon: Palette, label: "Behance", value: "meharramgarh1a", href: site.behance },
+  { icon: Palette, label: "Behance", value: "MeharwanSinghh", href: site.behance },
   { icon: FileText, label: "CV", value: "Download as PDF", href: site.cv },
 ]
 

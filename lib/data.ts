@@ -10,7 +10,7 @@ export const site = {
   role: "Frontend Developer, Graphic Designer & Motion Storyteller",
   email: "meharramgarhia16@gmail.com",
   linkedin: "https://www.linkedin.com/in/meharwan-singh-316388278/",
-  behance: "https://www.behance.net/meharramgarh1a",
+  behance: "https://www.behance.net/MeharwanSinghh",
   cv: asset("/cv/Meharwan-Singh-CV.pdf"),
 }
 
@@ -52,7 +52,7 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       { name: "UI / UX", note: "Interfaces that read clearly and feel considered.", level: 82, href: "https://www.behance.net/gallery/179151969/Web-Template" },
       { name: "Graphic Design", note: "Posters, brand pieces and social visuals.", level: 86, href: "/showcase/#graphic-design" },
-      { name: "Adobe Illustrator", note: "Clean vector artwork and characters.", level: 84, href: "https://www.behance.net/meharramgarh1a" },
+      { name: "Adobe Illustrator", note: "Clean vector artwork and characters.", level: 84, href: "https://www.behance.net/MeharwanSinghh" },
     ],
   },
   {
@@ -271,7 +271,7 @@ export const earlyWork = [
   {
     title: "Behance profile",
     text: "My first design pieces — layouts, graphics and the experiments that got me here.",
-    links: [{ label: "View on Behance", href: "https://www.behance.net/meharramgarh1a" }],
+    links: [{ label: "View on Behance", href: "https://www.behance.net/MeharwanSinghh" }],
   },
 ]
 

@@ -140,7 +140,7 @@ const SOCIALS: { label: string; sub: string; href: string; img?: string }[] = [
   { label: "Bhujangyy", sub: "Instagram", href: "https://www.instagram.com/bhujangyy/", img: "/work/De2-7D0BEHB.jpg" },
   { label: "Vectoristory", sub: "YouTube", href: "https://www.youtube.com/@vectoristory" },
   { label: "LinkedIn", sub: "Meharwan Singh", href: "https://www.linkedin.com/in/meharwan-singh-316388278/", img: "/3d/bust.webp" },
-  { label: "Behance", sub: "Design work", href: "https://www.behance.net/meharramgarh1a", img: "/work/DbNKXuaMsUM.jpg" },
+  { label: "Behance", sub: "Design work", href: "https://www.behance.net/MeharwanSinghh", img: "/work/DbNKXuaMsUM.jpg" },
   { label: "Vectoristory", sub: "Instagram", href: "https://www.instagram.com/vectoristory/" },
 ]
 
