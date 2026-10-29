@@ -70,14 +70,6 @@ export default function Home() {
             <Signature className="-rotate-[6deg]" />
           </span>
         </div>
-        <div className="mx-auto mt-16 max-w-6xl px-4 sm:px-6">
-          <p className="text-center font-mono text-[11px] tracking-[0.25em] text-muted-foreground uppercase">Made for</p>
-          <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 font-display text-xl text-muted-foreground sm:text-2xl">
-            {["Musafir Media", "The Musafir Podcast", "Booking Junction", "Giani Birbal Singh Ji", "Bhujangyy", "Vectoristory"].map((n) => (
-              <li key={n} className="transition hover:text-foreground">{n}</li>
-            ))}
-          </ul>
-        </div>
       </section>
 
       {/* ---------- crafts: panels that open under the cursor ---------- */}
