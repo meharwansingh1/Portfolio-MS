@@ -1,22 +1,16 @@
 import Link from "next/link"
 import { ArrowDownRight, ArrowUpRight, Download } from "lucide-react"
-import { asset, site, projects } from "@/lib/data"
+import { asset, site } from "@/lib/data"
 import { Reveal } from "@/components/site/reveal"
-import { CountUp } from "@/components/fx/count-up"
 import { ProjectStack } from "@/components/fx/project-stack"
 import { Signature } from "@/components/site/signature"
-import { AvailabilityBadge, UntilNoticeEnds } from "@/components/site/availability"
+import { AvailabilityBadge } from "@/components/site/availability"
 import { RotatingWord } from "@/components/site/rotating-word"
 import { Intro } from "@/components/fx/intro"
 import { Hero3D } from "@/components/fx/hero-3d"
-import { Collage, PixelReveal, SocialFan } from "@/components/fx/home-fx"
+import { PixelReveal } from "@/components/fx/home-fx"
+import { CraftPanels } from "@/components/fx/craft-panels"
 
-const now = [
-  { label: "Building Bhujangyy", note: "own brand", href: "/work/#bhujangyy" },
-  { label: "Designing for Booking Junction", note: "freelance", href: "/work/#booking-junction" },
-  { label: "Production Head, Musafir Media", note: "until 10 Nov", href: "/work/#musafir-podcast", endsWithNotice: true },
-  { label: "Animating Vectoristory", note: "daily stories", href: "/work/#vectoristory" },
-]
 
 export default function Home() {
   return (
@@ -63,30 +57,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- right now ---------- */}
-      <section className="relative">
-        {/* right now */}
-        <div className="relative mx-auto max-w-7xl px-4 pt-16 sm:px-6">
-          <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-border bg-card/60 backdrop-blur sm:grid-cols-2 lg:grid-cols-4">
-            {now.map((n) => {
-              const cell = (
-                <Link key={n.label} href={n.href} className="group flex flex-col gap-1 border-b border-border p-5 transition hover:bg-card sm:border-r lg:border-b-0">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Right now · {n.note}</span>
-                  <span className="flex items-center justify-between gap-2 font-medium">
-                    {n.label} <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition group-hover:text-accent" />
-                  </span>
-                </Link>
-              )
-              return "endsWithNotice" in n ? <UntilNoticeEnds key={n.label}>{cell}</UntilNoticeEnds> : cell
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- statement: a signature across big type ---------- */}
-      <section className="relative overflow-hidden pt-32 pb-8">
+      {/* ---------- statement ---------- */}
+      <section className="relative overflow-hidden pt-32 pb-10">
         <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6">
-          <p className="relative z-10 font-display text-[13vw] leading-[0.88] font-extrabold tracking-[-0.05em] uppercase md:text-[10.5vw] xl:text-[9.5rem]">
+          <p className="font-display text-[13vw] leading-[0.88] font-extrabold tracking-[-0.05em] uppercase md:text-[10.5vw] xl:text-[9.5rem]">
             Every story
             <br />
             <PixelReveal cols={16} rows={2}>
@@ -94,14 +68,34 @@ export default function Home() {
             </PixelReveal>{" "}
             a frame.
           </p>
-          <div aria-hidden="true" className="pointer-events-none absolute top-1/2 left-1/2 w-[22vw] max-w-[15rem] min-w-[7.5rem] -translate-x-1/2 -translate-y-1/2 -rotate-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={asset("/3d/bust.webp")} alt="" className="aspect-[4/5] w-full rounded-lg bg-[radial-gradient(70%_60%_at_50%_45%,#3a2610,#0e1116)] object-cover object-[50%_30%] shadow-2xl" />
-          </div>
-          <span className="pointer-events-none relative z-20 mt-2 block text-[13vw] text-accent md:-mt-6 md:text-[7rem]">
-            <Signature className="-rotate-[8deg]" />
+          <span className="pointer-events-none mt-2 block text-[13vw] text-accent md:-mt-4 md:text-[6.5rem]">
+            <Signature className="-rotate-[6deg]" />
           </span>
         </div>
+        <div className="mx-auto mt-16 max-w-6xl px-4 sm:px-6">
+          <p className="text-center font-mono text-[11px] tracking-[0.25em] text-muted-foreground uppercase">Made for</p>
+          <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 font-display text-xl text-muted-foreground sm:text-2xl">
+            {["Musafir Media", "The Musafir Podcast", "Booking Junction", "Giani Birbal Singh Ji", "Bhujangyy", "Vectoristory"].map((n) => (
+              <li key={n} className="transition hover:text-foreground">{n}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ---------- crafts: panels that open under the cursor ---------- */}
+      <section className="mx-auto max-w-7xl px-4 pt-24 sm:px-6">
+        <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              <span className="text-accent">01</span> — What I do
+            </p>
+            <h2 className="mt-4 max-w-xl font-display text-5xl leading-none sm:text-6xl">
+              Five crafts, <span className="text-muted-foreground">one storyteller.</span>
+            </h2>
+          </div>
+          <p className="max-w-xs text-sm text-muted-foreground">Hover a panel to open it. Click to see that work in the showcase.</p>
+        </div>
+        <CraftPanels />
       </section>
 
       {/* ---------- the work: a deck that deals itself as you scroll ---------- */}
@@ -109,7 +103,7 @@ export default function Home() {
         <Reveal className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="text-accent">01</span> — Selected work
+              <span className="text-accent">02</span> — Selected work
             </p>
             <h2 className="mt-4 max-w-xl font-display text-5xl leading-none sm:text-6xl">
               One project <span className="text-muted-foreground">at a time.</span>
@@ -118,50 +112,6 @@ export default function Home() {
           <p className="max-w-xs text-sm text-muted-foreground">Keep scrolling — each project locks in place while the next one slides over it.</p>
         </Reveal>
         <ProjectStack />
-      </section>
-
-      {/* ---------- off the desk: covers drifting at different depths ---------- */}
-      <section className="mx-auto max-w-7xl px-4 pt-20 sm:px-6">
-        <Collage>
-          <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-            <span className="text-accent">02</span> — Off the desk
-          </p>
-          <h2 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
-            Reels, posters and stories <PixelReveal cols={10} rows={1}>since 2023.</PixelReveal>
-          </h2>
-          <p className="mt-4 text-muted-foreground">For creators, brands and my own pages — hover a cover to bring back its colour, click to open it.</p>
-          <Link href="/showcase" className="mt-7 inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background">
-            See everything <ArrowUpRight className="size-4" />
-          </Link>
-        </Collage>
-      </section>
-
-      {/* ---------- socials: a hand of phones ---------- */}
-      <section className="mx-auto max-w-6xl px-4 pt-24 pb-28 text-center sm:px-6">
-        <h2 className="font-display text-5xl leading-none uppercase sm:text-7xl">
-          What&apos;s up <PixelReveal cols={9} rows={1}><span className="text-accent">on socials</span></PixelReveal>
-        </h2>
-        <p className="mx-auto mt-4 max-w-md text-muted-foreground">Follow the brands I build and the work in progress.</p>
-        <div className="mt-14">
-          <SocialFan />
-        </div>
-      </section>
-
-      {/* ---------- numbers ---------- */}
-      <section className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-4">
-          {[
-            ["3", "disciplines in one pair of hands"],
-            [String(projects.length), "featured projects"],
-            ["40+", "reels in a single series"],
-            ["Daily", "new animated stories"],
-          ].map(([n, l], i) => (
-            <Reveal key={l} delay={i * 80} className="bg-background p-8">
-              <CountUp value={n} className="block font-display text-5xl" />
-              <p className="mt-2 text-sm text-muted-foreground">{l}</p>
-            </Reveal>
-          ))}
-        </div>
       </section>
 
       {/* ---------- closing card ---------- */}

@@ -1,12 +1,14 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { nav, site } from "@/lib/data"
+import { NotOnHome } from "./not-on-home"
 
 export function Footer() {
   return (
     <footer className="relative mt-24 overflow-hidden border-t border-border">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+        <NotOnHome>
+        <div className="mb-14 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Have an idea?</p>
             <Link href="/contact" className="group mt-3 inline-flex items-center gap-3 font-display text-5xl sm:text-6xl">
@@ -30,7 +32,8 @@ export function Footer() {
             </li>
           </ul>
         </div>
-        <p className="mt-14 text-xs text-muted-foreground">© 2026 {site.name}. All rights reserved.</p>
+        </NotOnHome>
+        <p className="text-xs text-muted-foreground">© 2026 {site.name}. All rights reserved.</p>
       </div>
       <p aria-hidden="true" className="pointer-events-none -mb-[0.22em] select-none text-center font-display text-[22vw] leading-none text-foreground/[0.04]">
         Meharwan
