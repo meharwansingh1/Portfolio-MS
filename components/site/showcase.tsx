@@ -30,11 +30,18 @@ function groupsOf(list: Piece[]) {
 
 function Cover({ piece }: { piece: Piece }) {
   const [failed, setFailed] = React.useState(false)
+  const [src, setSrc] = React.useState(piece.cover)
   const ref = React.useRef<HTMLImageElement>(null)
+  // YouTube Shorts and some older videos have no full-HD thumbnail: step down instead of giving up
+  const onError = React.useCallback(() => {
+    const now = ref.current?.getAttribute("src") ?? ""
+    if (now.includes("maxresdefault")) setSrc(now.replace("maxresdefault", "hqdefault"))
+    else setFailed(true)
+  }, [])
   React.useEffect(() => {
     const el = ref.current
-    if (el && el.complete && el.naturalWidth === 0) queueMicrotask(() => setFailed(true))
-  }, [])
+    if (el && el.complete && el.naturalWidth === 0) queueMicrotask(onError)
+  }, [onError])
 
   if (!piece.cover || failed) {
     const web = piece.craft === "web"
@@ -55,10 +62,11 @@ function Cover({ piece }: { piece: Piece }) {
     // eslint-disable-next-line @next/next/no-img-element
     <img
       ref={ref}
-      src={piece.cover}
+      src={src}
+      data-own-fallback=""
       alt=""
       loading="lazy"
-      onError={() => setFailed(true)}
+      onError={onError}
       className="absolute inset-0 size-full object-cover transition duration-700 ease-out group-hover:scale-[1.05]"
     />
   )

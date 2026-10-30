@@ -142,7 +142,7 @@ export const pieces: Piece[] = [
   { id: "g-tmp-myths", craft: "graphic-design", group: TMP, title: "Real Estate Myths Busted", note: "YouTube thumbnail", kind: "image", shape: "wide", ...thumb("LofQS-VjP7k") },
   { id: "g-vs-mohini", craft: "graphic-design", group: VS, title: "Mohini · Part 2", note: "YouTube thumbnail", kind: "image", shape: "wide", ...thumb("DDlEpPzR6UY") },
   { id: "g-tmp-dua", craft: "graphic-design", group: TMP, title: "The Most Trusted Face in Travel", note: "YouTube thumbnail", kind: "image", shape: "wide", ...thumb("0N65UQGRlJ8") },
-  { id: "g-bj-posts", craft: "graphic-design", group: BJ, title: "Event posters & daily posts", note: "See them on Instagram", kind: "link", shape: "tall", cover: "", href: "https://www.instagram.com/booking.junction/" },
+  { id: "g-bj-posts", craft: "graphic-design", group: BJ, title: "Event posters & daily posts", note: "See them on Instagram", kind: "link", shape: "tall", cover: asset("/work/crafts/bj-posts.jpg"), href: "https://www.instagram.com/booking.junction/" },
 
   /* =================================================== video editing */
   { id: "e-tmp-noida", craft: "video-editing", group: TMP, title: "Distress Deals Flooding Noida Real Estate", note: "Full podcast episode", kind: "video", shape: "wide", ...video("nSyyCXZpXw4") },
@@ -189,13 +189,13 @@ export const pieces: Piece[] = [
   /* ==================================================== ai animation */
   { id: "a-ksy-41", craft: "ai-animation", group: "Kharag Singh Yudh · Bhujangyy", title: "Part 41 · Rudrastra", note: "AI cinematic reel", kind: "video", shape: "tall", ...reel("De2-7D0BEHB") },
   { id: "a-ksy-40", craft: "ai-animation", group: "Kharag Singh Yudh · Bhujangyy", title: "Part 40 · Kuber's army", note: "AI cinematic reel", kind: "video", shape: "tall", ...reel("Dewq-vvTCi8") },
-  { id: "a-ksy-all", craft: "ai-animation", group: "Kharag Singh Yudh · Bhujangyy", title: "All 41 parts", note: "The full series on @bhujangyy", kind: "link", shape: "tall", cover: "", href: "https://www.instagram.com/bhujangyy/" },
+  { id: "a-ksy-all", craft: "ai-animation", group: "Kharag Singh Yudh · Bhujangyy", title: "All 41 parts", note: "The full series on @bhujangyy", kind: "link", shape: "tall", cover: asset("/work/crafts/ksy-all.jpg"), href: "https://www.instagram.com/bhujangyy/" },
 
   /* ============================================================= web */
-  { id: "w-vectoristory", craft: "web", group: "Concept websites", title: "Vectoristory", note: "Cinematic channel site", kind: "link", shape: "wide", cover: "https://i.ytimg.com/vi/FQ76hjBlx78/maxresdefault.jpg", href: asset("/lab/vectoristory/") },
-  { id: "w-bhujangyy", craft: "web", group: "Concept websites", title: "Bhujangyy", note: "Brand site in Gurmukhi", kind: "link", shape: "wide", cover: "", href: asset("/lab/bhujangyy/") },
-  { id: "w-rahgir", craft: "web", group: "Concept websites", title: "Rahgir", note: "Interactive travel landing", kind: "link", shape: "wide", cover: "", href: asset("/lab/rahgir/") },
-  { id: "w-portfolio", craft: "web", group: "Websites", title: "This portfolio", note: "Next.js · TypeScript · Tailwind", kind: "link", shape: "wide", cover: "", href: "https://meharwansingh1.github.io/portfolioo/" },
+  { id: "w-vectoristory", craft: "web", group: "Concept websites", title: "Vectoristory", note: "Cinematic channel site", kind: "link", shape: "wide", cover: asset("/work/crafts/site-vectoristory.jpg"), href: asset("/lab/vectoristory/") },
+  { id: "w-bhujangyy", craft: "web", group: "Concept websites", title: "Bhujangyy", note: "Brand site in Gurmukhi", kind: "link", shape: "wide", cover: asset("/work/crafts/site-bhujangyy.jpg"), href: asset("/lab/bhujangyy/") },
+  { id: "w-rahgir", craft: "web", group: "Concept websites", title: "Rahgir", note: "Interactive travel landing", kind: "link", shape: "wide", cover: asset("/work/crafts/site-rahgir.jpg"), href: asset("/lab/rahgir/") },
+  { id: "w-portfolio", craft: "web", group: "Websites", title: "This portfolio", note: "Next.js · TypeScript · Tailwind", kind: "link", shape: "wide", cover: asset("/work/crafts/web.jpg"), href: "https://meharwansingh1.github.io/portfolioo/" },
   { id: "w-mehar", craft: "web", group: "Websites", title: "MEHAR — Try the Look", note: "Luxury store for my own label", kind: "link", shape: "wide", cover: asset("/mehar/img/look1.webp"), href: asset("/mehar/") },
 ]
 

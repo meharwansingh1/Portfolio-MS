@@ -258,17 +258,32 @@ html.intro-on #hero-title {
   background-image: linear-gradient(180deg, #f3f0ea 20%, #f3f0ea 100%);
 }
 
-/* ---------- hero wall: rows of work drifting sideways forever ---------- */
-.reel-row {
-  animation: reel-row 60s linear infinite;
+/* ---------- hero gallery: cards hanging in 3D, flying past on scroll ---------- */
+.hg-card {
+  transform: translate(-50%, -50%) translate3d(calc(var(--dx) * var(--p) * 2.2), 0, var(--z)) rotate(var(--r));
+  transform-style: preserve-3d;
 }
-@keyframes reel-row {
+.hg-float {
+  animation: hg-float 7s ease-in-out infinite alternate;
+  animation-delay: var(--d);
+}
+@keyframes hg-float {
+  from {
+    transform: translate3d(0, -10px, 0) rotate(-0.6deg);
+  }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(0, 12px, 0) rotate(0.6deg);
   }
 }
+.hg-name {
+  transform: scale(calc(1 - var(--p) * 0.25));
+  opacity: calc(1 - var(--p) * 1.6);
+}
+.hg-out {
+  opacity: calc(1 - var(--p) * 3);
+}
 @media (prefers-reduced-motion: reduce) {
-  .reel-row {
+  .hg-float {
     animation: none;
   }
 }

@@ -78,6 +78,8 @@ export type Project = {
   highlights?: string[]
   tags: string[]
   art: ArtPreset
+  /** a picture for the folder's front; without it the folder shows its art */
+  cover?: string
   links: { label: string; href: string }[]
   /** the sheets inside the project's glass folder; each one opens somewhere specific */
   files: FolderLink[]
@@ -88,6 +90,7 @@ export type FolderLink = { name: string; meta: string; to: string; image?: strin
 
 const reelCover = (code: string) => asset(`/work/${code}.jpg`)
 const ytCover = (id: string) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`
+const shot = (name: string) => asset(`/work/crafts/${name}.jpg`)
 
 /** The main body of work, strongest first. */
 export const projects: Project[] = [
@@ -105,8 +108,9 @@ export const projects: Project[] = [
     ],
     tags: ["Brand", "Motion design", "AI visuals", "Editing"],
     art: "ember",
+    cover: shot("ksy-all"),
     files: [
-      { name: "All Bhujangyy reels", meta: "Showcase", to: "/showcase/#ai-animation" },
+      { name: "All Bhujangyy reels", meta: "Showcase", to: "/showcase/#ai-animation", image: shot("ksy-all") },
       { name: "Dussehra Mahatam · Day 9", meta: "Katha reel", to: "https://www.instagram.com/reel/DeqFOaaB7zp/", image: reelCover("DeqFOaaB7zp") },
       { name: "Kharag Singh Yudh · Part 41", meta: "Latest", to: "https://www.instagram.com/reel/De2-7D0BEHB/", image: reelCover("De2-7D0BEHB") },
       { name: "Kharag Singh Yudh · Part 40", meta: "AI cinematic reel", to: "https://www.instagram.com/reel/Dewq-vvTCi8/", image: reelCover("Dewq-vvTCi8") },
@@ -127,8 +131,9 @@ export const projects: Project[] = [
     ],
     tags: ["Production Head", "YouTube", "Adobe Creative Suite", "Web"],
     art: "glacier",
+    cover: ytCover("PkQGxPIoazg"),
     files: [
-      { name: "The Musafir Podcast", meta: "YouTube", to: "https://www.youtube.com/@themusafirpodcast-tmp" },
+      { name: "The Musafir Podcast", meta: "YouTube", to: "https://www.youtube.com/@themusafirpodcast-tmp", image: ytCover("l8C4EreYkgk") },
       { name: "All episodes I made", meta: "Showcase", to: "/showcase/#video-editing", image: ytCover("PkQGxPIoazg") },
       { name: "High-Rise Building Secrets", meta: "Episode", to: "https://www.youtube.com/watch?v=vaTk8Kx-EJo", image: ytCover("vaTk8Kx-EJo") },
       { name: "Noida Distress Deals", meta: "Episode", to: "https://www.youtube.com/watch?v=nSyyCXZpXw4", image: ytCover("nSyyCXZpXw4") },
@@ -148,8 +153,9 @@ export const projects: Project[] = [
     highlights: ["Event posters and daily social posts", "Destination reels: Japan, Bali, Europe, Dubai and more"],
     tags: ["Social design", "Posters", "Reels"],
     art: "verdant",
+    cover: shot("bj-posts"),
     files: [
-      { name: "bookingjunction.co.in", meta: "Website", to: "https://bookingjunction.co.in" },
+      { name: "bookingjunction.co.in", meta: "Website", to: "https://bookingjunction.co.in", image: reelCover("Da4kXYvs5uV") },
       { name: "All reels", meta: "Showcase", to: "/showcase/#video-editing", image: reelCover("Da4kXYvs5uV") },
       { name: "Bali", meta: "Reel", to: "https://www.instagram.com/reel/DbNKXuaMsUM/", image: reelCover("DbNKXuaMsUM") },
       { name: "Japan", meta: "Reel", to: "https://www.instagram.com/reel/Db2XXqpuTmJ/", image: reelCover("Db2XXqpuTmJ") },
@@ -172,9 +178,10 @@ export const projects: Project[] = [
     ],
     tags: ["Video editing", "Graphic design", "Social"],
     art: "verdant",
+    cover: reelCover("DRa01OHk9w9"),
     files: [
-      { name: "Giani Birbal Singh Ji", meta: "Instagram", to: "https://www.instagram.com/gianibirbalsinghji/" },
-      { name: "YouTube channel", meta: "@gianibirbalsinghji", to: "https://www.youtube.com/@gianibirbalsinghji" },
+      { name: "Giani Birbal Singh Ji", meta: "Instagram", to: "https://www.instagram.com/gianibirbalsinghji/", image: reelCover("DRa01OHk9w9") },
+      { name: "YouTube channel", meta: "@gianibirbalsinghji", to: "https://www.youtube.com/@gianibirbalsinghji", image: ytCover("Fi959u_T1xQ") },
       { name: "Hola Mahalla di Upma", meta: "YouTube", to: "https://www.youtube.com/watch?v=Fi959u_T1xQ", image: ytCover("Fi959u_T1xQ") },
       { name: "Guru Tegh Bahadur Ji", meta: "Viral reel", to: "https://www.instagram.com/reel/DRa01OHk9w9/", image: reelCover("DRa01OHk9w9") },
     ],
@@ -193,8 +200,9 @@ export const projects: Project[] = [
     highlights: ["Samudra Manthan", "Part 2: Mohini & the Stolen Amrit", "Untold-story reels from many faiths"],
     tags: ["After Effects", "Vector motion", "Storytelling"],
     art: "dusk",
+    cover: shot("site-vectoristory"),
     files: [
-      { name: "YouTube channel", meta: "@vectoristory", to: "https://www.youtube.com/@vectoristory" },
+      { name: "YouTube channel", meta: "@vectoristory", to: "https://www.youtube.com/@vectoristory", image: ytCover("FQ76hjBlx78") },
       { name: "Mohini · Part 2", meta: "4:50", to: "https://www.youtube.com/watch?v=DDlEpPzR6UY", image: ytCover("DDlEpPzR6UY") },
       { name: "The temple that opens when Ravan burns", meta: "Animated short", to: "https://www.youtube.com/shorts/DkwZ0D6srJY", image: ytCover("DkwZ0D6srJY") },
       { name: "Samudra Manthan", meta: "5:43", to: "https://www.youtube.com/watch?v=FQ76hjBlx78", image: ytCover("FQ76hjBlx78") },
@@ -213,10 +221,11 @@ export const projects: Project[] = [
       "The site you're on: a multi-page Next.js build with glass folders whose artwork is generated in code, dark mode, and automatic deploys to GitHub Pages.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     art: "aurora",
+    cover: shot("web"),
     files: [
-      { name: "Source code", meta: "GitHub", to: "https://github.com/meharwansingh1/portfolioo" },
-      { name: "Showcase page", meta: "Built here", to: "/showcase/", art: "aurora" },
-      { name: "Live site", meta: "github.io", to: "https://meharwansingh1.github.io/portfolioo/", art: "glacier" },
+      { name: "Source code", meta: "GitHub", to: "https://github.com/meharwansingh1/portfolioo", image: shot("web") },
+      { name: "Showcase page", meta: "Built here", to: "/showcase/", image: shot("site-showcase") },
+      { name: "Live site", meta: "github.io", to: "https://meharwansingh1.github.io/portfolioo/", image: shot("web") },
     ],
     links: [
       { label: "Live site", href: "https://meharwansingh1.github.io/portfolioo/" },
@@ -237,10 +246,11 @@ export const projects: Project[] = [
     ],
     tags: ["Next.js", "Tailwind CSS", "TypeScript"],
     art: "glacier",
+    cover: shot("site-rahgir"),
     files: [
-      { name: "Rahgir", meta: "Travel concept", to: "/lab/rahgir/", art: "verdant" },
-      { name: "Bhujangyy", meta: "Brand concept", to: "/lab/bhujangyy/", image: reelCover("DeqFOaaB7zp") },
-      { name: "Vectoristory", meta: "Channel concept", to: "/lab/vectoristory/", image: ytCover("FQ76hjBlx78") },
+      { name: "Rahgir", meta: "Travel concept", to: "/lab/rahgir/", image: shot("site-rahgir") },
+      { name: "Bhujangyy", meta: "Brand concept", to: "/lab/bhujangyy/", image: shot("site-bhujangyy") },
+      { name: "Vectoristory", meta: "Channel concept", to: "/lab/vectoristory/", image: shot("site-vectoristory") },
     ],
     links: [
       { label: "Open Rahgir", href: "/lab/rahgir/" },

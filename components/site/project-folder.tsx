@@ -13,6 +13,7 @@ export function ProjectFolder({ project, index }: { project: Project; index: num
       label={project.title}
       meta={project.kind}
       art={project.art}
+      image={project.cover}
       seed={index * 7 + 1}
       tone={index % 2 ? "light" : "dark"}
       action="none"

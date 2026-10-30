@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react"
 import { site } from "@/lib/data"
 import { Signature } from "@/components/site/signature"
 import { Intro } from "@/components/fx/intro"
-import { HeroReel } from "@/components/fx/hero-reel"
+import { HeroGallery } from "@/components/fx/hero-gallery"
 import { CraftPanels } from "@/components/fx/craft-panels"
 
 
@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Intro />
 
-      <HeroReel />
+      <HeroGallery />
 
       {/* ---------- crafts: panels that open under the cursor ---------- */}
       <section className="mx-auto max-w-7xl px-4 pt-28 sm:px-6 md:pt-36">

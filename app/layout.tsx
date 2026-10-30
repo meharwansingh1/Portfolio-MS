@@ -9,8 +9,8 @@ import { themeScript } from "@/components/site/theme-toggle"
 import { introBootScript } from "@/lib/intro"
 
 
-// some older YouTube videos have no full-HD thumbnail; fall back to the smaller one
-const ytFallback = `document.addEventListener("error",function(e){var t=e.target;if(t&&t.tagName==="IMG"&&t.src.indexOf("maxresdefault")>-1){t.src=t.src.replace("maxresdefault","hqdefault")}},true)`
+// some YouTube videos (Shorts, older uploads) have no full-HD thumbnail; step down to the smaller one
+const ytFallback = `document.addEventListener("error",function(e){var t=e.target;if(t&&t.tagName==="IMG"&&!t.hasAttribute("data-own-fallback")&&t.src.indexOf("maxresdefault")>-1){t.src=t.src.replace("maxresdefault","hqdefault")}},true)`
 
 export const metadata: Metadata = {
   title: { default: "Meharwan Singh — Developer, Designer, Storyteller", template: "%s · Meharwan Singh" },
