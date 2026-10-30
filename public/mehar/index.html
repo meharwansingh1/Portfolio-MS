@@ -15,7 +15,62 @@
 /* Layout: studio-white stage (drag carousel) left, sticky "In this look" panel right; stacks on phones. */
 :root{
   --studio:#f3f2ef;      /* seamless paper backdrop */
-  --paper:#fbfaf8;       /* panel */
+  --paper:#fbfaf8;       /* zoom levels */
+.stagewrap{--fz:0}
+.backbtn{position:absolute;top:14px;left:max(40px,env(safe-area-inset-left));z-index:120;display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  padding:10px 14px 10px 10px;border-radius:999px;background:var(--paper);box-shadow:0 2px 14px rgba(0,0,0,.08);opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .35s,transform .35s}
+.backbtn.on{opacity:1;transform:none;pointer-events:auto}
+.backbtn svg{width:16px;height:16px}
+.hint{position:absolute;right:max(40px,env(safe-area-inset-right));top:24px;z-index:110;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);opacity:0;transition:opacity .4s;white-space:nowrap;pointer-events:none}
+.hint.on{opacity:1}
+.piece{position:absolute;inset:0;z-index:105;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .5s ease}
+.piece.on{opacity:1;pointer-events:auto}
+.pimg{position:relative;width:min(78%,560px);aspect-ratio:1;transform:scale(.7);transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .6s;cursor:zoom-in}
+.piece.on .pimg{transform:scale(1)}
+.pimg img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(20,19,17,.18))}
+.loupe{position:absolute;width:190px;height:190px;margin:-95px 0 0 -95px;border-radius:50%;pointer-events:none;opacity:0;transition:opacity .25s;
+  background-repeat:no-repeat;background-size:900px 900px;box-shadow:0 0 0 1px rgba(255,255,255,.9),0 18px 40px rgba(0,0,0,.25);z-index:3}
+.loupe.on{opacity:1}
+.loupe i{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);font-style:normal;font-size:10px;letter-spacing:.2em;color:var(--ink);white-space:nowrap}
+.macro{position:absolute;inset:0;overflow:hidden;opacity:0;pointer-events:none;transition:opacity .6s ease;background:#111}
+.macro img{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;transform:scale(1.9);transition:transform 1.4s cubic-bezier(.15,.75,.15,1)}
+.piece.deep .macro{opacity:1;pointer-events:auto}
+.piece.deep .macro img{transform:scale(1)}
+.piece.deep .pimg{transform:scale(3.2);opacity:0}
+.call{position:absolute;display:flex;align-items:center;gap:10px;color:#fff;font-size:12px;letter-spacing:.06em;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.call::before{content:"";width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 6px rgba(255,255,255,.18);flex:none}
+.piece.deep .call{opacity:1;transform:none}
+.piece.deep .call:nth-child(2){transition-delay:.9s}.piece.deep .call:nth-child(3){transition-delay:1.1s}.piece.deep .call:nth-child(4){transition-delay:1.3s}
+.scalebar{position:absolute;left:24px;bottom:22px;color:#fff;font-size:11px;letter-spacing:.16em;display:flex;align-items:center;gap:10px;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.scalebar b{display:block;width:60px;height:2px;background:#fff}
+.zoombtn{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:4;display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 20px;border-radius:999px;
+  background:var(--ink);color:var(--paper);font-size:13px;letter-spacing:.04em;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.zoombtn svg{width:18px;height:18px}
+.piece.deep .zoombtn{background:var(--paper);color:var(--ink)}
+
+/* piece detail panel */
+.pinfo{display:flex;flex-direction:column;min-height:0;flex:1;overflow:auto;padding:26px 30px 28px;animation:swap .5s ease}
+.pinfo .backlink{align-self:flex-start;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-flex;gap:8px;align-items:center}
+.pinfo .backlink:hover{color:var(--ink)}
+.pinfo h2{margin:18px 0 2px;font-family:var(--display);font-weight:400;font-size:32px;line-height:1.1;text-wrap:balance}
+.pinfo .pl{font-size:13px;color:var(--muted)}
+.pinfo .pp{margin-top:10px;font-size:22px;font-variant-numeric:tabular-nums}
+.pinfo .story{margin:16px 0 0;line-height:1.6;color:#3a3732;font-size:14px}
+.specs{margin:22px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px 18px;font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+.specs dt{color:var(--muted);letter-spacing:.06em}
+.specs dd{margin:0}
+.worth{margin-top:24px;border-top:1px solid var(--line);padding-top:16px}
+.worth h3{margin:0;font-size:14px;font-weight:500}
+.worth p{margin:4px 0 12px;font-size:12px;color:var(--muted)}
+.wbar{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:2px}
+.wbar span{height:100%}
+.wrows{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px;font-size:13px}
+.wrows li{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
+.wrows i{width:10px;height:10px;border-radius:2px}
+.wrows li.m{color:var(--muted)}
+.pinfo .cta{margin-top:22px;flex:none}
+
+/* panel */
   --ink:#141311;
   --muted:#7a766f;
   --line:#e2dfd9;
@@ -26,6 +81,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0;background:var(--studio);color:var(--ink);font-family:var(--ui);font-size:15px;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
@@ -62,6 +118,9 @@ a{color:inherit}
 .model .shadow{position:absolute;left:12%;right:12%;bottom:-2.2%;height:4.5%;border-radius:50%;background:radial-gradient(closest-side,rgba(20,19,17,.28),rgba(20,19,17,0));}
 .model .tag{position:absolute;left:50%;bottom:-9%;transform:translateX(-50%);white-space:nowrap;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);opacity:0;transition:opacity .4s}
 .model.active .tag{opacity:1}
+.stage.lvl .model .tag{opacity:0}
+.stage.piecemode .cursor{opacity:0!important}
+.stage.piecemode{cursor:auto}
 .model .tag b{color:var(--ink);font-weight:500}
 .pin{position:absolute;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;background:var(--paper);color:var(--ink);font-size:12px;font-weight:600;
   display:grid;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.18);opacity:0;transform:scale(.4);transition:opacity .35s,transform .35s cubic-bezier(.3,1.6,.5,1);cursor:pointer}
@@ -87,7 +146,7 @@ a{color:inherit}
 .ctl svg{width:18px;height:18px}
 
 /* panel */
-.panel{position:sticky;top:57px;align-self:start;height:calc(100vh - 57px);display:flex;flex-direction:column;background:var(--paper);border-left:1px solid var(--line)}
+.panel{position:sticky;top:57px;align-self:start;height:calc(100vh - 57px);display:flex;flex-direction:column;overflow:hidden;background:var(--paper);border-left:1px solid var(--line)}
 .ph{display:flex;align-items:baseline;justify-content:space-between;padding:30px 30px 18px;border-bottom:1px solid var(--line)}
 .ph h2{margin:0;font-weight:400;font-size:20px;letter-spacing:-.01em}
 .ph small{font-size:11px;letter-spacing:.2em;color:var(--muted)}
@@ -168,6 +227,10 @@ footer{border-top:1px solid var(--line);padding:26px max(20px,env(safe-area-inse
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
 @media (max-width:1000px){
+  .hint{right:max(16px,env(safe-area-inset-right));top:68px}
+  .backbtn{left:max(16px,env(safe-area-inset-left))}
+  .pinfo{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right));overflow:visible}
+  .loupe{display:none}
   .shop{grid-template-columns:1fr}
   .panel{position:relative;top:0;height:auto;border-left:0;border-top:1px solid var(--line)}
   .items{overflow:visible}
@@ -202,10 +265,17 @@ footer{border-top:1px solid var(--line);padding:26px max(20px,env(safe-area-inse
   <section class="stagewrap" aria-label="Looks">
     <div class="intro">
       <h1>Try the Look.</h1>
-      <p>Six looks, shot head to toe. Drag to browse — tap a pin to see the piece.</p>
+      <p id="introText">Drag to turn the ring. Tap the look in front to step closer, then tap any piece to see its cloth.</p>
     </div>
     <div class="stage" id="stage" aria-roledescription="carousel">
       <div class="cursor" id="cursor">DRAG</div>
+      <button class="backbtn" id="backBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span>All looks</span></button>
+      <div class="hint" id="hint">Tap a piece to see it alone</div>
+      <div class="piece" id="piece" aria-live="polite">
+        <div class="macro" id="macro"><img id="macroImg" alt=""><div class="calls" id="calls"></div><div class="scalebar"><b></b><span>1 MM</span></div></div>
+        <div class="pimg" id="pimg"><img id="pieceImg" alt=""><div class="loupe" id="loupe"><i>×40</i></div></div>
+        <button class="zoombtn" id="zoomBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg><span>Zoom into the cloth</span></button>
+      </div>
     </div>
     <div class="controls">
       <div class="count" id="count"><b>01</b> / 06</div>
@@ -219,6 +289,7 @@ footer{border-top:1px solid var(--line);padding:26px max(20px,env(safe-area-inse
   </section>
 
   <aside class="panel" aria-label="In this look">
+   <div id="lookPanel" style="display:flex;flex-direction:column;min-height:0;flex:1">
     <div class="ph"><h2>In this look</h2><small id="pieces">3 PIECES</small></div>
     <div class="lookname"><em id="lookName">Virsa</em><span id="lookGur">ਵਿਰਸਾ</span></div>
     <ul class="items" id="items"></ul>
@@ -229,6 +300,8 @@ footer{border-top:1px solid var(--line);padding:26px max(20px,env(safe-area-inse
       </div>
       <button class="cta" id="addLook"><span>Add full look to bag</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
     </div>
+   </div>
+   <div class="pinfo" id="pieceInfo" hidden></div>
   </aside>
 </main>
 
@@ -290,7 +363,69 @@ const P={
   trouser_cream:{name:"Pleated Wide Trouser",line:"Cream",fab:"Wool-blend twill, double pleat",price:5990,img:IMG.P52},
   cable_crew:{name:"Cable Crew",line:"Ivory",fab:"7-gauge lambswool cable",price:9690,img:IMG.P61}
 };
+// fabric close-ups (filled in from the macro shoot)
+const MAC={virsa_hoodie:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164449_8afd098c-e0dc-449b-b62f-73b19959154b.png",trouser_black:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164451_b2746324-8fee-4075-8c05-6cd5c8489f46.png",loafer_black:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164455_3971b1fa-41da-4c53-bd29-19634ed02478.png",merino_crew:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164449_9bf2730a-c8aa-417e-b9c9-c9812a54a072.png",trouser_ecru:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164744_51686e6c-906a-4352-9dcf-8391755b0c7f.png",loafer_suede:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164743_a519b43d-9ebe-40b2-8df1-7dd7e63fb628.png",
+  phulkari_tee:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164744_93692688-84a1-48c0-9f59-8ccc66bc9b35.png",cargo:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164745_c5b3ed8e-e76b-457e-b86d-00c9c50a6899.png",boot:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164936_04b60af0-1027-49f2-8cfe-e876dc7aa704.png",sawaar_hoodie:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164931_d8c26a94-3108-4e6b-8a31-76b997fc8514.png",denim:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_165027_8e7cc820-04f9-4d62-812c-b2da159ad20e.png",sneaker:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164930_0e6d1a2a-d172-4d7b-889e-0de3d991fbcd.png",overshirt:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_164932_cb6e436b-050e-490e-833d-5f6d787436b9.png",trouser_cream:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_165024_3cdbdd1b-3581-4721-9adb-dcc76e4cf478.png",cable_crew:"https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_165026_33bd4873-166b-4d52-b7cc-d71eb0ea712f.png"};
+// what each piece is made of and where the money goes. cost = [label, % of price]
+const TROUSER={specs:[["Fabric","70% wool, 30% polyester twill"],["Weight","290 GSM"],["Origin","Woven in Ludhiana, tailored in Delhi"],["Construction","Double forward pleat, hand-felled waistband"],["Finish","Steam-pressed permanent crease"],["Care","Dry clean or cool hand wash"]],
+  hours:4,cost:[["Fabric",30],["Tailoring",24],["Trims & lining",6],["Pressing & checks",6],["Freight",4],["MEHAR margin",30]],
+  calls:[[30,34,"2/2 twill weave"],[58,62,"Pressed pleat holds its line"],[22,78,"Tonal 12-stitch-per-inch seams"]]};
+const D={
+  virsa_hoodie:{story:"Cut from 520 GSM loopback cotton, acid-washed by hand in small batches in Ludhiana, so no two marble patterns match. ਪੰਜਾਬ is heat-embossed and chromed, not printed, so it never cracks or peels.",
+    specs:[["Fabric","100% combed cotton loopback fleece"],["Weight","520 GSM"],["Origin","Knitted and washed in Ludhiana, Punjab"],["Construction","Flatlock seams, 3-panel hood, double-needle hems"],["Finish","Hand acid wash, enzyme softened, chrome emboss"],["Care","Cold wash inside out, dry flat"]],
+    hours:5.5,cost:[["Fabric",26],["Hand wash & dye",10],["Chrome emboss",9],["Cutting & sewing",17],["Trims & packaging",5],["Freight & checks",6],["MEHAR margin",27]],
+    calls:[[26,30,"Hand acid-wash marbling"],[55,60,"Loopback knit, 520 GSM"],[18,76,"Chrome emboss, no print"]]},
+  trouser_black:{...TROUSER,story:"A wool twill that holds a crease all day and still falls loose in a wide leg. Two forward pleats give room to sit and move without breaking the line."},
+  trouser_ecru:{...TROUSER,story:"The same wool twill as our black trouser in undyed ecru. Two forward pleats and a wide leg that keeps its crease from morning to night."},
+  trouser_cream:{...TROUSER,story:"Wool twill in a soft cream, cut wide with two forward pleats. Light enough for Punjab afternoons, heavy enough to drape."},
+  loafer_black:{story:"Full calf uppers on a Blake-stitched leather sole, burnished by hand with wax until the toe holds a mirror shine. The moc seam is hand-sewn with waxed thread.",
+    specs:[["Upper","Full-grain calf leather"],["Sole","Leather, Blake stitched"],["Origin","Made by hand in Agra"],["Construction","Hand-sewn moc toe, full leather lining"],["Finish","Hand burnished, 3 coats of wax"],["Care","Polish monthly, keep on shoe trees"]],
+    hours:9,cost:[["Leather",28],["Hand stitching",20],["Sole & lining",10],["Burnishing",8],["Box & dust bag",4],["Freight & checks",5],["MEHAR margin",25]],
+    calls:[[30,32,"Hand-sewn moc seam"],[56,58,"Mirror burnish, 3 coats"],[20,78,"Natural calf grain"]]},
+  loafer_suede:{story:"Tobacco calf suede with a short, dense nap that brushes back to life. Blake-stitched leather sole and a hand-sewn moc toe.",
+    specs:[["Upper","Calf suede"],["Sole","Leather, Blake stitched"],["Origin","Made by hand in Agra"],["Construction","Hand-sewn moc toe, leather lined"],["Finish","Water-resistant suede proofing"],["Care","Brush after wear, spray twice a season"]],
+    hours:8.5,cost:[["Suede",27],["Hand stitching",20],["Sole & lining",10],["Proofing",6],["Box & dust bag",4],["Freight & checks",5],["MEHAR margin",28]],
+    calls:[[28,32,"Dense short-nap suede"],[55,60,"Waxed-thread moc seam"],[20,78,"Proofed against rain"]]},
+  merino_crew:{story:"Extrafine 19.5 micron merino knitted on 12-gauge machines, then linked by hand at the collar so the seam is invisible. Warm enough to wear as a layer through a Punjab winter.",
+    specs:[["Fabric","100% extrafine merino, 19.5 micron"],["Gauge","12-gauge, 340 g"],["Origin","Spun and knitted in Ludhiana"],["Construction","Fully fashioned, hand-linked collar"],["Finish","Tonal embroidered monogram"],["Care","Hand wash cold, dry flat"]],
+    hours:4.5,cost:[["Yarn",34],["Knitting & linking",18],["Embroidery",6],["Finishing",6],["Freight & checks",5],["MEHAR margin",31]],
+    calls:[[28,30,"Fully fashioned stitches"],[56,60,"19.5 micron merino"],[20,78,"Tonal monogram"]]},
+  phulkari_tee:{story:"Heavy Supima jersey carrying 38,000 stitches of copper and ivory thread, laid in the geometric phulkari patterns of Patiala. Each tee takes an artisan most of a day.",
+    specs:[["Fabric","100% Supima cotton jersey"],["Weight","300 GSM"],["Origin","Embroidered by artisans in Patiala"],["Construction","Boxy cut, ribbed collar, taped shoulders"],["Finish","Phulkari, 38,000 stitches"],["Care","Wash inside out, cold"]],
+    hours:7,cost:[["Fabric",18],["Phulkari embroidery",30],["Cut & sew",14],["Trims",4],["Freight & checks",5],["MEHAR margin",29]],
+    calls:[[28,30,"38,000 copper stitches"],[56,58,"Patiala phulkari geometry"],[20,78,"Supima jersey, 300 GSM"]]},
+  cargo:{story:"12 oz cotton twill, garment-dyed after sewing so the charcoal settles into every seam. Bellows pockets are bar-tacked at each stress point.",
+    specs:[["Fabric","100% cotton twill"],["Weight","12 oz"],["Origin","Sewn in Ludhiana"],["Construction","Bellows pockets, bar-tacked stress points"],["Finish","Garment dyed, stone washed"],["Care","Machine wash cold"]],
+    hours:4,cost:[["Fabric",24],["Sewing",22],["Dye & wash",10],["Trims & hardware",8],["Freight & checks",6],["MEHAR margin",30]],
+    calls:[[28,32,"12 oz twill"],[56,60,"Garment-dyed charcoal"],[20,78,"Bar-tacked stress points"]]},
+  boot:{story:"Waxed calf on a Goodyear welt, so the sole can be replaced again and again. This is the boot you resole, not replace.",
+    specs:[["Upper","Waxed full-grain calf"],["Sole","Commando rubber, Goodyear welted"],["Origin","Made in Kanpur"],["Construction","Goodyear welt, fully resoleable"],["Finish","Hand waxed"],["Care","Wax once a season"]],
+    hours:12,cost:[["Leather",26],["Welt construction",24],["Sole",10],["Finishing",8],["Box & dust bag",4],["Freight & checks",5],["MEHAR margin",23]],
+    calls:[[28,32,"Waxed full-grain calf"],[56,60,"Goodyear welt stitching"],[20,78,"Resoleable for life"]]},
+  sawaar_hoodie:{story:"The same 520 GSM fleece as Virsa in an ash-to-black ombre, printed with a statue-style rider in six layers of silver ink, so it reads like metal on cloth.",
+    specs:[["Fabric","100% combed cotton loopback fleece"],["Weight","520 GSM"],["Origin","Knitted and washed in Ludhiana"],["Construction","Flatlock seams, 3-panel hood"],["Finish","Ombre dip-dye, 6-layer silver ink print"],["Care","Cold wash inside out, dry flat"]],
+    hours:6,cost:[["Fabric",26],["Ombre dye",10],["Silver print",11],["Cutting & sewing",17],["Trims & packaging",5],["Freight & checks",6],["MEHAR margin",25]],
+    calls:[[28,30,"6-layer silver ink"],[56,60,"Hand ombre dip-dye"],[20,78,"Loopback knit, 520 GSM"]]},
+  denim:{story:"14 oz selvedge woven slowly on shuttle looms in Okayama, Japan, then cut in a wide pool leg in Delhi. It starts rigid and breaks in to your shape.",
+    specs:[["Fabric","100% cotton selvedge denim"],["Weight","14 oz"],["Origin","Woven in Okayama, cut in Delhi"],["Construction","Chain-stitched hem, copper rivets"],["Finish","Light stone wash"],["Care","Wash rarely, cold, inside out"]],
+    hours:5,cost:[["Fabric",32],["Sewing",18],["Wash",8],["Hardware",6],["Import & freight",8],["MEHAR margin",28]],
+    calls:[[28,30,"Shuttle-loom selvedge"],[56,60,"14 oz indigo twill"],[20,78,"Chain-stitched hem"]]},
+  sneaker:{story:"Full-grain nappa on a stitched cup sole, lined in leather, with edges painted by hand. No logo, so the leather does the talking.",
+    specs:[["Upper","Full-grain nappa leather"],["Sole","Margom-style rubber cup, stitched"],["Origin","Made in Agra"],["Construction","Stitched cup sole, leather lining"],["Finish","Hand-painted edges"],["Care","Wipe clean with a damp cloth"]],
+    hours:6,cost:[["Leather",27],["Sole",16],["Stitching",18],["Lining",7],["Box & dust bag",4],["Freight & checks",5],["MEHAR margin",23]],
+    calls:[[28,32,"Full-grain nappa"],[56,60,"Stitched cup sole"],[20,78,"Hand-painted edges"]]},
+  overshirt:{story:"Brushed wool flannel woven in Amritsar, with a phulkari pocket that takes six hours of hand embroidery. Horn buttons and felled seams inside and out.",
+    specs:[["Fabric","100% brushed wool flannel"],["Weight","420 GSM"],["Origin","Woven in Amritsar"],["Construction","Felled seams, real horn buttons"],["Finish","Hand phulkari pocket, 6 hours"],["Care","Dry clean"]],
+    hours:9,cost:[["Fabric",30],["Phulkari pocket",16],["Tailoring",20],["Horn buttons",5],["Freight & checks",5],["MEHAR margin",24]],
+    calls:[[28,30,"Brushed wool, 420 GSM"],[56,58,"6-hour hand phulkari"],[20,78,"Real horn buttons"]]},
+  cable_crew:{story:"Lambswool hand-framed into Aran cables on 7-gauge machines, then washed so it blooms soft and lofty. A sweater built to last decades.",
+    specs:[["Fabric","100% lambswool"],["Gauge","7-gauge, 780 g"],["Origin","Hand-framed in Ludhiana"],["Construction","Aran cables, hand-linked seams"],["Finish","Washed for loft"],["Care","Hand wash cold, dry flat"]],
+    hours:7,cost:[["Yarn",33],["Hand framing",22],["Linking",8],["Finishing",6],["Freight & checks",5],["MEHAR margin",26]],
+    calls:[[28,30,"Hand-framed Aran cable"],[56,58,"Lofty washed lambswool"],[20,78,"7-gauge, 780 g"]]}
+};
+const WCOL=["#3b2a1e","#7a4a26","#9b5a2a","#c08a55","#d9b98e","#b9b2a6","#e7e2d9"];
 // pins: [product, x%, y%] relative to model box
+const modelAt=(x,y)=>{for(const el of document.elementsFromPoint(x,y)){const m=el.closest&&el.closest(".model");if(m&&+m.style.opacity>0.2)return m}return null};
 const LOOKS=[
   {id:"virsa",name:"Virsa",gur:"ਵਿਰਸਾ",img:IMG.L1,items:[["virsa_hoodie",78,26],["trouser_black",66,62],["loafer_black",26,96]]},
   {id:"dhoop",name:"Dhoop",gur:"ਧੁੱਪ",img:IMG.L2,items:[["merino_crew",78,26],["trouser_ecru",66,62],["loafer_suede",26,96]]},
@@ -330,9 +465,14 @@ function render(){
     const depth=(1-k)/(1-F/(F+2*R));
     const blur=reduce?0:depth*6;
     const op=1-0.45*depth;
-    el.style.transform=`translate(calc(-50% + ${x.toFixed(1)}px), ${y.toFixed(1)}px) scale(${k.toFixed(3)})`;
-    el.style.filter=blur>0.05?`blur(${blur.toFixed(2)}px)`:"none";
-    el.style.opacity=op.toFixed(3);
+    const front=Math.abs(d)<.5;
+    // focus: the front look steps forward, the rest fade away. piece: the look itself fades so only the garment remains
+    const zs=front?1+0.16*fz:1, zy=front?H*0.06*fz:0;
+    const o=(front?1:(1-fz))*(1-pz);
+    el.style.transform=`translate(calc(-50% + ${x.toFixed(1)}px), ${(y+zy).toFixed(1)}px) scale(${(k*zs).toFixed(3)})`;
+    el.style.filter=blur>0.05?`blur(${(blur+(front?0:fz*6)).toFixed(2)}px)`:(pz>0.01?`blur(${(pz*8).toFixed(2)}px)`:"none");
+    el.style.opacity=(op*o).toFixed(3);
+    el.style.pointerEvents=o<0.2?"none":"";
     el.style.zIndex=100-Math.round(depth*60);
     const g=el.querySelector(".ghost");
     const gv=0;
@@ -342,7 +482,9 @@ function render(){
     el.classList.toggle("settled",isAct&&Math.abs(d)<0.04&&!dragging);
   });
 }
+let mode="ring",fz=0,pz=0,activePiece=null;
 function tick(){
+  fz+=((mode==="ring"?0:1)-fz)*(reduce?1:0.12);pz+=((mode==="piece"?1:0)-pz)*(reduce?1:0.14);
   if(!dragging){
     const diff=wrap(target-pos);
     const step=reduce?diff:diff*0.12;
@@ -358,7 +500,8 @@ function go(i){target=((i%N)+N)%N;if(Math.abs(wrap(target-pos))>N/2)pos=target-w
 function goRel(d){go(Math.round(target)+d)}
 
 stage.addEventListener("pointerdown",e=>{
-  if(e.target.closest(".pin"))return;
+  if(e.target.closest(".pin")||e.target.closest(".backbtn")||e.target.closest(".piece"))return;
+  if(mode!=="ring"){downY=e.clientY;downX=e.clientX;return}
   dragging=true;moved=0;startX=lastX=e.clientX;startPos=pos;lastT=performance.now();flick=0;
   stage.setPointerCapture(e.pointerId);cursor.classList.add("down");pauseFor();
 });
@@ -370,11 +513,21 @@ stage.addEventListener("pointermove",e=>{
   const now=performance.now();flick=(e.clientX-lastX)/Math.max(1,now-lastT);lastX=e.clientX;lastT=now;
   const np=startPos-dx/spacing();vel=np-pos;pos=np;
 });
+let downX=0,downY=0;
 function endDrag(e){
+  if(mode==="focus"){ // tap on the garment → open that piece; tap outside → back to the ring
+    if(e.type!=="pointerup"||Math.hypot(e.clientX-downX,e.clientY-downY)>8||e.target.closest(".pin")||e.target.closest(".backbtn"))return;
+    const m=models[current],r=m.querySelector("img.main").getBoundingClientRect();
+    if(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom){
+      const f=(e.clientY-r.top)/r.height,items=LOOKS[current].items;
+      const k=f<0.12?0:f<0.52?0:f<0.9?1:2;openPiece(Math.min(k,items.length-1));
+    }else setMode("ring");
+    return;
+  }
   if(!dragging)return;dragging=false;cursor.classList.remove("down");
-  if(moved<6){ // click → jump to that model
-    const m=e.target.closest&&e.target.closest(".model");
-    if(m){go(+m.dataset.i);return}
+  if(moved<6){ // click → front look steps closer, any other look rotates to the front
+    const m=modelAt(e.clientX,e.clientY);
+    if(m){const i=+m.dataset.i;if(i===current&&Math.abs(wrap(target-pos))<.05){setMode("focus")}else go(i);return}
   }
   target=Math.round(pos-flick*1.2);target=((target%N)+N)%N;
 }
@@ -385,17 +538,19 @@ stage.addEventListener("pointerleave",()=>cursor.classList.remove("show"));
 stage.addEventListener("wheel",e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY)&&Math.abs(e.deltaX)>20){e.preventDefault();goRel(e.deltaX>0?1:-1);pauseFor()}},{passive:false});
 stage.addEventListener("click",e=>{
   const p=e.target.closest(".pin");if(!p)return;
-  e.stopPropagation();highlight(+p.dataset.k,true);pauseFor();
+  e.stopPropagation();if(mode==="ring")setMode("focus");openPiece(+p.dataset.k);
 });
 window.addEventListener("resize",render);
 
 /* dots + controls */
 const dots=$("dots");
 LOOKS.forEach((L,i)=>{const b=document.createElement("button");b.setAttribute("role","tab");b.setAttribute("aria-label",`Look ${i+1}, ${L.name}`);b.onclick=()=>{go(i);pauseFor()};dots.appendChild(b)});
-$("prev").onclick=()=>{goRel(-1);pauseFor()};
-$("next").onclick=()=>{goRel(1);pauseFor()};
+$("prev").onclick=()=>{setMode("ring");goRel(-1);pauseFor()};
+$("next").onclick=()=>{setMode("ring");goRel(1);pauseFor()};
 document.addEventListener("keydown",e=>{
   if($("drawer").classList.contains("on")){if(e.key==="Escape")closeBag();return}
+  if(e.key==="Escape"){back();return}
+  if(mode!=="ring")return;
   if(e.key==="ArrowRight"){goRel(1);pauseFor()}if(e.key==="ArrowLeft"){goRel(-1);pauseFor()}
 });
 let playing=!reduce,hold=0;
@@ -405,7 +560,7 @@ function setPlay(p){playing=p;$("play").setAttribute("aria-label",p?"Pause autop
 $("play").onclick=()=>setPlay(!playing);
 function pauseFor(){hold=performance.now()+9000}
 setPlay(playing);
-setInterval(()=>{if(playing&&!dragging&&performance.now()>hold&&!document.hidden&&!$("drawer").classList.contains("on"))goRel(1)},5200);
+setInterval(()=>{if(playing&&mode==="ring"&&!dragging&&performance.now()>hold&&!document.hidden&&!$("drawer").classList.contains("on"))goRel(1)},5200);
 
 /* ---------- panel ---------- */
 const itemsEl=$("items");
@@ -436,7 +591,8 @@ function highlight(k,scroll){
 itemsEl.addEventListener("mouseover",e=>{const li=e.target.closest(".item");if(li)models[current].querySelectorAll(".pin").forEach((p,j)=>p.classList.toggle("hot",j===+li.dataset.k))});
 itemsEl.addEventListener("mouseleave",()=>models[current].querySelectorAll(".pin").forEach(p=>p.classList.remove("hot")));
 itemsEl.addEventListener("click",e=>{
-  const b=e.target.closest(".add");if(!b)return;
+  const b=e.target.closest(".add");
+  if(!b){const li=e.target.closest(".item");if(li){if(mode==="ring")setMode("focus");openPiece(+li.dataset.k)}return}
   const pid=b.dataset.pid;
   const ex=bag.find(x=>x.type==="item"&&x.id===pid);
   if(ex)ex.qty++;else bag.push({type:"item",id:pid,qty:1});
@@ -448,6 +604,66 @@ $("addLook").onclick=()=>{
   if(ex)ex.qty++;else bag.push({type:"look",id:L.id,qty:1});
   save();toast(`${L.name} look added — 10% off applied`);pauseFor();
 };
+
+/* ---------- zoom levels ---------- */
+const piece=$("piece"),loupe=$("loupe"),pimg=$("pimg");
+const macURL=pid=>MAC[pid]&&!MAC[pid].startsWith("__")?MAC[pid]:"";
+function setMode(m){
+  mode=m;
+  $("backBtn").classList.toggle("on",m!=="ring");
+  $("backBtn").querySelector("span").textContent=m==="piece"?`${LOOKS[current].name} look`:"All looks";
+  $("hint").classList.toggle("on",m==="focus");
+  cursor.textContent=m==="ring"?"DRAG":"PIECE";
+  stage.classList.toggle("lvl",m!=="ring");stage.classList.toggle("piecemode",m==="piece");
+  piece.classList.toggle("on",m==="piece");
+  if(m!=="piece"){piece.classList.remove("deep");$("lookPanel").hidden=false;$("pieceInfo").hidden=true;activePiece=null;setZoomLabel()}
+  if(m==="ring")models.forEach(x=>x.querySelectorAll(".pin").forEach(p=>p.classList.remove("hot")));
+  pauseFor();
+}
+function back(){if(piece.classList.contains("deep")){piece.classList.remove("deep");setZoomLabel();return}if(mode==="piece")setMode("focus");else if(mode==="focus")setMode("ring")}
+$("backBtn").onclick=back;
+function setZoomLabel(){$("zoomBtn").querySelector("span").textContent=piece.classList.contains("deep")?"Back to the piece":"Zoom into the cloth"}
+function openPiece(k){
+  const L=LOOKS[current],pid=L.items[k][0],p=P[pid],d=D[pid];activePiece=pid;
+  $("pieceImg").src=im(p.img);$("pieceImg").alt=p.name;
+  const mu=macURL(pid);$("macroImg").src=mu;$("macroImg").alt=`Close-up of the ${p.name} fabric`;
+  loupe.style.backgroundImage=mu?`url("${mu}")`:`url("${im(p.img)}")`;
+  $("zoomBtn").hidden=!mu;
+  $("calls").innerHTML=d.calls.map(c=>`<div class="call" style="left:${c[0]}%;top:${c[1]}%">${c[2]}</div>`).join("");
+  piece.classList.remove("deep");setZoomLabel();
+  setMode("piece");
+  // panel: where the money goes
+  const parts=d.cost.map(([l,pc],i)=>({l,pc,amt:p.price*pc/100,c:WCOL[i%WCOL.length],m:/margin/i.test(l)}));
+  $("pieceInfo").innerHTML=`<button class="backlink" id="pBack"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>${L.name} look</button>
+    <div class="brandline" style="margin-top:18px">MEHAR · ${L.name} · Piece ${k+1} of ${L.items.length}</div>
+    <h2>${p.name}</h2><div class="pl">${p.line}</div><div class="pp">${inr(p.price)}</div>
+    <p class="story">${d.story}</p>
+    <dl class="specs">${d.specs.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join("")}<dt>Hands-on time</dt><dd>${d.hours} hours per piece</dd></dl>
+    <div class="worth"><h3>Why it costs ${inr(p.price)}</h3><p>Every rupee of the price, shown openly.</p>
+      <div class="wbar">${parts.map(x=>`<span style="width:${x.pc}%;background:${x.c}" title="${x.l}"></span>`).join("")}</div>
+      <ul class="wrows">${parts.map(x=>`<li${x.m?' class="m"':""}><i style="background:${x.c}"></i><span>${x.l}</span><span>${inr(x.amt)}</span></li>`).join("")}</ul></div>
+    <button class="cta" id="pAdd"><span>Add to bag · ${inr(p.price)}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>`;
+  $("lookPanel").hidden=true;$("pieceInfo").hidden=false;$("pieceInfo").scrollTop=0;
+  $("pBack").onclick=()=>setMode("focus");
+  $("pAdd").onclick=()=>{const ex=bag.find(x=>x.type==="item"&&x.id===pid);if(ex)ex.qty++;else bag.push({type:"item",id:pid,qty:1});save();updatePanel(current);toast(`${p.name} added to bag`)};
+  models[current].querySelectorAll(".pin").forEach((pn,j)=>pn.classList.toggle("hot",j===k));
+  if(innerWidth<=1000)stage.scrollIntoView({behavior:"smooth",block:"start"});
+}
+$("zoomBtn").onclick=e=>{e.stopPropagation();piece.classList.toggle("deep");setZoomLabel();loupe.classList.remove("on")};
+pimg.addEventListener("click",()=>{if(macURL(activePiece)){piece.classList.add("deep");setZoomLabel();loupe.classList.remove("on")}});
+pimg.addEventListener("pointermove",e=>{
+  if(e.pointerType!=="mouse"||piece.classList.contains("deep"))return;
+  const r=pimg.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+  loupe.style.left=x+"px";loupe.style.top=y+"px";
+  loupe.style.backgroundPosition=`${(x/r.width*100).toFixed(1)}% ${(y/r.height*100).toFixed(1)}%`;
+  loupe.classList.add("on");
+});
+pimg.addEventListener("pointerleave",()=>loupe.classList.remove("on"));
+$("macro").addEventListener("pointermove",e=>{ // the close-up drifts with the cursor so it feels like moving a lens over cloth
+  const r=e.currentTarget.getBoundingClientRect(),dx=(e.clientX-r.left)/r.width-.5,dy=(e.clientY-r.top)/r.height-.5;
+  $("macroImg").style.transform=`scale(1.02) translate(${(-dx*5).toFixed(2)}%,${(-dy*5).toFixed(2)}%)`;
+});
+$("macro").addEventListener("pointerleave",()=>{$("macroImg").style.transform=""});
 
 /* ---------- bag ---------- */
 let bag=[];
