@@ -338,7 +338,7 @@ footer{border-top:1px solid var(--line);padding:26px max(20px,env(safe-area-inse
 <script>
 (()=>{
 const CDN="https://d2ol7oe51mr4n9.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/";
-const im=id=>!id?"":/^(img/|https:)/.test(id)?id:CDN+id+".webp";
+const im=id=>!id?"":(id.startsWith("img/")||id.startsWith("https:"))?id:CDN+id+".webp";
 const IMG={
   L1:"img/look1.webp",L2:"img/look2.webp",L3:"img/look3.webp",
   L4:"img/look4.webp",L5:"img/look5.webp",L6:"img/look6.webp",
