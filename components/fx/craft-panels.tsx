@@ -5,15 +5,15 @@ import * as React from "react"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { asset } from "@/lib/data"
-import { crafts } from "@/lib/showcase"
+import { crafts, posterSrc } from "@/lib/showcase"
 import { cn } from "@/lib/utils"
 
 const COVERS: Record<string, string> = {
-  "graphic-design": asset("/work/DeqFOaaB7zp.jpg"),
-  "video-editing": asset("/work/DbNKXuaMsUM.jpg"),
+  "graphic-design": posterSrc("mehar"),
+  "video-editing": "https://i.ytimg.com/vi/PkQGxPIoazg/maxresdefault.jpg",
   "motion-animation": "https://i.ytimg.com/vi/FQ76hjBlx78/maxresdefault.jpg",
   "ai-animation": asset("/work/De2-7D0BEHB.jpg"),
-  web: asset("/mehar/img/look1.webp"),
+  web: asset("/work/crafts/web.jpg"),
 }
 
 /**

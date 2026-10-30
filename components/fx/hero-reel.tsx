@@ -11,7 +11,7 @@ import { posterFiles, posterSrc } from "@/lib/showcase"
 import { AvailabilityBadge } from "@/components/site/availability"
 import { RotatingWord } from "@/components/site/rotating-word"
 
-const yt = (id: string) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`
+const yt = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
 const w = (code: string) => asset(`/work/${code}.jpg`)
 const p = (name: keyof typeof posterFiles) => posterSrc(name)
 
@@ -33,12 +33,12 @@ function Row({ items, dir, i }: { items: (typeof ROWS)[number]; dir: 1 | -1; i: 
             key={k}
             src={it.src}
             alt=""
-            loading={k < 4 ? "eager" : "lazy"}
+            loading={k < 5 ? "eager" : "lazy"}
             decoding="async"
             className={`h-full shrink-0 rounded-xl object-cover ${it.wide ? "aspect-video" : "aspect-[4/5]"}`}
             onError={(e) => {
               const img = e.currentTarget
-              if (img.src.includes("maxresdefault")) img.src = img.src.replace("maxresdefault", "hqdefault")
+              img.style.visibility = "hidden"
             }}
           />
         ))}
@@ -80,9 +80,9 @@ export function HeroReel() {
         scrollTrigger: { trigger: el, start: "top top", end: "+=140%", pin: true, scrub: 0.6, invalidateOnRefresh: true },
       })
       tl.fromTo(m, { clipPath: () => inset() }, { clipPath: "inset(0px 0px 0px 0px round 0px)", ease: "power2.inOut", duration: 1 }, 0)
-        .to("[data-part=left]", { xPercent: -60, opacity: 0, ease: "power2.in", duration: 0.7 }, 0)
-        .to("[data-part=right]", { xPercent: 60, opacity: 0, ease: "power2.in", duration: 0.7 }, 0)
-        .to("[data-part=fade]", { y: 40, opacity: 0, ease: "power1.in", duration: 0.4 }, 0)
+        .fromTo("[data-part=left]", { xPercent: 0, opacity: 1 }, { xPercent: -60, opacity: 0, ease: "power2.in", duration: 0.7 }, 0)
+        .fromTo("[data-part=right]", { xPercent: 0, opacity: 1 }, { xPercent: 60, opacity: 0, ease: "power2.in", duration: 0.7 }, 0)
+        .fromTo("[data-part=fade]", { y: 0, opacity: 1 }, { y: 40, opacity: 0, ease: "power1.in", duration: 0.4 }, 0)
         .fromTo("[data-part=scrim]", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.55)
         .fromTo("[data-part=line] > span", { yPercent: 110 }, { yPercent: 0, stagger: 0.08, ease: "power3.out", duration: 0.45 }, 0.6)
       return () => tl.kill()
@@ -92,14 +92,22 @@ export function HeroReel() {
       return () => window.removeEventListener("resize", place)
     })
     // fonts change the slot's size once they load
+    let alive = true
     document.fonts?.ready.then(() => {
+      if (!alive) return
       place()
       ScrollTrigger.refresh()
     })
-    return () => mm.revert()
+    return () => {
+      alive = false
+      mm.revert()
+    }
   }, [])
 
+  // the pin wraps the section in a spacer; this outer div is the one React owns,
+  // so leaving the page removes it cleanly whatever GSAP did inside
   return (
+    <div>
     <section ref={root} className="relative h-svh min-h-[600px] overflow-hidden bg-background">
       {/* the moving wall, seen through the slot */}
       <div ref={wall} aria-hidden="true" className="absolute inset-0 z-10 flex flex-col gap-3 bg-[#111] p-3 will-change-[clip-path]">
@@ -168,5 +176,6 @@ export function HeroReel() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
