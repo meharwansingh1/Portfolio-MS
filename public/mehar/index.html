@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MEHAR — Try the Look</title>
+<meta name="description" content="MEHAR ਮਿਹਰ — Punjabi heritage, cut as luxury streetwear. Six looks, shot head to toe.">
+<meta property="og:title" content="MEHAR — Try the Look">
+<meta property="og:description" content="Punjabi heritage, cut as luxury streetwear. Six looks, shot head to toe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://d2ol7oe51mr4n9.cloudfront.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Hanken+Grotesk:wght@300;400;500;600&family=Noto+Sans+Gurmukhi:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: studio-white stage (drag carousel) left, sticky "In this look" panel right; stacks on phones. */
+:root{
+  --studio:#f3f2ef;      /* seamless paper backdrop */
+  --paper:#fbfaf8;       /* panel */
+  --ink:#141311;
+  --muted:#7a766f;
+  --line:#e2dfd9;
+  --kesar:#9b5a2a;       /* copper of the phulkari thread */
+  --display:"Bodoni Moda", "Didot", Georgia, serif;
+  --ui:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --gur:"Noto Sans Gurmukhi", "Mukta Mahee", sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--studio);color:var(--ink);font-family:var(--ui);font-size:15px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--kesar);outline-offset:3px}
+.gur{font-family:var(--gur)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px max(20px,env(safe-area-inset-right)) 14px max(20px,env(safe-area-inset-left));
+  background:color-mix(in srgb,var(--studio) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.logo b{font-family:var(--display);font-weight:500;font-size:22px;letter-spacing:.28em}
+.logo span{font-family:var(--gur);font-size:15px;color:var(--kesar)}
+.nav{display:flex;gap:28px;font-size:13px;letter-spacing:.06em}
+.nav a{text-decoration:none;color:var(--muted)}
+.nav a.on,.nav a:hover{color:var(--ink)}
+.bagbtn{display:flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.06em}
+.bagbtn i{font-style:normal;display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--ink);color:var(--paper);font-size:11px;font-variant-numeric:tabular-nums;transition:transform .3s}
+.bagbtn i.bump{transform:scale(1.3)}
+
+/* main split */
+.shop{display:grid;grid-template-columns:minmax(0,1fr) 420px;min-height:calc(100vh - 57px)}
+.stagewrap{position:relative;display:flex;flex-direction:column;padding:34px 0 22px;overflow:hidden}
+.intro{padding:0 max(40px,env(safe-area-inset-left));}
+.intro h1{margin:0;font-weight:300;font-size:clamp(34px,4.2vw,58px);letter-spacing:-.02em;line-height:1}
+.intro p{margin:10px 0 0;color:var(--muted);font-size:13px;letter-spacing:.02em}
+
+.stage{position:relative;flex:1;min-height:520px;margin-top:8px;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:none}
+@media (hover:none),(pointer:coarse){.stage{cursor:grab}}
+.model{position:absolute;left:50%;bottom:9%;height:80%;aspect-ratio:735/1100;transform-origin:50% 100%;will-change:transform,filter,opacity}
+.model img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;-webkit-user-drag:none}
+.model .ghost{opacity:0;filter:grayscale(1) blur(6px)}
+.model .shadow{position:absolute;left:12%;right:12%;bottom:-2.2%;height:4.5%;border-radius:50%;background:radial-gradient(closest-side,rgba(20,19,17,.28),rgba(20,19,17,0));}
+.model .tag{position:absolute;left:50%;bottom:-9%;transform:translateX(-50%);white-space:nowrap;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);opacity:0;transition:opacity .4s}
+.model.active .tag{opacity:1}
+.model .tag b{color:var(--ink);font-weight:500}
+.pin{position:absolute;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;background:var(--paper);color:var(--ink);font-size:12px;font-weight:600;
+  display:grid;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.18);opacity:0;transform:scale(.4);transition:opacity .35s,transform .35s cubic-bezier(.3,1.6,.5,1);cursor:pointer}
+.pin::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(255,255,255,.9);animation:ping 2.4s infinite}
+.model.settled .pin{opacity:1;transform:scale(1)}
+.pin.hot{background:var(--ink);color:var(--paper)}
+@keyframes ping{0%{transform:scale(.8);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+
+.cursor{position:absolute;left:0;top:0;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;border:1px solid rgba(20,19,17,.55);
+  display:grid;place-items:center;font-size:10px;letter-spacing:.24em;pointer-events:none;opacity:0;transition:opacity .25s,width .25s,height .25s,margin .25s;z-index:30;background:rgba(251,250,248,.25);backdrop-filter:blur(2px)}
+.cursor.show{opacity:1}
+.cursor.down{width:64px;height:64px;margin:-32px 0 0 -32px}
+
+.controls{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 max(40px,env(safe-area-inset-left))}
+.count{font-size:12px;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums}
+.count b{color:var(--ink);font-weight:500}
+.dots{display:flex;gap:6px}
+.dots button{width:18px;height:2px;background:var(--line);transition:background .3s,width .3s}
+.dots button.on{background:var(--ink);width:34px}
+.ctl{display:flex;gap:6px}
+.ctl button{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;transition:background .2s}
+.ctl button:hover{background:rgba(20,19,17,.06)}
+.ctl svg{width:18px;height:18px}
+
+/* panel */
+.panel{position:sticky;top:57px;align-self:start;height:calc(100vh - 57px);display:flex;flex-direction:column;background:var(--paper);border-left:1px solid var(--line)}
+.ph{display:flex;align-items:baseline;justify-content:space-between;padding:30px 30px 18px;border-bottom:1px solid var(--line)}
+.ph h2{margin:0;font-weight:400;font-size:20px;letter-spacing:-.01em}
+.ph small{font-size:11px;letter-spacing:.2em;color:var(--muted)}
+.lookname{padding:16px 30px 0;display:flex;align-items:baseline;gap:10px}
+.lookname em{font-family:var(--display);font-style:italic;font-size:26px}
+.lookname span{font-family:var(--gur);color:var(--kesar);font-size:15px}
+.items{list-style:none;margin:0;padding:6px 30px;flex:1;overflow:auto}
+.item{display:grid;grid-template-columns:96px minmax(0,1fr) 34px;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);transition:background .3s}
+.item.hot{background:linear-gradient(90deg,rgba(155,90,42,.07),transparent 70%)}
+.thumb{position:relative;width:96px;height:110px;background:var(--studio);border-radius:2px;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:contain;padding:8px;transition:transform .5s}
+.item:hover .thumb img{transform:scale(1.06)}
+.thumb i{position:absolute;top:6px;right:6px;font-style:normal;font-size:10px;font-weight:600;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--paper)}
+.meta{min-width:0}
+.brandline{font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.meta h3{margin:4px 0 2px;font-size:15px;font-weight:500}
+.meta .fab{font-size:12px;color:var(--muted);line-height:1.4}
+.meta .price{margin-top:6px;font-size:13px;font-variant-numeric:tabular-nums}
+.add{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:all .25s}
+.add:hover{border-color:var(--ink)}
+.add.done{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.add svg{width:14px;height:14px}
+.items.swap{animation:swap .5s ease}
+@keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.bundle{padding:20px 30px 26px;border-top:1px solid var(--line)}
+.brow{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.brow h4{margin:0;font-size:14px;font-weight:500}
+.brow p{margin:3px 0 0;font-size:12px;color:var(--muted)}
+.tot{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tot s{color:var(--muted);font-size:12px;margin-right:8px}
+.tot b{font-size:19px;font-weight:500}
+.cta{margin-top:16px;width:100%;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:var(--ink);color:var(--paper);font-size:14px;letter-spacing:.04em;border-radius:2px;transition:background .25s}
+.cta:hover{background:#2b2925}
+.cta svg{width:20px;height:20px;transition:transform .25s}
+.cta:hover svg{transform:translateX(4px)}
+
+/* fabric strip */
+.fabric{border-top:1px solid var(--line);padding:72px max(20px,env(safe-area-inset-left));display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;max-width:1280px;margin:0 auto}
+.fabric .lead{grid-column:1/-1;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.fabric .lead h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(30px,4vw,48px);line-height:1.05;text-wrap:balance;max-width:16ch}
+.fabric .lead p{margin:0;max-width:44ch;color:var(--muted);line-height:1.6}
+.spec{border-top:1px solid var(--ink);padding-top:16px}
+.spec .n{font-family:var(--display);font-size:44px;font-variant-numeric:lining-nums}
+.spec .n small{font-family:var(--ui);font-size:13px;margin-left:6px;color:var(--muted)}
+.spec h3{margin:6px 0 6px;font-size:14px;font-weight:500}
+.spec p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+footer{border-top:1px solid var(--line);padding:26px max(20px,env(safe-area-inset-left));display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted)}
+
+/* bag drawer */
+.scrim{position:fixed;inset:0;background:rgba(20,19,17,.32);opacity:0;pointer-events:none;transition:opacity .3s;z-index:60}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--paper);z-index:61;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;padding-bottom:env(safe-area-inset-bottom)}
+.drawer.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;border-bottom:1px solid var(--line)}
+.dh h2{margin:0;font-weight:400;font-size:20px}
+.dl{flex:1;overflow:auto;padding:4px 28px;list-style:none;margin:0}
+.bl{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:center}
+.bl .bt{width:72px;height:84px;background:var(--studio);display:grid;place-items:center;overflow:hidden}
+.bl .bt img{width:100%;height:100%;object-fit:contain;padding:6px}
+.bl .bt.trio{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;padding:3px;gap:2px}
+.bl .bt.trio img{padding:1px}
+.bl h3{margin:0;font-size:14px;font-weight:500}
+.bl p{margin:3px 0 0;font-size:12px;color:var(--muted)}
+.qty{display:inline-flex;align-items:center;gap:10px;margin-top:8px;font-size:12px;font-variant-numeric:tabular-nums}
+.qty button{width:22px;height:22px;border:1px solid var(--line);border-radius:50%;line-height:1}
+.rm{font-size:11px;color:var(--muted);text-decoration:underline;margin-left:8px}
+.bp{text-align:right;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bp s{display:block;color:var(--muted);font-size:11px}
+.df{padding:20px 28px 26px;border-top:1px solid var(--line)}
+.df .r{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.df .r.big{font-size:17px;margin-top:10px}
+.df .note{font-size:12px;color:var(--muted);margin:12px 0 0;line-height:1.5}
+.empty{padding:60px 0;text-align:center;color:var(--muted)}
+.empty b{display:block;font-family:var(--display);font-style:italic;font-weight:400;font-size:24px;color:var(--ink);margin-bottom:6px}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:12px 18px;font-size:13px;border-radius:2px;opacity:0;transition:all .35s;z-index:70;pointer-events:none;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:1000px){
+  .shop{grid-template-columns:1fr}
+  .panel{position:relative;top:0;height:auto;border-left:0;border-top:1px solid var(--line)}
+  .items{overflow:visible}
+  .nav{display:none}
+  .stage{min-height:0;height:min(68vh,620px)}
+  .intro,.controls{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+  .ph,.lookname,.items,.bundle{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+  .fabric{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .item{grid-template-columns:78px minmax(0,1fr) 34px;gap:12px}
+  .thumb{width:78px;height:92px}
+  .model .tag{font-size:10px}
+  .dots{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <a class="logo" href="#top" aria-label="MEHAR home"><b>MEHAR</b><span>ਮਿਹਰ</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="#top" class="on">Try the Look</a>
+    <a href="#fabric">The Cloth</a>
+    <a href="#about">House</a>
+  </nav>
+  <button class="bagbtn" id="openBag" aria-label="Open bag">Bag <i id="bagCount">0</i></button>
+</header>
+
+<main class="shop" id="top">
+  <section class="stagewrap" aria-label="Looks">
+    <div class="intro">
+      <h1>Try the Look.</h1>
+      <p>Six looks, shot head to toe. Drag to browse — tap a pin to see the piece.</p>
+    </div>
+    <div class="stage" id="stage" aria-roledescription="carousel">
+      <div class="cursor" id="cursor">DRAG</div>
+    </div>
+    <div class="controls">
+      <div class="count" id="count"><b>01</b> / 06</div>
+      <div class="dots" id="dots" role="tablist" aria-label="Choose look"></div>
+      <div class="ctl">
+        <button id="prev" aria-label="Previous look"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button id="play" aria-label="Pause autoplay"><svg viewBox="0 0 24 24" fill="currentColor" id="playIcon"><rect x="7" y="6" width="3" height="12"/><rect x="14" y="6" width="3" height="12"/></svg></button>
+        <button id="next" aria-label="Next look"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <aside class="panel" aria-label="In this look">
+    <div class="ph"><h2>In this look</h2><small id="pieces">3 PIECES</small></div>
+    <div class="lookname"><em id="lookName">Virsa</em><span id="lookGur">ਵਿਰਸਾ</span></div>
+    <ul class="items" id="items"></ul>
+    <div class="bundle">
+      <div class="brow">
+        <div><h4>Complete the look</h4><p>Bundle all 3 and save 10%</p></div>
+        <div class="tot"><s id="full">₹0</s><b id="disc">₹0</b></div>
+      </div>
+      <button class="cta" id="addLook"><span>Add full look to bag</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </aside>
+</main>
+
+<section class="fabric" id="fabric">
+  <div class="lead">
+    <h2>Cloth first. Logo last.</h2>
+    <p id="about">MEHAR (ਮਿਹਰ, grace) is a Punjabi house that treats heritage as a material, not a print. Phulkari geometry is thread-guided by hand, Gurmukhi is embossed rather than screened, and every piece is cut long and wide for a 6 ft frame.</p>
+  </div>
+  <div class="spec"><div class="n">520<small>GSM</small></div><h3>Loopback fleece</h3><p>Acid-washed by hand in Ludhiana, then brushed so the hoodie holds its shape for years instead of seasons.</p></div>
+  <div class="spec"><div class="n">19.5<small>micron</small></div><h3>Extrafine merino</h3><p>Knitted on 12-gauge beds. Soft enough for bare skin, dense enough to wear as outerwear in a Punjab winter.</p></div>
+  <div class="spec"><div class="n">14<small>oz</small></div><h3>Selvedge denim</h3><p>Rigid Japanese selvedge cut in a wide pool leg. It breaks in to you, not the other way round.</p></div>
+</section>
+
+<footer>
+  <span>© 2026 MEHAR ਮਿਹਰ · Anandpur Sahib, Punjab</span>
+  <span>Concept brand &amp; site by <a href="../">Meharwan Singh</a></span>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Bag" aria-hidden="true">
+  <div class="dh"><h2>Your bag</h2><button id="closeBag" aria-label="Close bag"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <ul class="dl" id="bagList"></ul>
+  <div class="df" id="bagFoot">
+    <div class="r"><span>Subtotal</span><span id="sub">₹0</span></div>
+    <div class="r"><span>Bundle savings</span><span id="save">−₹0</span></div>
+    <div class="r"><span>Shipping</span><span>Free across India</span></div>
+    <div class="r big"><span>Total</span><b id="total">₹0</b></div>
+    <button class="cta" id="checkout"><span>Checkout</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+    <p class="note" id="checkoutNote" hidden>MEHAR is a concept collection. Checkout opens with the first drop — your bag is saved on this device until then.</p>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(()=>{
+const CDN="https://d2ol7oe51mr4n9.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/";
+const im=id=>id?CDN+id+".webp":"";
+const IMG={
+  L1:"5b283234-97ab-4120-83ac-1313c244b95b",L2:"9e4725ac-1eb5-4835-a02d-f6ee7b258e02",L3:"a37801b1-e264-484e-b98b-2158e1b5fa2d",
+  L4:"70667ccd-5c7f-4226-9a6c-882d06f8b5e9",L5:"95866670-636f-4cc9-9c9f-d1554890d03b",L6:"66a53a5a-f5b5-4ea0-af41-ed6738665fd6",
+  P11:"0dcaef6d-2918-48ff-857e-0264f274d2e6",P12:"0c362eff-244e-464a-9d12-1bb7a4a37545",P13:"1130bb9b-19bb-4e8d-9ba3-9cd658bd39ee",P21:"9d4ef5d4-5dcd-41c0-8850-ee178f0da0a0",P22:"26fde3ea-ca2a-48be-bddf-84cc900035a0",P23:"43293dbc-810b-4106-89b8-6f8c7f3ce19c",
+  P31:"a5f4c5b0-10a8-4a95-82b0-c77627482301",P32:"8251406d-eb25-449d-8488-5e28b245c3d7",P33:"789c2c26-8472-4b31-85f1-7d3518f1645d",
+  P41:"a2f005ce-57ff-407c-bd21-ef85d4a22226",P43:"8db54630-b516-467e-bf00-e642944cf079",P51:"84ec1ec2-26d3-4abe-be7a-ca2828c93944",P52:"f14e5071-7d9e-4345-b1ad-31077767399c",P61:"90645b0c-e6c5-4900-bf64-89aad363d0fa",P62:"07dd3936-ea0b-4156-9ebe-e2266d8e69bd"
+};
+const P={
+  virsa_hoodie:{name:"Virsa Hoodie",line:"Charcoal · ਪੰਜਾਬ emboss",fab:"520 GSM acid-washed loopback fleece",price:7490,img:IMG.P11},
+  trouser_black:{name:"Pleated Wide Trouser",line:"Black",fab:"Wool-blend twill, double pleat",price:5990,img:IMG.P12},
+  loafer_black:{name:"Penny Loafer",line:"Black calf",fab:"Hand-burnished calf, Blake stitched",price:9490,img:IMG.P13},
+  merino_crew:{name:"Merino Crew",line:"Chocolate",fab:"12-gauge extrafine merino",price:8290,img:IMG.P21},
+  trouser_ecru:{name:"Pleated Wide Trouser",line:"Ecru",fab:"Wool-blend twill, double pleat",price:5990,img:IMG.P22},
+  loafer_suede:{name:"Suede Loafer",line:"Tobacco",fab:"Calf suede, leather sole",price:9490,img:IMG.P23},
+  phulkari_tee:{name:"Phulkari Boxy Tee",line:"Black · copper thread",fab:"300 GSM Supima, hand-guided embroidery",price:4490,img:IMG.P31},
+  cargo:{name:"Utility Cargo",line:"Charcoal",fab:"12 oz cotton twill, garment dyed",price:6490,img:IMG.P32},
+  boot:{name:"Field Boot",line:"Black",fab:"Waxed calf, commando sole",price:12990,img:IMG.P33},
+  sawaar_hoodie:{name:"Sawaar Hoodie",line:"Ombre ash · rider print",fab:"520 GSM fleece, silver-ink print",price:7490,img:IMG.P41},
+  denim:{name:"Pool Denim",line:"Light wash",fab:"14 oz Japanese selvedge",price:6290,img:IMG.P62},
+  sneaker:{name:"Court Sneaker",line:"White",fab:"Full-grain nappa, cup sole",price:8490,img:IMG.P43},
+  overshirt:{name:"Doaba Overshirt",line:"Forest · phulkari pocket",fab:"Brushed wool flannel",price:11900,img:IMG.P51},
+  trouser_cream:{name:"Pleated Wide Trouser",line:"Cream",fab:"Wool-blend twill, double pleat",price:5990,img:IMG.P52},
+  cable_crew:{name:"Cable Crew",line:"Ivory",fab:"7-gauge lambswool cable",price:9690,img:IMG.P61}
+};
+// pins: [product, x%, y%] relative to model box
+const LOOKS=[
+  {id:"virsa",name:"Virsa",gur:"ਵਿਰਸਾ",img:IMG.L1,items:[["virsa_hoodie",66,27],["trouser_black",60,62],["loafer_black",34,96]]},
+  {id:"dhoop",name:"Dhoop",gur:"ਧੁੱਪ",img:IMG.L2,items:[["merino_crew",66,27],["trouser_ecru",60,62],["loafer_suede",34,96]]},
+  {id:"phulkari",name:"Phulkari",gur:"ਫੁਲਕਾਰੀ",img:IMG.L3,items:[["phulkari_tee",68,24],["cargo",62,64],["boot",34,95]]},
+  {id:"sawaar",name:"Sawaar",gur:"ਸਵਾਰ",img:IMG.L4,items:[["sawaar_hoodie",70,30],["denim",62,68],["sneaker",32,96]]},
+  {id:"doaba",name:"Doaba",gur:"ਦੋਆਬਾ",img:IMG.L5,items:[["overshirt",72,28],["trouser_cream",60,64],["sneaker",32,96]]},
+  {id:"sutlej",name:"Sutlej",gur:"ਸਤਲੁਜ",img:IMG.L6,items:[["cable_crew",70,26],["denim",62,66],["loafer_suede",32,96]]}
+];
+const N=LOOKS.length;
+const inr=n=>"₹"+Math.round(n).toLocaleString("en-IN");
+const $=id=>document.getElementById(id);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- stage ---------- */
+const stage=$("stage"),cursor=$("cursor");
+const models=LOOKS.map((L,i)=>{
+  const el=document.createElement("div");el.className="model";el.dataset.i=i;
+  el.innerHTML=`<div class="shadow"></div><img class="ghost" alt="" src="${im(L.img)}"><img class="main" alt="Meharwan in the ${L.name} look" src="${im(L.img)}" ${i>1&&i<N-1?'loading="lazy"':''}>`+
+    L.items.map((it,k)=>`<button class="pin" style="left:${it[1]}%;top:${it[2]}%" data-k="${k}" aria-label="Piece ${k+1}: ${P[it[0]].name}">${k+1}</button>`).join("")+
+    `<div class="tag"><b>${String(i+1).padStart(2,"0")}</b> · ${L.name}</div>`;
+  stage.appendChild(el);return el;
+});
+let pos=0,target=0,vel=0,dragging=false,startX=0,startPos=0,lastX=0,lastT=0,flick=0,moved=0,current=-1;
+const wrap=d=>{d=((d%N)+N)%N;return d>N/2?d-N:d};
+const spacing=()=>Math.max(120,Math.min(stage.clientWidth*0.2,260));
+
+function render(){
+  const sp=spacing();
+  models.forEach((el,i)=>{
+    const d=wrap(i-pos),a=Math.abs(d);
+    const x=d*sp*(1-0.06*Math.min(a,3));
+    const s=1-0.14*Math.min(a,2.6);
+    const blur=reduce?0:Math.min(a,2.5)*2.6;
+    const op=a>2.7?Math.max(0,1-(a-2.7)*2):1-0.15*a;
+    el.style.transform=`translateX(calc(-50% + ${x}px)) scale(${s})`;
+    el.style.filter=blur>0.05?`blur(${blur}px)`:"none";
+    el.style.opacity=op;
+    el.style.zIndex=100-Math.round(a*10);
+    const g=el.querySelector(".ghost");
+    const gv=Math.min(Math.abs(vel)*6,.35);
+    g.style.opacity=gv;g.style.transform=`translateX(${(-vel*sp*1.6).toFixed(1)}px)`;
+    const isAct=Math.round(wrap(pos))===wrap(i)||(Math.abs(d)<.5);
+    el.classList.toggle("active",isAct);
+    el.classList.toggle("settled",isAct&&Math.abs(d)<0.04&&!dragging);
+  });
+}
+function tick(){
+  if(!dragging){
+    const diff=wrap(target-pos);
+    const step=reduce?diff:diff*0.12;
+    pos+=step;vel=step;
+    if(Math.abs(diff)<0.0008){pos=target;vel=0}
+  }
+  render();
+  const idx=((Math.round(pos)%N)+N)%N;
+  if(idx!==current){current=idx;updatePanel(idx)}
+  requestAnimationFrame(tick);
+}
+function go(i){target=((i%N)+N)%N;if(Math.abs(wrap(target-pos))>N/2)pos=target-wrap(target-pos)}
+function goRel(d){go(Math.round(target)+d)}
+
+stage.addEventListener("pointerdown",e=>{
+  if(e.target.closest(".pin"))return;
+  dragging=true;moved=0;startX=lastX=e.clientX;startPos=pos;lastT=performance.now();flick=0;
+  stage.setPointerCapture(e.pointerId);cursor.classList.add("down");pauseFor();
+});
+stage.addEventListener("pointermove",e=>{
+  const r=stage.getBoundingClientRect();
+  cursor.style.transform=`translate(${e.clientX-r.left}px,${e.clientY-r.top}px)`;
+  if(!dragging)return;
+  const dx=e.clientX-startX;moved=Math.max(moved,Math.abs(dx));
+  const now=performance.now();flick=(e.clientX-lastX)/Math.max(1,now-lastT);lastX=e.clientX;lastT=now;
+  const np=startPos-dx/spacing();vel=np-pos;pos=np;
+});
+function endDrag(e){
+  if(!dragging)return;dragging=false;cursor.classList.remove("down");
+  if(moved<6){ // click → jump to that model
+    const m=e.target.closest&&e.target.closest(".model");
+    if(m){go(+m.dataset.i);return}
+  }
+  target=Math.round(pos-flick*1.2);target=((target%N)+N)%N;
+}
+stage.addEventListener("pointerup",endDrag);
+stage.addEventListener("pointercancel",endDrag);
+stage.addEventListener("pointerenter",()=>cursor.classList.add("show"));
+stage.addEventListener("pointerleave",()=>cursor.classList.remove("show"));
+stage.addEventListener("wheel",e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY)&&Math.abs(e.deltaX)>20){e.preventDefault();goRel(e.deltaX>0?1:-1);pauseFor()}},{passive:false});
+stage.addEventListener("click",e=>{
+  const p=e.target.closest(".pin");if(!p)return;
+  e.stopPropagation();highlight(+p.dataset.k,true);pauseFor();
+});
+window.addEventListener("resize",render);
+
+/* dots + controls */
+const dots=$("dots");
+LOOKS.forEach((L,i)=>{const b=document.createElement("button");b.setAttribute("role","tab");b.setAttribute("aria-label",`Look ${i+1}, ${L.name}`);b.onclick=()=>{go(i);pauseFor()};dots.appendChild(b)});
+$("prev").onclick=()=>{goRel(-1);pauseFor()};
+$("next").onclick=()=>{goRel(1);pauseFor()};
+document.addEventListener("keydown",e=>{
+  if($("drawer").classList.contains("on")){if(e.key==="Escape")closeBag();return}
+  if(e.key==="ArrowRight"){goRel(1);pauseFor()}if(e.key==="ArrowLeft"){goRel(-1);pauseFor()}
+});
+let playing=!reduce,hold=0;
+const playIcon=$("playIcon");
+function setPlay(p){playing=p;$("play").setAttribute("aria-label",p?"Pause autoplay":"Play autoplay");
+  playIcon.innerHTML=p?'<rect x="7" y="6" width="3" height="12"/><rect x="14" y="6" width="3" height="12"/>':'<path d="M8 5.5v13l11-6.5z"/>'}
+$("play").onclick=()=>setPlay(!playing);
+function pauseFor(){hold=performance.now()+9000}
+setPlay(playing);
+setInterval(()=>{if(playing&&!dragging&&performance.now()>hold&&!document.hidden&&!$("drawer").classList.contains("on"))goRel(1)},5200);
+
+/* ---------- panel ---------- */
+const itemsEl=$("items");
+function thumb(src,alt){return src&&!src.includes("__")?`<img src="${im(src)}" alt="${alt}" loading="lazy">`:""}
+function updatePanel(i){
+  const L=LOOKS[i];
+  $("count").innerHTML=`<b>${String(i+1).padStart(2,"0")}</b> / ${String(N).padStart(2,"0")}`;
+  [...dots.children].forEach((d,k)=>{d.classList.toggle("on",k===i);d.setAttribute("aria-selected",k===i)});
+  $("lookName").textContent=L.name;$("lookGur").textContent=L.gur;
+  $("pieces").textContent=L.items.length+" PIECES";
+  itemsEl.innerHTML=L.items.map(([pid],k)=>{const p=P[pid];const inBag=bag.some(b=>b.type==="item"&&b.id===pid);
+    return `<li class="item" data-k="${k}">
+      <div class="thumb">${thumb(p.img,p.name)}<i>${k+1}</i></div>
+      <div class="meta"><div class="brandline">MEHAR · ${L.name}</div><h3>${p.name}</h3><div class="fab">${p.line} — ${p.fab}</div><div class="price">${inr(p.price)}</div></div>
+      <button class="add${inBag?" done":""}" data-pid="${pid}" aria-label="Add ${p.name} to bag">${inBag?ICON.check:ICON.plus}</button></li>`}).join("");
+  itemsEl.classList.remove("swap");void itemsEl.offsetWidth;itemsEl.classList.add("swap");
+  const full=L.items.reduce((s,[pid])=>s+P[pid].price,0);
+  $("full").textContent=inr(full);$("disc").textContent=inr(full*0.9);
+}
+const ICON={plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12.5l4.5 4.5L19 7"/></svg>'};
+function highlight(k,scroll){
+  [...itemsEl.children].forEach((li,j)=>li.classList.toggle("hot",j===k));
+  models[current].querySelectorAll(".pin").forEach((p,j)=>p.classList.toggle("hot",j===k));
+  const li=itemsEl.children[k];if(scroll&&li&&innerWidth<=1000)li.scrollIntoView({behavior:"smooth",block:"center"});
+  clearTimeout(highlight.t);highlight.t=setTimeout(()=>{[...itemsEl.children].forEach(li=>li.classList.remove("hot"));models.forEach(m=>m.querySelectorAll(".pin").forEach(p=>p.classList.remove("hot")))},2600);
+}
+itemsEl.addEventListener("mouseover",e=>{const li=e.target.closest(".item");if(li)models[current].querySelectorAll(".pin").forEach((p,j)=>p.classList.toggle("hot",j===+li.dataset.k))});
+itemsEl.addEventListener("mouseleave",()=>models[current].querySelectorAll(".pin").forEach(p=>p.classList.remove("hot")));
+itemsEl.addEventListener("click",e=>{
+  const b=e.target.closest(".add");if(!b)return;
+  const pid=b.dataset.pid;
+  const ex=bag.find(x=>x.type==="item"&&x.id===pid);
+  if(ex)ex.qty++;else bag.push({type:"item",id:pid,qty:1});
+  b.classList.add("done");b.innerHTML=ICON.check;save();toast(`${P[pid].name} added to bag`);pauseFor();
+});
+$("addLook").onclick=()=>{
+  const L=LOOKS[current];
+  const ex=bag.find(x=>x.type==="look"&&x.id===L.id);
+  if(ex)ex.qty++;else bag.push({type:"look",id:L.id,qty:1});
+  save();toast(`${L.name} look added — 10% off applied`);pauseFor();
+};
+
+/* ---------- bag ---------- */
+let bag=[];
+try{bag=JSON.parse(localStorage.getItem("mehar-bag")||"[]")||[]}catch(e){bag=[]}
+function lineInfo(b){
+  if(b.type==="item"){const p=P[b.id];return{title:p.name,sub:p.line,full:p.price,price:p.price,imgs:[p.img]}}
+  const L=LOOKS.find(l=>l.id===b.id);const full=L.items.reduce((s,[pid])=>s+P[pid].price,0);
+  return{title:`${L.name} look`,sub:L.items.map(([pid])=>P[pid].name).join(" · "),full,price:full*0.9,imgs:L.items.map(([pid])=>P[pid].img).concat([L.img])};
+}
+function save(){
+  try{localStorage.setItem("mehar-bag",JSON.stringify(bag))}catch(e){}
+  const n=bag.reduce((s,b)=>s+b.qty*(b.type==="look"?3:1),0);
+  const c=$("bagCount");c.textContent=n;c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump");
+  renderBag();
+}
+function renderBag(){
+  const list=$("bagList");
+  if(!bag.length){list.innerHTML=`<li class="empty"><b>Your bag is empty.</b>Pick a look and add the pieces you like.</li>`;$("bagFoot").hidden=true;return}
+  $("bagFoot").hidden=false;
+  let sub=0,saveAmt=0;
+  list.innerHTML=bag.map((b,i)=>{const f=lineInfo(b);sub+=f.full*b.qty;saveAmt+=(f.full-f.price)*b.qty;
+    const trio=b.type==="look";
+    const imgs=(trio?f.imgs.slice(0,4):f.imgs.slice(0,1)).filter(s=>s&&!s.includes("__")).map(s=>`<img src="${im(s)}" alt="">`).join("");
+    return `<li class="bl"><div class="bt${trio?" trio":""}">${imgs}</div>
+      <div><h3>${f.title}</h3><p>${f.sub}</p>
+        <div class="qty"><button data-i="${i}" data-d="-1" aria-label="Decrease">−</button>${b.qty}<button data-i="${i}" data-d="1" aria-label="Increase">+</button><button class="rm" data-i="${i}" data-rm="1">Remove</button></div></div>
+      <div class="bp">${trio?`<s>${inr(f.full*b.qty)}</s>`:""}${inr(f.price*b.qty)}</div></li>`}).join("");
+  $("sub").textContent=inr(sub);$("save").textContent="−"+inr(saveAmt);$("total").textContent=inr(sub-saveAmt);
+}
+$("bagList").addEventListener("click",e=>{
+  const t=e.target.closest("button");if(!t)return;const i=+t.dataset.i;
+  if(t.dataset.rm)bag.splice(i,1);else{bag[i].qty+=+t.dataset.d;if(bag[i].qty<1)bag.splice(i,1)}
+  save();updatePanel(current);
+});
+function openBag(){$("drawer").classList.add("on");$("scrim").classList.add("on");$("drawer").setAttribute("aria-hidden","false");$("closeBag").focus()}
+function closeBag(){$("drawer").classList.remove("on");$("scrim").classList.remove("on");$("drawer").setAttribute("aria-hidden","true");$("checkoutNote").hidden=true}
+$("openBag").onclick=openBag;$("closeBag").onclick=closeBag;$("scrim").onclick=closeBag;
+$("checkout").onclick=()=>{$("checkoutNote").hidden=false};
+
+let tt;function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2200)}
+
+save();$("bagCount").classList.remove("bump");
+tick();
+})();
+</script>
+</body>
+</html>
