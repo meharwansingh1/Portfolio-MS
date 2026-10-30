@@ -4,15 +4,14 @@ import * as React from "react"
 import { finishIntro } from "@/lib/intro"
 
 const NAME = "MEHARWAN"
-const WORD = "PORTFOLIO"
+const WORD = NAME
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 /**
  * The opening: a dot drops onto a dark stage and stands up as an exclamation
  * mark, whose stroke tips over and spills out my name — the dot ends up as its
- * full stop. Then the letters flip, one by one, into PORTFOLIO, and the word
- * glides down onto the hero title it becomes.
+ * full stop. Then the name glides onto the hero title.
  */
 export function Intro() {
   const stage = React.useRef<HTMLDivElement>(null)
@@ -100,7 +99,7 @@ export function Intro() {
       await wait(160 + NAME.length * 85 + 480 + 420)
       if (cancelled) return
 
-      // 4. the name flips into PORTFOLIO, letter by letter; the full stop bows out
+      // 4. the full stop bows out
       d.animate([{ transform: "scale(1)", opacity: 1 }, { transform: "scale(0)", opacity: 0 }], { duration: 300, delay: 500, fill: "forwards" })
       await Promise.all(
         Array.from(WORD).map(async (ch, i) => {
@@ -131,8 +130,10 @@ export function Intro() {
         const tx = to.left + to.width / 2 - (from.left + from.width / 2)
         const ty = to.top + to.height / 2 - (from.top + from.height / 2)
         r.animate([{ transform: "none" }, { transform: `translate(${tx}px, ${ty}px) scale(${s})` }], { duration: 900, easing: "cubic-bezier(.7,0,.2,1)", fill: "forwards" })
+        const ink = getComputedStyle(document.documentElement).getPropertyValue("--foreground").trim() || "#111111"
+        r.animate([{ color: "#f3f0ea" }, { color: "#f3f0ea", offset: 0.4 }, { color: ink }], { duration: 900, fill: "forwards" })
       }
-      await el.animate([{ backgroundColor: "rgba(14,17,22,1)" }, { backgroundColor: "rgba(14,17,22,1)", offset: 0.55 }, { backgroundColor: "rgba(14,17,22,0)" }], { duration: 900, fill: "forwards" }).finished
+      await el.animate([{ backgroundColor: "rgba(17,17,17,1)" }, { backgroundColor: "rgba(17,17,17,1)", offset: 0.55 }, { backgroundColor: "rgba(17,17,17,0)" }], { duration: 900, fill: "forwards" }).finished
       end()
     }
 
@@ -153,23 +154,23 @@ export function Intro() {
   }, [])
 
   return (
-    <div ref={stage} aria-hidden="true" className="intro-overlay fixed inset-0 z-[100] cursor-pointer overflow-hidden bg-[#0e1116] select-none">
-      <div ref={glow} className="absolute inset-0 bg-[radial-gradient(45%_45%_at_50%_50%,rgba(242,163,58,.16),transparent_70%)] opacity-0" />
+    <div ref={stage} aria-hidden="true" className="intro-overlay fixed inset-0 z-[100] cursor-pointer overflow-hidden bg-[#111111] select-none">
+      <div ref={glow} className="absolute inset-0 bg-[radial-gradient(45%_45%_at_50%_50%,rgba(226,56,27,.16),transparent_70%)] opacity-0" />
       <div className="absolute inset-0 grid place-items-center px-4">
-        <div ref={row} className="hero-word chrome-row flex items-baseline opacity-0 [perspective:800px]">
+        <div ref={row} className="hero-word flex items-baseline text-[#f3f0ea] opacity-0 [perspective:800px]">
           {Array.from(WORD).map((_, i) => (
             <span
               key={i}
               ref={(n) => {
                 if (n) letters.current[i] = n
               }}
-              className="chrome inline-block origin-bottom"
+              className="inline-block origin-bottom"
             >
               {NAME[i] ?? ""}
             </span>
           ))}
-          <span ref={dot} className="relative inline-block size-[0.17em] translate-y-[-0.02em] rounded-full bg-[#f2a33a]">
-            <span ref={bar} className="absolute bottom-[160%] left-1/2 -ml-[0.07em] h-[0.62em] w-[0.14em] origin-bottom rounded-[0.03em] bg-gradient-to-b from-white to-[#d9a865] opacity-0" />
+          <span ref={dot} className="relative inline-block size-[0.17em] translate-y-[-0.02em] rounded-full bg-[#e2381b]">
+            <span ref={bar} className="absolute bottom-[160%] left-1/2 -ml-[0.07em] h-[0.62em] w-[0.14em] origin-bottom rounded-[0.03em] bg-gradient-to-b from-white to-[#e86a50] opacity-0" />
           </span>
         </div>
       </div>

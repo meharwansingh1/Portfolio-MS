@@ -101,7 +101,7 @@ export function ProjectStack() {
               </div>
 
               {/* the pictures: a fanned stack of the project's own covers */}
-              <div className="relative order-first h-48 overflow-hidden bg-[radial-gradient(120%_90%_at_20%_10%,#f2a33a,#1c1408_72%)] sm:h-64 md:order-none md:h-auto">
+              <div className="relative order-first h-48 overflow-hidden bg-[radial-gradient(120%_90%_at_20%_10%,#e2381b,#1c0806_72%)] sm:h-64 md:order-none md:h-auto">
                 {p.images.length ? (
                   p.images.map((src, k) => (
                     <img

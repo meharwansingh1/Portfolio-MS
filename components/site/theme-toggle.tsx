@@ -42,4 +42,4 @@ export function ThemeToggle() {
 }
 
 /** Runs before paint so the page never flashes the wrong theme. */
-export const themeScript = `(function(){try{var t=localStorage.getItem("ms-theme");var d=t?t==="dark":true;if(d)document.documentElement.classList.add("dark")}catch(e){}})()`
+export const themeScript = `(function(){try{var t=localStorage.getItem("ms-theme");var d=t==="dark";if(d)document.documentElement.classList.add("dark")}catch(e){}})()`

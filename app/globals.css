@@ -3,27 +3,27 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f4f1ea;
-  --foreground: #0e1116;
-  --muted: #e8e3d8;
-  --muted-foreground: #5f646c;
-  --card: #fbf9f4;
-  --border: rgba(14, 17, 22, 0.1);
-  --accent: #a85a06;
+  --background: #f3f0ea;
+  --foreground: #111111;
+  --muted: #e7e2d8;
+  --muted-foreground: #5c5952;
+  --card: #faf8f3;
+  --border: rgba(17, 17, 17, 0.12);
+  --accent: #d6321a;
   --accent-foreground: #ffffff;
-  --grid: rgba(14, 17, 22, 0.07);
+  --grid: rgba(17, 17, 17, 0.07);
 }
 
 .dark {
-  --background: #0e1116;
-  --foreground: #f4f1ea;
-  --muted: #181c23;
-  --muted-foreground: #8a8f98;
-  --card: #141820;
-  --border: rgba(244, 241, 234, 0.09);
-  --accent: #f2a33a;
-  --accent-foreground: #0e1116;
-  --grid: rgba(244, 241, 234, 0.05);
+  --background: #0f0f0f;
+  --foreground: #f3f0ea;
+  --muted: #1b1b1b;
+  --muted-foreground: #9a968e;
+  --card: #171717;
+  --border: rgba(243, 240, 234, 0.1);
+  --accent: #ff4a2b;
+  --accent-foreground: #111111;
+  --grid: rgba(243, 240, 234, 0.05);
 }
 
 @theme inline {
@@ -37,7 +37,7 @@
   --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-display: "Inter Tight Variable", "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo Variable", "Archivo", "Arial Narrow", ui-sans-serif, system-ui, sans-serif;
   --font-signature: "Mrs Saint Delafield", cursive;
 }
 
@@ -62,8 +62,9 @@ body {
 
 /* headings: tight, confident, quiet */
 .font-display {
-  font-weight: 600;
-  letter-spacing: -0.045em;
+  font-weight: 750;
+  font-stretch: 78%;
+  letter-spacing: -0.025em;
 }
 
 /* the signature writes itself: the ink is revealed left to right, then the underline is drawn */
@@ -223,15 +224,16 @@ html.intro-on #hero-title {
 }
 .hero-word {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 900;
+  font-stretch: 68%;
   font-size: min(15.5vw, 14rem);
-  line-height: 0.9;
-  letter-spacing: -0.04em;
+  line-height: 0.86;
+  letter-spacing: -0.02em;
   white-space: nowrap;
 }
 /* brushed-silver letters, lit from above */
 .chrome {
-  background-image: linear-gradient(180deg, #fffaf0 0%, #f4e6cc 38%, #d9a865 72%, #9c6420 100%);
+  background-image: linear-gradient(180deg, #ffffff 0%, #f3f0ea 55%, #c9c4ba 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -246,12 +248,27 @@ html.intro-on #hero-title {
 }
 /* the hero title in ink, for the light studio */
 .ink {
-  background-image: linear-gradient(180deg, #0e1116 15%, #a85a06 130%);
+  background-image: linear-gradient(180deg, #111111 15%, #111111 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   padding-inline: 0.1em;
 }
 .dark .ink {
-  background-image: linear-gradient(180deg, #f4f1ea 20%, #f2a33a 135%);
+  background-image: linear-gradient(180deg, #f3f0ea 20%, #f3f0ea 100%);
+}
+
+/* ---------- hero wall: rows of work drifting sideways forever ---------- */
+.reel-row {
+  animation: reel-row 60s linear infinite;
+}
+@keyframes reel-row {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reel-row {
+    animation: none;
+  }
 }

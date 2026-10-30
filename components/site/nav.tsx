@@ -53,7 +53,7 @@ export function Nav() {
         )}
       >
         <Link href="/" className="group flex items-center gap-2 pl-2" aria-label="Home">
-          <span className={cn("grid size-9 place-items-center rounded-full font-display text-lg transition group-hover:rotate-[-8deg]", dark ? "bg-white text-[#0e1116]" : "bg-foreground text-background")}>
+          <span className={cn("grid size-9 place-items-center rounded-full font-display text-lg transition group-hover:rotate-[-8deg]", dark ? "bg-white text-[#111111]" : "bg-foreground text-background")}>
             {site.short}
           </span>
           <span className="hidden text-sm font-medium tracking-tight sm:block">{site.name}</span>
@@ -66,7 +66,7 @@ export function Nav() {
                 href={l.href}
                 className={cn(
                   "relative rounded-full px-4 py-2 text-sm transition-colors",
-                  active(l.href) ? (dark ? "bg-white text-[#0e1116]" : "bg-foreground text-background") : "nav-mute text-muted-foreground hover:text-foreground",
+                  active(l.href) ? (dark ? "bg-white text-[#111111]" : "bg-foreground text-background") : "nav-mute text-muted-foreground hover:text-foreground",
                 )}
               >
                 {l.label}

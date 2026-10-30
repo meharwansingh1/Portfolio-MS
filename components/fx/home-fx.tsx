@@ -174,9 +174,9 @@ export function SocialFan() {
           >
             <span className="block overflow-hidden rounded-[1.6rem] border-4 border-[#0b0f1a] bg-[#0b0f1a] shadow-2xl transition duration-300 group-hover:-translate-y-6">
               {s.img ? (
-                <img src={asset(s.img)} alt="" loading="lazy" className={cn("aspect-[9/16] w-full object-cover", s.img.startsWith("/3d/") && "bg-[radial-gradient(70%_60%_at_50%_40%,#3a2610,#0e1116)] object-[50%_30%]")} />
+                <img src={asset(s.img)} alt="" loading="lazy" className={cn("aspect-[9/16] w-full object-cover", s.img.startsWith("/3d/") && "bg-[radial-gradient(70%_60%_at_50%_40%,#3a120c,#111111)] object-[50%_30%]")} />
               ) : (
-                <span className="grid aspect-[9/16] w-full place-items-center bg-[radial-gradient(120%_80%_at_30%_0%,#f2a33a,#1a1206_70%)] p-3 text-center font-serif text-xl text-[#f5e3b0] italic">
+                <span className="grid aspect-[9/16] w-full place-items-center bg-[radial-gradient(120%_80%_at_30%_0%,#e2381b,#1a0806_70%)] p-3 text-center font-serif text-xl text-[#f5e3b0] italic">
                   {s.label}
                 </span>
               )}

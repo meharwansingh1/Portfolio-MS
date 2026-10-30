@@ -38,9 +38,9 @@ export const skillGroups: SkillGroup[] = [
       { name: "Tailwind CSS", note: "Utility-first styling for fast, consistent, responsive layouts.", level: 84, href: "/lab/rahgir/" },
       { name: "HTML", note: "Semantic, accessible structure that works on every device.", level: 92, href: "/work/#portfolio" },
       { name: "CSS", note: "Layout, motion and responsive systems from first principles.", level: 88, href: "/work/#portfolio" },
-      { name: "JavaScript", note: "Interactivity and dynamic interfaces in the browser.", level: 78, href: "/lab/my-travel-vlogs/" },
+      { name: "JavaScript", note: "Interactivity and dynamic interfaces in the browser.", level: 78, href: "https://meharwansingh1.github.io/portfolioo/mehar/" },
       { name: "Bootstrap", note: "Fast, mobile-first layouts from a proven grid.", level: 80, href: "https://www.behance.net/gallery/179151969/Web-Template" },
-      { name: "jQuery", note: "DOM traversal, events and quick animation.", level: 74, href: "/lab/my-travel-vlogs/" },
+      { name: "jQuery", note: "DOM traversal, events and quick animation.", level: 74, href: "https://meharwansingh1.github.io/portfolioo/mehar/" },
       { name: "Python", note: "Scripting and automation beyond the browser.", level: 62, href: "https://github.com/meharwansingh1" },
     ],
   },
@@ -87,7 +87,7 @@ export type Project = {
 export type FolderLink = { name: string; meta: string; to: string; image?: string; art?: ArtPreset }
 
 const reelCover = (code: string) => asset(`/work/${code}.jpg`)
-const ytCover = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
+const ytCover = (id: string) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`
 
 /** The main body of work, strongest first. */
 export const projects: Project[] = [
@@ -261,12 +261,9 @@ export const webLab = [
 /** Where it started: the first pieces on Behance. */
 export const earlyWork = [
   {
-    title: "My Travel Vlogs",
-    text: "A responsive travel-vlog web template — designed on Behance, then built in HTML, CSS and JavaScript.",
-    links: [
-      { label: "Live demo", href: "/lab/my-travel-vlogs/" },
-      { label: "Behance", href: "https://www.behance.net/gallery/179151969/Web-Template" },
-    ],
+    title: "MEHAR — Try the Look",
+    text: "A luxury store for my own concept label MEHAR (ਮਿਹਰ): Punjabi heritage cut as streetwear. A 3D ring of six looks, then zoom from the full outfit down to a single piece and its fabric, with prices.",
+    links: [{ label: "Open the store", href: "https://meharwansingh1.github.io/portfolioo/mehar/" }],
   },
   {
     title: "Behance profile",

@@ -70,10 +70,10 @@ export default function WorkPage() {
       <section id="early" className="mx-auto max-w-6xl scroll-mt-28 px-4 pt-12 sm:px-6">
         <Reveal className="border-t border-border pt-16">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            <span className="text-accent">00</span> — Where it started
+            <span className="text-accent">00</span> — Web &amp; where it started
           </p>
-          <h2 className="mt-4 font-display text-4xl sm:text-5xl">My starting work</h2>
-          <p className="mt-3 max-w-md text-muted-foreground">The first pieces I put out on Behance, before the brand and the series.</p>
+          <h2 className="mt-4 font-display text-4xl sm:text-5xl">My store, and my starting work</h2>
+          <p className="mt-3 max-w-md text-muted-foreground">MEHAR, the newest site I built, and the first pieces I put out on Behance.</p>
         </Reveal>
         <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
           {earlyWork.map((w, i) => (

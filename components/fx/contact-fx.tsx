@@ -89,7 +89,7 @@ export function DotField({ className }: { className?: string }) {
     let w = 0, h = 0, dpr = 1
     let dots: { x: number; y: number; ox: number; oy: number; vx: number; vy: number }[] = []
     const m = { x: -9999, y: -9999 }
-    let ink = "#888", accent = "#f2a33a"
+    let ink = "#888", accent = "#e2381b"
 
     const colours = () => {
       const cs = getComputedStyle(document.documentElement)

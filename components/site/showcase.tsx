@@ -43,8 +43,8 @@ function Cover({ piece }: { piece: Piece }) {
         className={cn(
           "absolute inset-0 flex flex-col justify-between p-5 pt-12 text-white",
           web
-            ? "bg-[radial-gradient(120%_100%_at_0%_0%,#f2c27a_0%,#7a4a12_45%,#0e1116_100%)]"
-            : "bg-[radial-gradient(120%_100%_at_0%_0%,#f2a33a_0%,#5a3208_50%,#0e1116_100%)]",
+            ? "bg-[radial-gradient(120%_100%_at_0%_0%,#f28a6e_0%,#7a1d10_45%,#111111_100%)]"
+            : "bg-[radial-gradient(120%_100%_at_0%_0%,#e2381b_0%,#5a160b_50%,#111111_100%)]",
         )}
       >
         {web ? <Globe className="size-6 opacity-70" /> : piece.kind === "link" ? <ArrowUpRight className="size-6 opacity-70" /> : <Play className="size-6 opacity-70" />}
@@ -75,7 +75,7 @@ function Card({ piece, onOpen }: { piece: Piece; onOpen: (p: Piece) => void }) {
       onClick={() => onOpen(piece)}
       className={cn(
         "group relative block w-full overflow-hidden rounded-[1.5rem] bg-muted text-left outline-none ring-accent ring-offset-4 ring-offset-background focus-visible:ring-2",
-        piece.shape === "tall" ? "aspect-[9/16]" : "aspect-video",
+        piece.shape === "tall" ? "aspect-[9/16]" : piece.shape === "poster" ? "aspect-[4/5]" : "aspect-video",
       )}
     >
       <Cover piece={piece} />
@@ -129,7 +129,11 @@ function Viewer({ piece, onClose }: { piece: Piece; onClose: () => void }) {
         <div
           className={cn(
             "relative w-full overflow-hidden rounded-3xl bg-black shadow-2xl",
-            tall ? "aspect-[9/16] max-h-[78vh] max-w-[min(420px,44vh)]" : "aspect-video max-w-4xl",
+            tall
+              ? "aspect-[9/16] max-h-[78vh] max-w-[min(420px,44vh)]"
+              : piece.shape === "poster"
+                ? "aspect-[4/5] max-h-[80vh] max-w-[min(640px,64vh)]"
+                : "aspect-video max-w-4xl",
           )}
         >
           {piece.kind === "image" ? (
@@ -176,6 +180,17 @@ function Viewer({ piece, onClose }: { piece: Piece; onClose: () => void }) {
 function Grid({ list, onOpen }: { list: Piece[]; onOpen: (p: Piece) => void }) {
   const allWide = list.every((p) => p.shape === "wide")
   const allTall = list.every((p) => p.shape === "tall")
+  const allPoster = list.every((p) => p.shape === "poster")
+  if (allPoster)
+    return (
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        {list.map((p, i) => (
+          <div key={p.id} className="page-in" style={{ animationDelay: Math.min(i, 9) * 40 + "ms" }}>
+            <Card piece={p} onOpen={onOpen} />
+          </div>
+        ))}
+      </div>
+    )
   if (allWide)
     return (
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

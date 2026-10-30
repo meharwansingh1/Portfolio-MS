@@ -59,8 +59,8 @@ export type Piece = {
   note: string
   /** video plays in place, image opens large, link opens a new tab */
   kind: "video" | "image" | "link"
-  /** tall (9:16) or wide (16:9) */
-  shape: "tall" | "wide"
+  /** tall (9:16), wide (16:9) or poster (4:5) */
+  shape: "tall" | "wide" | "poster"
   cover: string
   /** where the piece lives */
   href: string
@@ -77,7 +77,7 @@ const reel = (code: string) => ({
   view: `https://www.instagram.com/reel/${code}/embed/`,
 })
 const video = (id: string, short = false) => ({
-  cover: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+  cover: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`,
   href: short ? `https://www.youtube.com/shorts/${id}` : `https://www.youtube.com/watch?v=${id}`,
   view: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`,
 })
@@ -94,6 +94,25 @@ const cover = (code: string) => ({
   view: asset(`/work/${code}.jpg`),
 })
 
+/**
+ * Poster designs. Stills are served from the image host for now; to move one
+ * into the repo, drop it in /public/work/posters and point `poster()` there.
+ */
+const HF = "https://d8j0ntlcm91z4.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/hf_20261030_"
+export const posterFiles = {
+  mehar: "171711_717b5836-6554-4a3c-a6f5-717beae5487f",
+  vectoristory: "171708_2cd944e2-9243-46a4-9f8a-f9ceb6f496ab",
+  tandoor: "171709_1032126d-4405-4307-b723-9cb493a0ab23",
+  kite: "171709_62e01b50-ad7e-4235-a2e5-9abaa638f25d",
+  kharag: "171813_6edf04a4-14a1-4427-b3af-49b75efd7b52",
+  dhund: "171814_080cee5a-ad73-4cc1-abbf-e401c92dcf64",
+  akhara: "171821_5e848abc-8812-4b0f-99f0-e0d6e4fec257",
+  itr: "171820_0103046d-5ab0-4aa9-b41a-0cc2c13882cb",
+} as const
+export const posterSrc = (k: keyof typeof posterFiles, full = false) => HF + posterFiles[k] + (full ? ".png" : "_min.webp")
+const poster = (k: keyof typeof posterFiles) => ({ cover: posterSrc(k), href: posterSrc(k, true), view: posterSrc(k, true) })
+const PA = "Posters & ad concepts"
+
 const giani = "with Giani Birbal Singh Ji"
 const TMP = "The Musafir Podcast"
 const BJ = "Booking Junction"
@@ -102,6 +121,14 @@ const VS = "Vectoristory"
 
 export const pieces: Piece[] = [
   /* ================================================== graphic design */
+  { id: "g-p-mehar", craft: "graphic-design", group: PA, title: "MEHAR · Festive Edit", note: "Fashion launch poster", kind: "image", shape: "poster", ...poster("mehar") },
+  { id: "g-p-vectoristory", craft: "graphic-design", group: PA, title: "Stories never get old", note: "Concept poster for Vectoristory", kind: "image", shape: "poster", ...poster("vectoristory") },
+  { id: "g-p-tandoor", craft: "graphic-design", group: PA, title: "Tandoor Co. · It's a craving", note: "Food ad concept", kind: "image", shape: "poster", ...poster("tandoor") },
+  { id: "g-p-kharag", craft: "graphic-design", group: PA, title: "Kharag Singh Yudh", note: "Series key art for Bhujangyy", kind: "image", shape: "poster", ...poster("kharag") },
+  { id: "g-p-kite", craft: "graphic-design", group: PA, title: "KITE Air 2 · Silence is the new loud", note: "Product launch concept", kind: "image", shape: "poster", ...poster("kite") },
+  { id: "g-p-dhund", craft: "graphic-design", group: PA, title: "Dhund Coffee · Brewed in the clouds", note: "Surreal ad concept", kind: "image", shape: "poster", ...poster("dhund") },
+  { id: "g-p-akhara", craft: "graphic-design", group: PA, title: "AKHARA Run 01 · Born in the dust", note: "Sneaker ad concept", kind: "image", shape: "poster", ...poster("akhara") },
+  { id: "g-p-itr", craft: "graphic-design", group: PA, title: "Itr Noor · Wear a memory", note: "Fragrance ad concept", kind: "image", shape: "poster", ...poster("itr") },
   { id: "g-tmp-noida", craft: "graphic-design", group: TMP, title: "Distress Deals in Noida", note: "YouTube thumbnail", kind: "image", shape: "wide", ...thumb("nSyyCXZpXw4") },
   { id: "g-tmp-highrise", craft: "graphic-design", group: TMP, title: "High-Rise Building Secrets", note: "YouTube thumbnail", kind: "image", shape: "wide", ...thumb("vaTk8Kx-EJo") },
   { id: "g-dm-cover", craft: "graphic-design", group: DM, title: "Dussehra Mahatam", note: "Cover series for all ten days", kind: "image", shape: "tall", collab: giani, ...cover("DeqFOaaB7zp") },
@@ -165,11 +192,11 @@ export const pieces: Piece[] = [
   { id: "a-ksy-all", craft: "ai-animation", group: "Kharag Singh Yudh · Bhujangyy", title: "All 41 parts", note: "The full series on @bhujangyy", kind: "link", shape: "tall", cover: "", href: "https://www.instagram.com/bhujangyy/" },
 
   /* ============================================================= web */
-  { id: "w-vectoristory", craft: "web", group: "Concept websites", title: "Vectoristory", note: "Cinematic channel site", kind: "link", shape: "wide", cover: "https://i.ytimg.com/vi/FQ76hjBlx78/hqdefault.jpg", href: asset("/lab/vectoristory/") },
+  { id: "w-vectoristory", craft: "web", group: "Concept websites", title: "Vectoristory", note: "Cinematic channel site", kind: "link", shape: "wide", cover: "https://i.ytimg.com/vi/FQ76hjBlx78/maxresdefault.jpg", href: asset("/lab/vectoristory/") },
   { id: "w-bhujangyy", craft: "web", group: "Concept websites", title: "Bhujangyy", note: "Brand site in Gurmukhi", kind: "link", shape: "wide", cover: "", href: asset("/lab/bhujangyy/") },
   { id: "w-rahgir", craft: "web", group: "Concept websites", title: "Rahgir", note: "Interactive travel landing", kind: "link", shape: "wide", cover: "", href: asset("/lab/rahgir/") },
   { id: "w-portfolio", craft: "web", group: "Websites", title: "This portfolio", note: "Next.js · TypeScript · Tailwind", kind: "link", shape: "wide", cover: "", href: "https://meharwansingh1.github.io/portfolioo/" },
-  { id: "w-travel", craft: "web", group: "Websites", title: "My Travel Vlogs", note: "HTML · CSS · JavaScript", kind: "link", shape: "wide", cover: "", href: asset("/lab/my-travel-vlogs/") },
+  { id: "w-mehar", craft: "web", group: "Websites", title: "MEHAR — Try the Look", note: "Luxury store for my own label", kind: "link", shape: "wide", cover: asset("/mehar/img/look1.webp"), href: asset("/mehar/") },
 ]
 
 /** older links on the site used these names; they now open the matching craft */
