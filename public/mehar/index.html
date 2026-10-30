@@ -265,10 +265,10 @@ footer{border-top:1px solid var(--line);padding:26px max(20px,env(safe-area-inse
 <script>
 (()=>{
 const CDN="https://d2ol7oe51mr4n9.cloudfront.net/user_34YxCSehfpvOTOKy7GfrRNtcwTc/";
-const im=id=>id?CDN+id+".webp":"";
+const im=id=>!id?"":id.startsWith("img/")?id:CDN+id+".webp";
 const IMG={
-  L1:"b08cc8c3-5640-4c2a-8a38-947233cd7063",L2:"c872d11e-5ea8-4e14-830a-78e975c7873f",L3:"44906ef4-d01e-4627-9e9b-9432997b42f3",
-  L4:"43aaf8f7-f3b7-4c52-a03a-10db028b47d8",L5:"8e8bf71a-5bb2-4890-8f3d-89fe276201cf",L6:"b8edcdf8-8bfd-4c90-a0dd-69df23934771",
+  L1:"img/look1.webp",L2:"img/look2.webp",L3:"img/look3.webp",
+  L4:"img/look4.webp",L5:"img/look5.webp",L6:"img/look6.webp",
   P11:"0dcaef6d-2918-48ff-857e-0264f274d2e6",P12:"0c362eff-244e-464a-9d12-1bb7a4a37545",P13:"1130bb9b-19bb-4e8d-9ba3-9cd658bd39ee",P21:"9d4ef5d4-5dcd-41c0-8850-ee178f0da0a0",P22:"26fde3ea-ca2a-48be-bddf-84cc900035a0",P23:"43293dbc-810b-4106-89b8-6f8c7f3ce19c",
   P31:"a5f4c5b0-10a8-4a95-82b0-c77627482301",P32:"8251406d-eb25-449d-8488-5e28b245c3d7",P33:"789c2c26-8472-4b31-85f1-7d3518f1645d",
   P41:"a2f005ce-57ff-407c-bd21-ef85d4a22226",P43:"8db54630-b516-467e-bf00-e642944cf079",P51:"84ec1ec2-26d3-4abe-be7a-ca2828c93944",P52:"f14e5071-7d9e-4345-b1ad-31077767399c",P61:"90645b0c-e6c5-4900-bf64-89aad363d0fa",P62:"07dd3936-ea0b-4156-9ebe-e2266d8e69bd"
